@@ -8,6 +8,13 @@ target 'LectureBuddy' do
   # Pods for LectureBuddy
 
   pod 'Firebase/Core'
+  pod 'FirebaseUI', '~> 4.0'
+
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+
+  pod 'NVActivityIndicatorView'
 
   target 'LectureBuddyTests' do
     inherit! :search_paths

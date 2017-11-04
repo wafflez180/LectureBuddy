@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2qz-G8-MXe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FF6-bq-4Jh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Lecture Buddy-->
         <scene sceneID="MZc-g5-c87">
             <objects>
                 <tableViewController id="3vw-T0-Df5" sceneMemberID="viewController">
@@ -31,19 +32,85 @@
                             <outlet property="delegate" destination="3vw-T0-Df5" id="B5O-pN-gMr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="QAr-go-kF9"/>
+                    <navigationItem key="navigationItem" title="Lecture Buddy" largeTitleDisplayMode="always" id="QAr-go-kF9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YU0-fJ-Vjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-364" y="179"/>
         </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="aAT-f3-P3R">
+            <objects>
+                <viewController id="FF6-bq-4Jh" customClass="SignupViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l1L-YA-IlZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture Buddy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkt-li-G8n">
+                                <rect key="frame" x="81.5" y="170" width="212" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzk-BW-lNP" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="40" y="537" width="295" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3W7-Dd-tIc" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="162" y="308.5" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I0M-Yy-J46"/>
+                                    <constraint firstAttribute="width" constant="50" id="m0U-et-P1Q"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballSpinFadeLoader"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.39215686274509803" green="0.32941176470588235" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gkt-li-G8n" firstAttribute="top" secondItem="VE6-uy-sXf" secondAttribute="top" constant="150" id="5Xz-IK-ixW"/>
+                            <constraint firstItem="gkt-li-G8n" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="Ohd-cx-sEy"/>
+                            <constraint firstItem="3W7-Dd-tIc" firstAttribute="centerY" secondItem="l1L-YA-IlZ" secondAttribute="centerY" id="QGl-1z-bDu"/>
+                            <constraint firstItem="Wzk-BW-lNP" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="T1t-In-TuC"/>
+                            <constraint firstItem="3W7-Dd-tIc" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="lRp-Ho-Btl"/>
+                            <constraint firstItem="VE6-uy-sXf" firstAttribute="trailing" secondItem="Wzk-BW-lNP" secondAttribute="trailing" constant="40" id="mTB-wg-RW9"/>
+                            <constraint firstItem="VE6-uy-sXf" firstAttribute="bottom" secondItem="Wzk-BW-lNP" secondAttribute="bottom" constant="100" id="mvT-eT-69e"/>
+                            <constraint firstItem="Wzk-BW-lNP" firstAttribute="leading" secondItem="VE6-uy-sXf" secondAttribute="leading" constant="40" id="rau-sz-Rjh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VE6-uy-sXf"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="3W7-Dd-tIc" id="GmL-mj-85j"/>
+                        <outlet property="facebookLoginButton" destination="Wzk-BW-lNP" id="xtF-uw-fnt"/>
+                        <segue destination="2qz-G8-MXe" kind="presentation" identifier="authenticated" modalTransitionStyle="crossDissolve" id="S4c-8v-uj1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y5F-X6-3g2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2234.4000000000001" y="178.56071964017991"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="6sc-o5-YjX">
             <objects>
                 <navigationController id="2qz-G8-MXe" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7DU-He-8L5">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="7DU-He-8L5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.3921568627" green="0.3294117647" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="3vw-T0-Df5" kind="relationship" relationship="rootViewController" id="aSg-Tu-2pP"/>

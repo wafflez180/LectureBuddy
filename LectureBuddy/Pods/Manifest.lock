@@ -1,36 +1,209 @@
 PODS:
-  - Firebase/Core (4.3.0):
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - BoringSSL (9.1):
+    - BoringSSL/Implementation (= 9.1)
+    - BoringSSL/Interface (= 9.1)
+  - BoringSSL/Implementation (9.1):
+    - BoringSSL/Interface (= 9.1)
+  - BoringSSL/Interface (9.1)
+  - FacebookCore (0.3.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.27)
+  - FacebookLogin (0.3.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3)
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKLoginKit (~> 4.27)
+  - FacebookShare (0.3.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3)
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKShareKit (~> 4.27)
+  - FBSDKCoreKit (4.27.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.27.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.27.1):
+    - FBSDKCoreKit
+  - Firebase/Auth (4.5.0):
+    - Firebase/Core
+    - FirebaseAuth (= 4.3.1)
+  - Firebase/Core (4.5.0):
     - FirebaseAnalytics (= 4.0.4)
-    - FirebaseCore (= 4.0.8)
+    - FirebaseCore (= 4.0.10)
+  - Firebase/Database (4.5.0):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.1.0)
+  - Firebase/Firestore (4.5.0):
+    - Firebase/Core
+    - FirebaseFirestore (= 0.9.1)
+  - Firebase/Storage (4.5.0):
+    - Firebase/Core
+    - FirebaseStorage (= 2.0.2)
   - FirebaseAnalytics (4.0.4):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.8):
+  - FirebaseAuth (4.3.1):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (4.0.10):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseInstanceID (2.0.4)
+  - FirebaseDatabase (4.1.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseFirestore (0.9.1):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseAuth (~> 4.3)
+    - FirebaseCore (~> 4.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - Protobuf (~> 3.1)
+  - FirebaseInstanceID (2.0.5)
+  - FirebaseStorage (2.0.2):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseUI (4.5.0):
+    - FirebaseUI/All (= 4.5.0)
+  - FirebaseUI/All (4.5.0):
+    - FirebaseUI/Auth
+    - FirebaseUI/Database
+    - FirebaseUI/Facebook
+    - FirebaseUI/Firestore
+    - FirebaseUI/Google
+    - FirebaseUI/Phone
+    - FirebaseUI/Storage
+    - FirebaseUI/Twitter
+  - FirebaseUI/Auth (4.5.0):
+    - Firebase/Auth (~> 4.2)
+  - FirebaseUI/Database (4.5.0):
+    - Firebase/Database (~> 4.0)
+  - FirebaseUI/Facebook (4.5.0):
+    - FBSDKLoginKit (~> 4.0)
+    - FirebaseUI/Auth
+  - FirebaseUI/Firestore (4.5.0):
+    - Firebase/Firestore
+  - FirebaseUI/Google (4.5.0):
+    - FirebaseUI/Auth
+    - GoogleSignIn (~> 4.0)
+  - FirebaseUI/Phone (4.5.0):
+    - FirebaseUI/Auth
+  - FirebaseUI/Storage (4.5.0):
+    - Firebase/Storage (~> 4.0)
+    - SDWebImage (~> 4.0)
+  - FirebaseUI/Twitter (4.5.0):
+    - FirebaseUI/Auth
+    - TwitterKit (~> 3.0)
+  - GoogleSignIn (4.1.1):
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
+  - gRPC (1.7.1):
+    - gRPC-RxLibrary (= 1.7.1)
+    - gRPC/Main (= 1.7.1)
+  - gRPC-Core (1.7.1):
+    - gRPC-Core/Implementation (= 1.7.1)
+    - gRPC-Core/Interface (= 1.7.1)
+  - gRPC-Core/Implementation (1.7.1):
+    - BoringSSL (~> 9.0)
+    - gRPC-Core/Interface (= 1.7.1)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.7.1)
+  - gRPC-ProtoRPC (1.7.1):
+    - gRPC (= 1.7.1)
+    - gRPC-RxLibrary (= 1.7.1)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.7.1)
+  - gRPC/Main (1.7.1):
+    - gRPC-Core (= 1.7.1)
+    - gRPC-RxLibrary (= 1.7.1)
+  - GTMOAuth2 (1.1.5):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.12):
+    - GTMSessionFetcher/Full (= 1.1.12)
+  - GTMSessionFetcher/Core (1.1.12)
+  - GTMSessionFetcher/Full (1.1.12):
+    - GTMSessionFetcher/Core (= 1.1.12)
+  - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - NVActivityIndicatorView (4.0.0):
+    - NVActivityIndicatorView/Presenter (= 4.0.0)
+  - NVActivityIndicatorView/Presenter (4.0.0)
+  - Protobuf (3.4.0)
+  - SDWebImage (4.2.1):
+    - SDWebImage/Core (= 4.2.1)
+  - SDWebImage/Core (4.2.1)
+  - TwitterCore (3.0.2)
+  - TwitterKit (3.2.1):
+    - TwitterCore (>= 3.0.2)
 
 DEPENDENCIES:
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
   - Firebase/Core
+  - FirebaseUI (~> 4.0)
+  - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
-  Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  BoringSSL: 84318770d120503ab1a6aaf1df777c5ca053697e
+  FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
+  FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
+  FacebookShare: 0469964297ebd75f052be2c5083389a4208e82b7
+  FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
+  FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
+  FBSDKShareKit: 6a6a0ef9e850c741e4e1d7a7d21335205e997ec1
+  Firebase: d83d287bdb6b1c78320561482706d1fcfc8ddfc1
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
-  FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
-  FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
+  FirebaseAuth: e7c2b1359c2df4af23a568100a8eace0b8c507e4
+  FirebaseCore: da5e8e372cb6046212739a4d81e42d32c22907cc
+  FirebaseDatabase: 607284a103e961d7f5863ee603cab5e85f443bd6
+  FirebaseFirestore: 2112e800ec742daa37b3500b227aaa13e7ca236c
+  FirebaseInstanceID: f2b688c66b972f30d7fa9f5f9f91455454a03b47
+  FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
+  FirebaseUI: 883482fea73b73bbb488c55176f4c6ad128957eb
+  GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  gRPC: b56decfd0094854d2ccfe80c8fb767237dace3be
+  gRPC-Core: 95c4968ae43d29219226f22b656d9f625904281e
+  gRPC-ProtoRPC: b7259f51cbc19b77c7a38d96f52a00c3a4ea1637
+  gRPC-RxLibrary: 4f46343e74e74a7ee8373ffeeaf772dfb330cbd7
+  GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
+  GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  leveldb-library: 44ef425bfde64f5b41daef86b38db2d13edbbee1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
+  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
+  SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
+  TwitterCore: e0420b01e02e7d20e94690e37f43e75de219ab8d
+  TwitterKit: 205ac89824bbfe9e85a16c420d30bb7bcbedac45
 
-PODFILE CHECKSUM: 9e0b16afefab0a0d45417ca171080367fc268f09
+PODFILE CHECKSUM: 688051607df5d1d15e5425e267ba1b096e7a860b
 
 COCOAPODS: 1.3.1

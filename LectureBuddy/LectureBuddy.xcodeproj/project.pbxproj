@@ -10,6 +10,7 @@
 		1E2195045F393C00057033C0 /* Pods_LectureBuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DCE637CFEB876402811C3E /* Pods_LectureBuddyTests.framework */; };
 		3ABB76BE077CB0F5F409E1C4 /* Pods_LectureBuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAFA5F13B3041D34E2E21C4 /* Pods_LectureBuddyUITests.framework */; };
 		B652146CDD725903E499D09C /* Pods_LectureBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D06813B90324D506AB1B0A6 /* Pods_LectureBuddy.framework */; };
+		CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3150641FAE4EA9009A90EF /* SignupViewController.swift */; };
 		CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */; };
 		CA46C0061FAE3AE100AF4D4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0051FAE3AE100AF4D4F /* ViewController.swift */; };
 		CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C0071FAE3AE100AF4D4F /* Main.storyboard */; };
@@ -46,6 +47,8 @@
 		9D154EFAB3CCFA0872228D0A /* Pods-LectureBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		BFCDDDCA23A3DDC994B58DCC /* Pods-LectureBuddyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddyTests/Pods-LectureBuddyTests.release.xcconfig"; sourceTree = "<group>"; };
 		C84DC948DDD20A1D0E8F53CF /* Pods-LectureBuddyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddyUITests/Pods-LectureBuddyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LectureBuddy.entitlements; sourceTree = "<group>"; };
+		CA3150641FAE4EA9009A90EF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CA46C0001FAE3AE100AF4D4F /* LectureBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LectureBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA46C0051FAE3AE100AF4D4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,8 +142,10 @@
 		CA46C0021FAE3AE100AF4D4F /* LectureBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */,
 				CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */,
 				CA46C0051FAE3AE100AF4D4F /* ViewController.swift */,
+				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
 				CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */,
@@ -246,6 +251,11 @@
 					CA46BFFF1FAE3AE100AF4D4F = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					CA46C0131FAE3AE100AF4D4F = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -359,9 +369,19 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy-resources.sh",
+				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -393,12 +413,48 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
 				CA46C0061FAE3AE100AF4D4F /* ViewController.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
 			);
@@ -632,6 +689,7 @@
 			baseConfigurationReference = EF3CBE6D6D428D722C68FC04 /* Pods-LectureBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LectureBuddy/LectureBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 72H7NZKH7W;
 				INFOPLIST_FILE = LectureBuddy/Info.plist;
@@ -648,6 +706,7 @@
 			baseConfigurationReference = 9D154EFAB3CCFA0872228D0A /* Pods-LectureBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LectureBuddy/LectureBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 72H7NZKH7W;
 				INFOPLIST_FILE = LectureBuddy/Info.plist;
