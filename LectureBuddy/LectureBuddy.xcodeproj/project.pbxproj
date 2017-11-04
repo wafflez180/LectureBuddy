@@ -12,13 +12,15 @@
 		B652146CDD725903E499D09C /* Pods_LectureBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D06813B90324D506AB1B0A6 /* Pods_LectureBuddy.framework */; };
 		CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3150641FAE4EA9009A90EF /* SignupViewController.swift */; };
 		CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */; };
-		CA46C0061FAE3AE100AF4D4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0051FAE3AE100AF4D4F /* ViewController.swift */; };
 		CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C0071FAE3AE100AF4D4F /* Main.storyboard */; };
 		CA46C00B1FAE3AE100AF4D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */; };
 		CA46C00E1FAE3AE100AF4D4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */; };
 		CA46C0191FAE3AE100AF4D4F /* LectureBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0181FAE3AE100AF4D4F /* LectureBuddyTests.swift */; };
 		CA46C0241FAE3AE100AF4D4F /* LectureBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0231FAE3AE100AF4D4F /* LectureBuddyUITests.swift */; };
+		CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */; };
+		CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */; };
 		CA66BAB01FAE4A9200657368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */; };
+		CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +53,6 @@
 		CA3150641FAE4EA9009A90EF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CA46C0001FAE3AE100AF4D4F /* LectureBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LectureBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA46C0051FAE3AE100AF4D4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA46C0081FAE3AE100AF4D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA46C00D1FAE3AE100AF4D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,7 +63,10 @@
 		CA46C01F1FAE3AE100AF4D4F /* LectureBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LectureBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA46C0231FAE3AE100AF4D4F /* LectureBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureBuddyUITests.swift; sourceTree = "<group>"; };
 		CA46C0251FAE3AE100AF4D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
 		EF3CBE6D6D428D722C68FC04 /* Pods-LectureBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,11 +148,13 @@
 			children = (
 				CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */,
 				CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */,
-				CA46C0051FAE3AE100AF4D4F /* ViewController.swift */,
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
+				CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */,
+				CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
 				CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */,
+				CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */,
 				CA46C00F1FAE3AE100AF4D4F /* Info.plist */,
 				CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */,
 			);
@@ -370,11 +376,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
@@ -520,8 +526,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */,
+				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
-				CA46C0061FAE3AE100AF4D4F /* ViewController.swift in Sources */,
+				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
