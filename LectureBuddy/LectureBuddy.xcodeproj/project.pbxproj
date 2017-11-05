@@ -21,6 +21,8 @@
 		CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */; };
 		CA66BAB01FAE4A9200657368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */; };
 		CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */; };
+		CA89B8331FAE86BE001BD9EA /* RecordingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */; };
+		CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
+		CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingCollectionViewCell.xib; sourceTree = "<group>"; };
 		EF3CBE6D6D428D722C68FC04 /* Pods-LectureBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +155,8 @@
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
 				CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */,
 				CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */,
+				CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */,
+				CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
 				CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */,
@@ -304,6 +310,7 @@
 				CA66BAB01FAE4A9200657368 /* GoogleService-Info.plist in Resources */,
 				CA46C00B1FAE3AE100AF4D4F /* Assets.xcassets in Resources */,
 				CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */,
+				CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA89B8331FAE86BE001BD9EA /* RecordingCollectionViewCell.swift in Sources */,
 				CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */,
 				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,

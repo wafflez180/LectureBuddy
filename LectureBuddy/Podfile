@@ -8,6 +8,7 @@ target 'LectureBuddy' do
   # Pods for LectureBuddy
 
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'FirebaseUI', '~> 4.0'
 
   pod 'FacebookCore'

@@ -64,8 +64,50 @@ class SignupViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonD
                 return
             }
             // User is signed in
-            print("POOP")
+            self.saveUserToFireStore(user: user!)
             self.performSegue(withIdentifier: "authenticated", sender: self)
+        }
+    }
+    
+    func saveUserToFireStore(user:User){
+        checkIfUserExists(userId: user.uid) { userExists in
+            if !userExists {
+                let defaultStore = Firestore.firestore()
+                
+                defaultStore.collection("Users").document(user.uid).setData([
+                    "displayName": user.displayName ?? "",
+                    "email": user.email ?? "",
+                    "phoneNumber": user.phoneNumber ?? "",
+                    "photoURL": user.photoURL?.absoluteString ?? "",
+                    "id": user.uid
+                ]) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        print("User Document added with ID: \(user.uid)")
+                    }
+                }
+            }
+        }
+    }
+    
+    func checkIfUserExists(userId:String, completionHandler: @escaping (Bool) -> Void) {
+        let defaultStore = Firestore.firestore()
+        defaultStore.collection("Users").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                var userExists = false
+                if let documents = querySnapshot?.documents {
+                    for document in documents {
+                        if document.documentID == userId {
+                            print("Found existing User with ID: \(userId)")
+                            userExists = true
+                        }
+                    }
+                }
+                completionHandler(userExists)
+            }
         }
     }
     
