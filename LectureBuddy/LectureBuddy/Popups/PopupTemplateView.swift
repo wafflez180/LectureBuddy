@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import Spring
+import NVActivityIndicatorView
 
 protocol PopupViewProtocol: class {
-    func pressedMainButton()
+    func pressedMainButton(activityIndicator:NVActivityIndicatorView, success: @escaping () -> Void, error: @escaping () -> Void)
 }
 
 @IBDesignable class PopupTemplateView: UIView {
-    @IBOutlet var popupView: UIView!
+    @IBOutlet var popupView: SpringView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
     @IBOutlet var contentContainerView: UIView!
     @IBOutlet var contentViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var activityIndicator: NVActivityIndicatorView!
     
     weak var delegate: PopupViewProtocol?
     var contentView:UIView!
@@ -55,6 +58,8 @@ protocol PopupViewProtocol: class {
         mainButton.roundCorners([.bottomLeft, .bottomRight], radius: popupView.cornerRadius)
         titleLabel.text = title
         mainButton.setTitle(buttonTitle, for: .normal)
+        // Animate Popup In
+        popupView.animate()
         // Fade In
         self.alpha = 0.0
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
@@ -63,8 +68,9 @@ protocol PopupViewProtocol: class {
     }
 
     func dismissPopup() {
+        //popupView.animate()
         // Fade Out
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
             self.alpha = 0.0
         }) { _ in
             self.removeFromSuperview()
@@ -79,7 +85,16 @@ protocol PopupViewProtocol: class {
     }
     
     @IBAction func pressedMainButton(_ sender: Any) {
-        delegate?.pressedMainButton()
-        print("pressedMainButton")
+        mainButton.isSelected = true
+        delegate?.pressedMainButton(activityIndicator: activityIndicator, success: {
+            self.dismissPopup()
+        }, error: {
+            print("Popup error")
+        })
+    }
+    
+    @IBAction func tappedOnView(_ sender: Any) {
+        // Hide Keyboard
+        self.endEditing(true)
     }
 }

@@ -164,11 +164,8 @@
 				CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */,
 				CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */,
 				CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */,
-				CA89B8351FAE9CE8001BD9EA /* PopupTemplateView.xib */,
-				CA89B8371FAE9EC2001BD9EA /* PopupTemplateView.swift */,
-				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
-				CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */,
 				CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */,
+				CA5AA4B01FAF8D7900E0A308 /* Popups */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
 				CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */,
@@ -195,6 +192,17 @@
 				CA46C0251FAE3AE100AF4D4F /* Info.plist */,
 			);
 			path = LectureBuddyUITests;
+			sourceTree = "<group>";
+		};
+		CA5AA4B01FAF8D7900E0A308 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				CA89B8351FAE9CE8001BD9EA /* PopupTemplateView.xib */,
+				CA89B8371FAE9EC2001BD9EA /* PopupTemplateView.swift */,
+				CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */,
+				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
+			);
+			path = Popups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +462,7 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -477,6 +486,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",

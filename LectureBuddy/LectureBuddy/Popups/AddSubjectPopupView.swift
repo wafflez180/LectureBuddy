@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class AddSubjectPopupView: UIView, PopupViewProtocol {
-    
+
     // MARK: - PopupViewProtocol
     
     class func instanceFromNib() -> PopupTemplateView {
@@ -20,8 +21,15 @@ class AddSubjectPopupView: UIView, PopupViewProtocol {
         return popupTemplateNib
     }
     
-    func pressedMainButton() {
-        print("AddSubjectPopupView------adwdawdawdwad--a---aw-d-awd-ad")
+    func pressedMainButton(activityIndicator: NVActivityIndicatorView, success: @escaping () -> Void, error: @escaping () -> Void) {
+        activityIndicator.startAnimating()
+        UIView.animate(withDuration: 2.0, delay: 2.0, options: .curveEaseIn, animations: {
+            
+        }) { completion in
+            success()
+            print("completion")
+        }
+        print("AddSubjectPopupView")
     }
 
     // MARK: - AddSubjectPopupView

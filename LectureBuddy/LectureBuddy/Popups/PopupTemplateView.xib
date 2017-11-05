@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQJ-eF-VsC">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQJ-eF-VsC" customClass="SpringView" customModule="Spring">
                     <rect key="frame" x="40" y="223.5" width="295" height="220"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popup Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5p-gk-xGt">
@@ -27,7 +27,7 @@
                             <color key="textColor" red="0.29411764705882354" green="0.28627450980392155" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-TD-Lc9">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-TD-Lc9">
                             <rect key="frame" x="0.0" y="165" width="295" height="55"/>
                             <color key="backgroundColor" red="0.3921568627" green="0.3294117647" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -37,10 +37,28 @@
                             <state key="normal" title="Button Title">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <state key="selected" title=" "/>
                             <connections>
                                 <action selector="pressedMainButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="o74-Gd-Pdt"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-bJ-Qck" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                            <rect key="frame" x="120" y="165" width="55" height="55"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="ClE-L2-N36"/>
+                                <constraint firstAttribute="height" constant="55" id="wOr-Q9-yFb"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="lineSpinFadeLoader"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9g-Ok-aY8">
                             <rect key="frame" x="0.0" y="55" width="295" height="100"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,9 +83,11 @@
                         <constraint firstItem="gXY-TD-Lc9" firstAttribute="leading" secondItem="hQJ-eF-VsC" secondAttribute="leading" id="6RH-Xz-1Jf"/>
                         <constraint firstAttribute="trailing" secondItem="vs6-v3-Czd" secondAttribute="trailing" id="AYn-QT-rk3"/>
                         <constraint firstItem="vs6-v3-Czd" firstAttribute="top" secondItem="hQJ-eF-VsC" secondAttribute="top" id="B96-uL-vwx"/>
+                        <constraint firstItem="kKm-bJ-Qck" firstAttribute="centerX" secondItem="hQJ-eF-VsC" secondAttribute="centerX" id="FLu-40-pcQ"/>
                         <constraint firstItem="gXY-TD-Lc9" firstAttribute="top" secondItem="q9g-Ok-aY8" secondAttribute="bottom" constant="10" id="NFX-0X-yg6"/>
                         <constraint firstAttribute="trailing" secondItem="gXY-TD-Lc9" secondAttribute="trailing" id="Xq6-oz-XOq"/>
                         <constraint firstItem="x5p-gk-xGt" firstAttribute="top" secondItem="hQJ-eF-VsC" secondAttribute="top" constant="20" id="YMJ-RD-0aq"/>
+                        <constraint firstAttribute="bottom" secondItem="kKm-bJ-Qck" secondAttribute="bottom" id="ds3-Im-Tf1"/>
                         <constraint firstItem="x5p-gk-xGt" firstAttribute="leading" secondItem="hQJ-eF-VsC" secondAttribute="leading" constant="20" id="guM-kE-Dxg"/>
                         <constraint firstItem="q9g-Ok-aY8" firstAttribute="top" secondItem="x5p-gk-xGt" secondAttribute="bottom" constant="15" id="gvn-Sg-Zvn"/>
                         <constraint firstAttribute="bottom" secondItem="gXY-TD-Lc9" secondAttribute="bottom" id="o1n-UL-oJR"/>
@@ -97,10 +117,31 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                             <real key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="force">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="0.29999999999999999"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="scaleX">
+                            <real key="value" value="0.94999999999999996"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="scaleY">
+                            <real key="value" value="0.94999999999999996"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="y">
+                            <real key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="damping">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="hQJ-eF-VsC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="GEZ-4i-ehG"/>
                 <constraint firstItem="hQJ-eF-VsC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NfU-ZL-lqs"/>
@@ -109,14 +150,21 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="activityIndicator" destination="kKm-bJ-Qck" id="eqD-0s-GlW"/>
                 <outlet property="contentContainerView" destination="q9g-Ok-aY8" id="swi-T0-aj5"/>
                 <outlet property="contentViewHeightConstraint" destination="6cd-za-rJN" id="Ho1-gb-I7D"/>
                 <outlet property="mainButton" destination="gXY-TD-Lc9" id="g53-0f-rfQ"/>
                 <outlet property="popupView" destination="hQJ-eF-VsC" id="ZZm-kl-frf"/>
                 <outlet property="titleLabel" destination="x5p-gk-xGt" id="FWQ-n2-I8u"/>
+                <outletCollection property="gestureRecognizers" destination="0rH-61-CbL" appends="YES" id="yiM-k0-msP"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="122.5"/>
         </view>
+        <tapGestureRecognizer id="0rH-61-CbL">
+            <connections>
+                <action selector="tappedOnView:" destination="iN0-l3-epB" id="yhu-K4-tlz"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="close-popup-icon" width="17" height="17"/>

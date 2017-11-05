@@ -16,6 +16,7 @@ target 'LectureBuddy' do
   pod 'FacebookShare'
 
   pod 'NVActivityIndicatorView'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
   target 'LectureBuddyTests' do
     inherit! :search_paths
