@@ -23,6 +23,10 @@
 		CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */; };
 		CA89B8331FAE86BE001BD9EA /* RecordingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */; };
 		CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */; };
+		CA89B8361FAE9CE8001BD9EA /* PopupTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B8351FAE9CE8001BD9EA /* PopupTemplateView.xib */; };
+		CA89B8381FAE9EC2001BD9EA /* PopupTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8371FAE9EC2001BD9EA /* PopupTemplateView.swift */; };
+		CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */; };
+		CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
 		CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingCollectionViewCell.xib; sourceTree = "<group>"; };
+		CA89B8351FAE9CE8001BD9EA /* PopupTemplateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupTemplateView.xib; sourceTree = "<group>"; };
+		CA89B8371FAE9EC2001BD9EA /* PopupTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTemplateView.swift; sourceTree = "<group>"; };
+		CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectPopupView.swift; sourceTree = "<group>"; };
+		CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectPopupView.xib; sourceTree = "<group>"; };
 		EF3CBE6D6D428D722C68FC04 /* Pods-LectureBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +164,10 @@
 				CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */,
 				CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */,
 				CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */,
+				CA89B8351FAE9CE8001BD9EA /* PopupTemplateView.xib */,
+				CA89B8371FAE9EC2001BD9EA /* PopupTemplateView.swift */,
+				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
+				CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */,
 				CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
@@ -307,9 +319,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA46C00E1FAE3AE100AF4D4F /* LaunchScreen.storyboard in Resources */,
+				CA89B8361FAE9CE8001BD9EA /* PopupTemplateView.xib in Resources */,
 				CA66BAB01FAE4A9200657368 /* GoogleService-Info.plist in Resources */,
 				CA46C00B1FAE3AE100AF4D4F /* Assets.xcassets in Resources */,
 				CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */,
+				CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */,
 				CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,7 +551,9 @@
 				CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */,
 				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
+				CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */,
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
+				CA89B8381FAE9EC2001BD9EA /* PopupTemplateView.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

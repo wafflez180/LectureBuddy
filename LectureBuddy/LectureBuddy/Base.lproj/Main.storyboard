@@ -120,6 +120,9 @@
                         <rightBarButtonItems>
                             <barButtonItem image="add-icon" id="6rN-Gr-OaS">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="pressedAddSubject:" destination="3vw-T0-Df5" id="sQG-Br-Fbu"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="highlight-icon" id="hIt-qi-gJx">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

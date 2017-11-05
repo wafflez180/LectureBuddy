@@ -79,7 +79,8 @@ class SignupViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonD
                     "email": user.email ?? "",
                     "phoneNumber": user.phoneNumber ?? "",
                     "photoURL": user.photoURL?.absoluteString ?? "",
-                    "id": user.uid
+                    "id": user.uid,
+                    "highlightKeywords": ["Important", "Remember", "Understand"]
                 ]) { err in
                     if let err = err {
                         print("Error adding document: \(err)")
