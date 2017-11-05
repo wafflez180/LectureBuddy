@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 import NVActivityIndicatorView
+import Firebase
 
 class AddSubjectPopupView: UIView, PopupViewProtocol {
 
+    @IBOutlet var subjectTextField: UITextField!
+    
     // MARK: - PopupViewProtocol
     
     class func instanceFromNib() -> PopupTemplateView {
@@ -23,14 +26,11 @@ class AddSubjectPopupView: UIView, PopupViewProtocol {
     
     func pressedMainButton(activityIndicator: NVActivityIndicatorView, success: @escaping () -> Void, error: @escaping () -> Void) {
         activityIndicator.startAnimating()
-        UIView.animate(withDuration: 2.0, delay: 2.0, options: .curveEaseIn, animations: {
-            
-        }) { completion in
+        DataManager.sharedInstance.saveNewSubject(subjectName: subjectTextField.text!) {
             success()
-            print("completion")
         }
         print("AddSubjectPopupView")
     }
-
+    
     // MARK: - AddSubjectPopupView
 }
