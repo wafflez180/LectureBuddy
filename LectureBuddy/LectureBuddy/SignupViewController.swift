@@ -29,10 +29,13 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        activityIndicator.stopAnimating()
         if DataManager.sharedInstance.isUserAuthenticated() {
-            self.performSegue(withIdentifier: "authenticated", sender: self)
+            DataManager.sharedInstance.getSubjectDocuments(completion: { subjectDocuments in
+                self.activityIndicator.stopAnimating()
+                self.performSegue(withIdentifier: "authenticated", sender: self)
+            })
         }else{
+            self.activityIndicator.stopAnimating()
             facebookLoginButton.isHidden = false
         }
     }
@@ -48,7 +51,9 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         let credential:AuthCredential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         DataManager.sharedInstance.signinToFirebase(credential: credential, success: {
-            self.performSegue(withIdentifier: "authenticated", sender: self)
+            DataManager.sharedInstance.getSubjectDocuments(completion: { subjectDocuments in
+                self.performSegue(withIdentifier: "authenticated", sender: self)
+            })
         }) {
             // Error, TODO: Do Something
         }

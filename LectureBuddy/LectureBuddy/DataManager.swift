@@ -24,6 +24,8 @@ class DataManager: NSObject, FUIAuthDelegate {
         return Auth.auth().currentUser
     }
     
+    var subjectDocs:[DocumentSnapshot] = []
+    
     // MARK: DataManager
 
     func saveNewSubject(subjectName:String, completion: @escaping () -> Void) {
@@ -37,14 +39,13 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     func getSubjectDocuments(completion: @escaping ([DocumentSnapshot]) -> Void) {
-        var subjectDocuments:[DocumentSnapshot] = []
         let defaultStore = Firestore.firestore()
         defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
-                subjectDocuments = (querySnapshot?.documents)!
-                completion(subjectDocuments)
+                self.subjectDocs = (querySnapshot?.documents)!
+                completion(self.subjectDocs)
             }
         }
     }

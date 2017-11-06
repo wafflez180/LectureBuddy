@@ -12,31 +12,46 @@ import FirebaseAuth
 import FBSDKLoginKit
 
 class HomeTableViewController: UITableViewController {
-
-    var subjectDocs:[DocumentSnapshot] = []
     
+    var subjectDocs:[DocumentSnapshot] = DataManager.sharedInstance.subjectDocs
+    
+    // MARK: - UITableViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataManager.sharedInstance.getSubjectDocuments { subjectDocuments in
-            self.subjectDocs = subjectDocuments
-        }
+        setupTableViewPullToRefresh()
+        refreshTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        refreshTableView()
+    }
+    
+    // MARK: - HomeTableViewController
+    
+    func setupTableViewPullToRefresh(){
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.tintColor = UIColor.white
+        self.tableView.refreshControl?.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+    }
+    
+    @objc func refreshTableView(){
         DataManager.sharedInstance.getSubjectDocuments { subjectDocuments in
             self.subjectDocs = subjectDocuments
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            })
         }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return subjectDocs.count
     }
 
@@ -44,7 +59,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellIdentifier", for: indexPath) as! SubjectTableViewCell
         subjectCell.headerButton.setTitle(subjectDocs[indexPath.row].documentID, for: .normal)
-
+        print("Displaying the \"\(subjectDocs[indexPath.row].documentID)\"  subject tableViewCell")
         return subjectCell
     }
  
