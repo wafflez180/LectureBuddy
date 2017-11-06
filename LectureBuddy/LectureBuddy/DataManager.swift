@@ -36,6 +36,19 @@ class DataManager: NSObject, FUIAuthDelegate {
         }
     }
     
+    func getSubjectDocuments(completion: @escaping ([DocumentSnapshot]) -> Void) {
+        var subjectDocuments:[DocumentSnapshot] = []
+        let defaultStore = Firestore.firestore()
+        defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                subjectDocuments = (querySnapshot?.documents)!
+                completion(subjectDocuments)
+            }
+        }
+    }
+    
     // MARK: - Sign In/Up
     
     func isUserAuthenticated() -> Bool {

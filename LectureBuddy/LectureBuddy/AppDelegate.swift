@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // MARK: - Firebase Notifications
     func firebaseRegisterRemoteNotifications(application: UIApplication){
         if #available(iOS 10.0, *) {
-            let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
+            let authOptions : UNAuthorizationOptwions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_,_ in })

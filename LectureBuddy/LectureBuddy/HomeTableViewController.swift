@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
 class HomeTableViewController: UITableViewController {
 
+    var subjectDocs:[DocumentSnapshot] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        DataManager.sharedInstance.getSubjectDocuments { subjectDocuments in
+            self.subjectDocs = subjectDocuments
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DataManager.sharedInstance.getSubjectDocuments { subjectDocuments in
+            self.subjectDocs = subjectDocuments
+        }
     }
 
     // MARK: - Table view data source
@@ -26,16 +37,15 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return subjectDocs.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCellIdentifier", for: indexPath)
+        let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellIdentifier", for: indexPath) as! SubjectTableViewCell
+        subjectCell.headerButton.setTitle(subjectDocs[indexPath.row].documentID, for: .normal)
 
-        // Configure the cell...
-
-        return cell
+        return subjectCell
     }
  
     // MARK: - Actions
