@@ -17,6 +17,7 @@
 		CA46C00E1FAE3AE100AF4D4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */; };
 		CA46C0191FAE3AE100AF4D4F /* LectureBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0181FAE3AE100AF4D4F /* LectureBuddyTests.swift */; };
 		CA46C0241FAE3AE100AF4D4F /* LectureBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0231FAE3AE100AF4D4F /* LectureBuddyUITests.swift */; };
+		CA4E795A1FAFDEB900EE7532 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4E79591FAFDEB900EE7532 /* PushKit.framework */; };
 		CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */; };
 		CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */; };
 		CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */; };
@@ -70,6 +71,7 @@
 		CA46C01F1FAE3AE100AF4D4F /* LectureBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LectureBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA46C0231FAE3AE100AF4D4F /* LectureBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureBuddyUITests.swift; sourceTree = "<group>"; };
 		CA46C0251FAE3AE100AF4D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA4E79591FAFDEB900EE7532 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4E795A1FAFDEB900EE7532 /* PushKit.framework in Frameworks */,
 				B652146CDD725903E499D09C /* Pods_LectureBuddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +131,7 @@
 		596FE7881B917DB791A33142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA4E79591FAFDEB900EE7532 /* PushKit.framework */,
 				2D06813B90324D506AB1B0A6 /* Pods_LectureBuddy.framework */,
 				51DCE637CFEB876402811C3E /* Pods_LectureBuddyTests.framework */,
 				7FAFA5F13B3041D34E2E21C4 /* Pods_LectureBuddyUITests.framework */,
@@ -287,6 +291,9 @@
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
