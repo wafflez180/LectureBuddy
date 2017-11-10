@@ -58,7 +58,7 @@ class PopupTemplateViewController: UIViewController {
         self.view.alpha = 0.0
         addContentView()
         mainButton.roundCorners([.bottomLeft, .bottomRight], radius: popupView.cornerRadius)
-        titleLabel.text = title
+        titleLabel.text = popupTitle
         mainButton.setTitle(buttonTitle, for: .normal)
     }
     
@@ -92,7 +92,7 @@ class PopupTemplateViewController: UIViewController {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
             self.view.alpha = 0.0
         }) { _ in
-            self.dismiss(animated: true)
+            self.dismiss(animated: false)
         }
     }
     

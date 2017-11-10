@@ -198,7 +198,7 @@
             <objects>
                 <navigationController id="2qz-G8-MXe" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="7DU-He-8L5">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.3921568627" green="0.3294117647" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -219,7 +219,7 @@
         <!--Popup Template View Controller-->
         <scene sceneID="HSL-9l-Eum">
             <objects>
-                <viewController storyboardIdentifier="PopupVCId" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FOG-WQ-RNn" customClass="PopupTemplateViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopupVCId" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FOG-WQ-RNn" customClass="PopupTemplateViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JGd-nJ-93M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -346,6 +346,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="damping">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
