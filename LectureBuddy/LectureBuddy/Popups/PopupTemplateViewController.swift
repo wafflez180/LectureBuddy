@@ -1,8 +1,8 @@
 //
-//  PopupTemplateView.swift
+//  PopupTemplateViewController.swift
 //  LectureBuddy
 //
-//  Created by Arthur De Araujo on 11/4/17.
+//  Created by Arthur De Araujo on 11/9/17.
 //  Copyright © 2017 Arthur De Araujo. All rights reserved.
 //
 
@@ -11,10 +11,13 @@ import Spring
 import NVActivityIndicatorView
 
 protocol PopupViewProtocol: class {
-    func pressedMainButton(activityIndicator:NVActivityIndicatorView, success: @escaping () -> Void, error: @escaping () -> Void)
+    func getTitle() -> String
+    func getButtonTitle() -> String
+    func pressedMainButton(success: @escaping () -> Void, error: @escaping () -> Void)
 }
 
-@IBDesignable class PopupTemplateView: UIView {
+class PopupTemplateViewController: UIViewController {
+
     @IBOutlet var popupView: SpringView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
@@ -24,23 +27,47 @@ protocol PopupViewProtocol: class {
     
     weak var delegate: PopupViewProtocol?
     var contentView:UIView!
-    
-    // MARK: - NIB/XIB
+    var popupTitle:String!
+    var buttonTitle:String!
 
-    class func instanceFromNib() -> PopupTemplateView {
-        return UINib(nibName: "PopupTemplateView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PopupTemplateView
+    // MARK: - PopupTemplateViewController
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presentPopup()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     // MARK: - PopupTemplateView
     
-    func addContentView(view: UIView){
-        contentView = view
+    func setUI(contentView: UIView, popupTitle: String, buttonTitle:String){
+        self.contentView = contentView
+        self.delegate = contentView as? PopupViewProtocol
+        self.popupTitle = popupTitle
+        self.buttonTitle = buttonTitle
+    }
+    
+    func configureUI(){
+        self.view.alpha = 0.0
+        addContentView()
+        mainButton.roundCorners([.bottomLeft, .bottomRight], radius: popupView.cornerRadius)
+        titleLabel.text = title
+        mainButton.setTitle(buttonTitle, for: .normal)
+    }
+    
+    func addContentView(){
         // Change height of contentContainerView
         contentViewHeightConstraint.constant = contentView.frame.size.height
-        self.updateConstraints()
-        self.layoutIfNeeded()
-
-        delegate = contentView as? PopupViewProtocol
+        self.view.updateConstraints()
+        self.view.layoutIfNeeded()
+        
         contentContainerView.addSubview(contentView)
         // Change frame of contentView to fit inside the contentContainerView
         var newFrame = contentView.frame
@@ -48,32 +75,24 @@ protocol PopupViewProtocol: class {
         newFrame.size.width = contentContainerView.frame.size.width
         contentView.frame = newFrame
         
-        self.layoutIfNeeded()
+        self.view.layoutIfNeeded()
     }
     
-    func presentPopup(title: String, buttonTitle:String) {
-        let window = UIApplication.shared.keyWindow
-        window?.addSubview(self)
-        
-        mainButton.roundCorners([.bottomLeft, .bottomRight], radius: popupView.cornerRadius)
-        titleLabel.text = title
-        mainButton.setTitle(buttonTitle, for: .normal)
+    func presentPopup() {
         // Animate Popup In
         popupView.animate()
         // Fade In
-        self.alpha = 0.0
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-            self.alpha = 1.0
+            self.view.alpha = 1.0
         }, completion: nil)
     }
-
+    
     func dismissPopup() {
-        //popupView.animate()
         // Fade Out
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
-            self.alpha = 0.0
+            self.view.alpha = 0.0
         }) { _ in
-            self.removeFromSuperview()
+            self.dismiss(animated: true)
         }
     }
     
@@ -86,15 +105,18 @@ protocol PopupViewProtocol: class {
     
     @IBAction func pressedMainButton(_ sender: Any) {
         mainButton.isSelected = true
-        delegate?.pressedMainButton(activityIndicator: activityIndicator, success: {
+        activityIndicator.startAnimating()
+        delegate?.pressedMainButton(success: {
             self.dismissPopup()
         }, error: {
-            print("Popup error")
+            print("Popup Error")
+            self.activityIndicator.stopAnimating()
+            self.mainButton.isSelected = false
         })
     }
     
     @IBAction func tappedOnView(_ sender: Any) {
         // Hide Keyboard
-        self.endEditing(true)
+        self.view.endEditing(true)
     }
 }

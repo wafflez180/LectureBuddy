@@ -25,27 +25,54 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     var subjectDocs:[DocumentSnapshot] = []
+    let defaultStore = Firestore.firestore()
     
     // MARK: DataManager
-
-    func saveNewSubject(subjectName:String, completion: @escaping () -> Void) {
-        let defaultStore = Firestore.firestore()
-        defaultStore.collection("Users").document((Auth.auth().currentUser?.uid)!).collection("subjects").document(subjectName).setData([
-            "name": subjectName,
-            "dateCreated": NSDate()
-        ]) { error in
-            completion()
+    
+    func saveNewSubject(subjectName:String, success: @escaping () -> Void, subjectExistsError: @escaping () -> Void) {
+        checkIfSubjectExists(subjectName: subjectName) { subjectExists in
+            if subjectExists {
+                print("Subject exists, returning error")
+                subjectExistsError()
+            }else{
+                self.defaultStore.collection("Users").document((Auth.auth().currentUser?.uid)!).collection("subjects").document(subjectName).setData([
+                    "name": subjectName,
+                    "dateCreated": NSDate()
+                ]) { error in
+                    // To Do: Handle error (User can't add a new subject if the subject's name already exists)
+                    success()
+                }
+            }
         }
     }
     
     func getSubjectDocuments(completion: @escaping ([DocumentSnapshot]) -> Void) {
-        let defaultStore = Firestore.firestore()
         defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
                 self.subjectDocs = (querySnapshot?.documents)!
                 completion(self.subjectDocs)
+            }
+        }
+    }
+    
+    func checkIfSubjectExists(subjectName:String, completionHandler: @escaping (Bool) -> Void) {
+        defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completionHandler(false)
+            } else {
+                var subjectExists = false
+                if let documents = querySnapshot?.documents {
+                    for document in documents {
+                        if document.documentID == subjectName {
+                            print("Found existing Subject with ID: \(subjectName)")
+                            subjectExists = true
+                        }
+                    }
+                }
+                completionHandler(subjectExists)
             }
         }
     }
@@ -71,9 +98,7 @@ class DataManager: NSObject, FUIAuthDelegate {
     func saveUserToFireStore(user:User){
         checkIfUserExists(userId: user.uid) { userExists in
             if !userExists {
-                let defaultStore = Firestore.firestore()
-                
-                defaultStore.collection("Users").document(user.uid).setData([
+                self.defaultStore.collection("Users").document(user.uid).setData([
                     "displayName": user.displayName ?? "",
                     "email": user.email ?? "",
                     "phoneNumber": user.phoneNumber ?? "",
@@ -95,7 +120,6 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     func checkIfUserExists(userId:String, completionHandler: @escaping (Bool) -> Void) {
-        let defaultStore = Firestore.firestore()
         defaultStore.collection("Users").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")

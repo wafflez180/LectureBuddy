@@ -72,8 +72,8 @@ class HomeTableViewController: UITableViewController {
     }
     
     @IBAction func pressedAddSubject(_ sender: Any) {
-        let popup = AddSubjectPopupView.instanceFromNib()
-        popup.presentPopup(title: "Add New Subject", buttonTitle: "Add")
+        let popup = AddSubjectPopupView()
+        popup.present(viewController: self, popupTitle: "Add New Subject", buttonTitle: "Add")
     }
 
     
