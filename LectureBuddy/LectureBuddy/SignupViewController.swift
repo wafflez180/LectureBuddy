@@ -31,7 +31,7 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(_ animated: Bool) {
         if DataManager.sharedInstance.isUserAuthenticated() {
             DataManager.sharedInstance.getSubjectDocuments(completion: { subjectDocuments in
-                self.activityIndicator.stopAnimating()
+                self.segueToHomePage()
                 self.performSegue(withIdentifier: "authenticated", sender: self)
             })
         }else{
@@ -42,6 +42,11 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // MARK: - SignupViewController
     
+    func segueToHomePage(){
+        self.activityIndicator.stopAnimating()
+        self.performSegue(withIdentifier: "authenticated", sender: self)
+    }
+    
     // MARK: - FBSDKLoginButtonDelegate
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -49,10 +54,11 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
             print(error.localizedDescription)
             return
         }
+        // Sign in to Firebase, load subjects and then segue to homePage
         let credential:AuthCredential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         DataManager.sharedInstance.signinToFirebase(credential: credential, success: {
             DataManager.sharedInstance.getSubjectDocuments(completion: { subjectDocuments in
-                self.performSegue(withIdentifier: "authenticated", sender: self)
+                self.segueToHomePage()
             })
         }) {
             // Error, TODO: Do Something
