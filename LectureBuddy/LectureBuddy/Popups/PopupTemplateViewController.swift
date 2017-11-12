@@ -13,11 +13,11 @@ import NVActivityIndicatorView
 protocol PopupViewProtocol: class {
     func getTitle() -> String
     func getButtonTitle() -> String
-    func pressedMainButton(success: @escaping () -> Void, error: @escaping () -> Void)
+    func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void)
 }
 
 class PopupTemplateViewController: UIViewController {
-
+    
     @IBOutlet var popupView: SpringView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
@@ -29,9 +29,9 @@ class PopupTemplateViewController: UIViewController {
     var contentView:UIView!
     var popupTitle:String!
     var buttonTitle:String!
-
+    
     // MARK: - PopupTemplateViewController
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -40,11 +40,11 @@ class PopupTemplateViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         presentPopup()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
     // MARK: - PopupTemplateView
     
     func setUI(contentView: UIView, popupTitle: String, buttonTitle:String){
@@ -78,6 +78,27 @@ class PopupTemplateViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
+    func shakeAnimation(){
+        let xDistance:CGFloat = 10.0
+        let duration:CGFloat = 0.1
+        // Shift to far right
+        self.popupView.duration = duration
+        self.popupView.x = xDistance
+        self.popupView.animateTo()
+        self.popupView.animateToNext {
+            // Shift to far left
+            self.popupView.duration = (duration/2.0)
+            self.popupView.x = xDistance * -1
+            self.popupView.animateTo()
+            self.popupView.animateToNext {
+                // Shift back to middle
+                self.popupView.duration = duration
+                self.popupView.x = 0
+                self.popupView.animateTo()
+            }
+        }
+    }
+    
     func presentPopup() {
         // Animate Popup In
         popupView.animate()
@@ -108,10 +129,14 @@ class PopupTemplateViewController: UIViewController {
         activityIndicator.startAnimating()
         delegate?.pressedMainButton(success: {
             self.dismissPopup()
-        }, error: {
+        }, error: { alert in
             print("Popup Error")
             self.activityIndicator.stopAnimating()
             self.mainButton.isSelected = false
+            self.shakeAnimation()
+            if (alert != nil) {
+                self.present(alert!, animated: true)
+            }
         })
     }
     
