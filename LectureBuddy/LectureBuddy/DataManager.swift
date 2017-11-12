@@ -25,10 +25,13 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     var subjectDocs:[DocumentSnapshot] = []
+    var highlightedKeywords:[String] = []
     let defaultStore = Firestore.firestore()
     
-    // MARK: DataManager
+    // MARK: - DataManager
     
+    // MARK: - Subjects
+
     func saveNewSubject(subjectName:String, success: @escaping () -> Void, subjectExistsError: @escaping () -> Void) {
         checkIfSubjectExists(subjectName: subjectName) { subjectExists in
             if subjectExists {
@@ -77,6 +80,34 @@ class DataManager: NSObject, FUIAuthDelegate {
         }
     }
     
+    // MARK: - Keywords
+    
+    func deleteKeyword(index:Int) {
+        let removedKeyword = highlightedKeywords.remove(at: index)
+        self.defaultStore.collection("Users").document((currentUser?.uid)!).updateData([
+            "highlightKeywords": highlightedKeywords,
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("'\(removedKeyword)' keyword has been successfully removed")
+            }
+        }
+    }
+    
+    func addKeyword(keyword:String) {
+        highlightedKeywords.append(keyword)
+        self.defaultStore.collection("Users").document((currentUser?.uid)!).updateData([
+            "highlightKeywords": highlightedKeywords,
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("'\(keyword)' keyword has been successfully added")
+                }
+        }
+    }
+    
     // MARK: - Sign In/Up
     
     func isUserAuthenticated() -> Bool {
@@ -95,7 +126,7 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     // Saves user to Firestore if the user exits, else does nothing
-    func saveUserToFireStore(user:User){
+    func saveUserToFireStore(user:User, completionHandler: @escaping () -> Void){
         checkIfUserExists(userId: user.uid) { userExists in
             if !userExists {
                 self.defaultStore.collection("Users").document(user.uid).setData([
@@ -112,9 +143,11 @@ class DataManager: NSObject, FUIAuthDelegate {
                     } else {
                         print("User Document added with ID: \(user.uid)")
                     }
+                    completionHandler()
                 }
             } else {
                 print("User already exists, doing nothing.")
+                completionHandler()
             }
         }
     }
@@ -146,9 +179,27 @@ class DataManager: NSObject, FUIAuthDelegate {
                 return
             }
             // User is signed in
-            DataManager.sharedInstance.saveUserToFireStore(user: user!)
-            success()
+            self.saveUserToFireStore(user: user!, completionHandler: {
+                self.getUserData(success: {
+                    success()
+                }, error: {
+                    error()
+                })
+            })
         }
+    }
+    
+    func getUserData(success: @escaping () -> Void, error: @escaping () -> Void){
+        defaultStore.collection("Users").document((currentUser?.uid)!).addSnapshotListener({ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(error)")
+                error()
+            } else {
+                self.highlightedKeywords = querySnapshot?.data()["highlightKeywords"] as! [String]
+                print("Keywords: \(self.highlightedKeywords)")
+                success()
+            }
+        })
     }
     
     // MARK: - FUIAuthDelegate

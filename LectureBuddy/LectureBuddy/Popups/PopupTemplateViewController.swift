@@ -14,7 +14,7 @@ protocol PopupViewProtocol: class {
     func popupDidAppear()
     func getTitle() -> String
     func getButtonTitle() -> String
-    func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void)
+    func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void, doNothing: @escaping () -> Void)
 }
 
 class PopupTemplateViewController: UIViewController {
@@ -148,6 +148,9 @@ class PopupTemplateViewController: UIViewController {
             if (alert != nil) {
                 self.present(alert!, animated: true)
             }
+        }, doNothing: {
+            self.activityIndicator.stopAnimating()
+            self.mainButton.isSelected = false
         })
     }
     

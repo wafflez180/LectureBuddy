@@ -71,9 +71,14 @@ class HomeTableViewController: UITableViewController {
         self.dismiss(animated: true)
     }
     
+    @IBAction func pressedKeywordsButton(_ sender: Any) {
+        let popup = KeywordsPopupView()
+        popup.present(viewController: self)
+    }
+    
     @IBAction func pressedAddSubject(_ sender: Any) {
         let popup = AddSubjectPopupView()
-        popup.present(viewController: self, popupTitle: "Add New Subject", buttonTitle: "Add")
+        popup.present(viewController: self)
     }
 
     

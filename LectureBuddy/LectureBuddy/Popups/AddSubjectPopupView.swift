@@ -29,7 +29,7 @@ class AddSubjectPopupView: PopupContentView, PopupViewProtocol {
         return "Add"
     }
             
-    func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void) {
+    func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void, doNothing: @escaping () -> Void) {
         if (subjectTextField.text != ""){
             DataManager.sharedInstance.saveNewSubject(subjectName: subjectTextField.text!, success: {
                 success()

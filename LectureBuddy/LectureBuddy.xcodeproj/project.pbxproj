@@ -21,6 +21,12 @@
 		CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */; };
 		CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */; };
 		CA66BAB01FAE4A9200657368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */; };
+		CA76AF291FB8C37C006E39AC /* KeywordsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76AF281FB8C37C006E39AC /* KeywordsPopupView.swift */; };
+		CA76AF2B1FB8C38A006E39AC /* KeywordsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF2A1FB8C38A006E39AC /* KeywordsPopupView.xib */; };
+		CA76AF2E1FB8CBA0006E39AC /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76AF2C1FB8CBA0006E39AC /* KeywordTableViewCell.swift */; };
+		CA76AF2F1FB8CBA0006E39AC /* KeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF2D1FB8CBA0006E39AC /* KeywordTableViewCell.xib */; };
+		CA76AF321FB8E7AD006E39AC /* AddKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76AF301FB8E7AD006E39AC /* AddKeywordTableViewCell.swift */; };
+		CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */; };
 		CA89B8301FAE8168001BD9EA /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */; };
 		CA89B8331FAE86BE001BD9EA /* RecordingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */; };
 		CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */; };
@@ -72,6 +78,12 @@
 		CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA76AF281FB8C37C006E39AC /* KeywordsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordsPopupView.swift; sourceTree = "<group>"; };
+		CA76AF2A1FB8C38A006E39AC /* KeywordsPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordsPopupView.xib; sourceTree = "<group>"; };
+		CA76AF2C1FB8CBA0006E39AC /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
+		CA76AF2D1FB8CBA0006E39AC /* KeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordTableViewCell.xib; sourceTree = "<group>"; };
+		CA76AF301FB8E7AD006E39AC /* AddKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddKeywordTableViewCell.swift; sourceTree = "<group>"; };
+		CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKeywordTableViewCell.xib; sourceTree = "<group>"; };
 		CA89B82F1FAE8168001BD9EA /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
 		CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -208,6 +220,12 @@
 				CA9F13141FB5692100DAE153 /* PopupContentView.swift */,
 				CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */,
 				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
+				CA76AF2A1FB8C38A006E39AC /* KeywordsPopupView.xib */,
+				CA76AF281FB8C37C006E39AC /* KeywordsPopupView.swift */,
+				CA76AF2D1FB8CBA0006E39AC /* KeywordTableViewCell.xib */,
+				CA76AF2C1FB8CBA0006E39AC /* KeywordTableViewCell.swift */,
+				CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */,
+				CA76AF301FB8E7AD006E39AC /* AddKeywordTableViewCell.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -337,11 +355,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA46C00E1FAE3AE100AF4D4F /* LaunchScreen.storyboard in Resources */,
+				CA76AF2F1FB8CBA0006E39AC /* KeywordTableViewCell.xib in Resources */,
 				CA66BAB01FAE4A9200657368 /* GoogleService-Info.plist in Resources */,
 				CA46C00B1FAE3AE100AF4D4F /* Assets.xcassets in Resources */,
+				CA76AF2B1FB8C38A006E39AC /* KeywordsPopupView.xib in Resources */,
 				CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */,
 				CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */,
 				CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */,
+				CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,11 +592,14 @@
 				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
 				CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */,
+				CA76AF2E1FB8CBA0006E39AC /* KeywordTableViewCell.swift in Sources */,
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
 				CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
 				CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */,
 				CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */,
+				CA76AF291FB8C37C006E39AC /* KeywordsPopupView.swift in Sources */,
+				CA76AF321FB8E7AD006E39AC /* AddKeywordTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

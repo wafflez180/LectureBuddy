@@ -31,8 +31,10 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(_ animated: Bool) {
         if DataManager.sharedInstance.isUserAuthenticated() {
             DataManager.sharedInstance.getSubjectDocuments(completion: { subjectDocuments in
-                self.segueToHomePage()
-                self.performSegue(withIdentifier: "authenticated", sender: self)
+                DataManager.sharedInstance.getUserData(success: {
+                    self.segueToHomePage()
+                    self.performSegue(withIdentifier: "authenticated", sender: self)
+                }, error: {})
             })
         }else{
             self.activityIndicator.stopAnimating()
