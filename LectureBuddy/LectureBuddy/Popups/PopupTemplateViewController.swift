@@ -11,6 +11,7 @@ import Spring
 import NVActivityIndicatorView
 
 protocol PopupViewProtocol: class {
+    func popupDidAppear()
     func getTitle() -> String
     func getButtonTitle() -> String
     func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void)
@@ -81,25 +82,33 @@ class PopupTemplateViewController: UIViewController {
     func shakeAnimation(){
         let xDistance:CGFloat = 10.0
         let duration:CGFloat = 0.1
+        let force:CGFloat = 1.5
         // Shift to far right
         self.popupView.duration = duration
         self.popupView.x = xDistance
+        self.popupView.curve = "easeOut"
+        self.popupView.force = force
         self.popupView.animateTo()
         self.popupView.animateToNext {
             // Shift to far left
-            self.popupView.duration = (duration/2.0)
+            self.popupView.duration = duration
             self.popupView.x = xDistance * -1
+            self.popupView.curve = "easeOut"
+            self.popupView.force = force
             self.popupView.animateTo()
             self.popupView.animateToNext {
                 // Shift back to middle
                 self.popupView.duration = duration
                 self.popupView.x = 0
+                self.popupView.curve = "easeOut"
+                self.popupView.force = force
                 self.popupView.animateTo()
             }
         }
     }
     
     func presentPopup() {
+        delegate?.popupDidAppear()
         // Animate Popup In
         popupView.animate()
         // Fade In
@@ -109,6 +118,8 @@ class PopupTemplateViewController: UIViewController {
     }
     
     func dismissPopup() {
+        // Hide Keyboard
+        self.view.endEditing(true)
         // Fade Out
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
             self.view.alpha = 0.0

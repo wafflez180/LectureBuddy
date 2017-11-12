@@ -17,6 +17,10 @@ class AddSubjectPopupView: PopupContentView, PopupViewProtocol {
     
     // MARK: - PopupViewProtocol
     
+    func popupDidAppear() {
+        subjectTextField.becomeFirstResponder()
+    }
+    
     func getTitle() -> String {
         return "Add New Subject"
     }
