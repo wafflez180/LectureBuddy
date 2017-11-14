@@ -32,6 +32,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     func configureCell(subjectName:String){
         self.subjectName = subjectName
         headerButton.setTitle(subjectName, for: .normal)
+        setSubjectSelectionFromCache(subjectName: subjectName)
     }
     
     func setupCollectionView(){
@@ -39,6 +40,25 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         collectionView.register(nib, forCellWithReuseIdentifier: "recordingCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    func setSubjectSelectionFromCache(subjectName:String){
+        var isSubjectExpandedDict = UserDefaults.standard.value(forKey: "isSubjectSelectedDict") as? [String:Bool]
+        if let isSubjectSelected = isSubjectExpandedDict?[subjectName] {
+            headerButton.isSelected = isSubjectSelected
+        }
+    }
+    
+    func cacheSubjectSelection(selected:Bool){
+        var isSubjectExpandedDict = UserDefaults.standard.value(forKey: "isSubjectSelectedDict") as? [String:Bool]
+        if isSubjectExpandedDict == nil {
+            let dict:[String:Bool] = [subjectName: headerButton.isSelected]
+            UserDefaults.standard.set(dict, forKey: "isSubjectSelectedDict")
+        }else{
+            isSubjectExpandedDict![subjectName] = headerButton.isSelected
+            UserDefaults.standard.set(isSubjectExpandedDict!, forKey: "isSubjectSelectedDict")
+        }
+        print(isSubjectExpandedDict)
     }
     
     // MARK: - UICollectionViewDataSource protocol
@@ -78,6 +98,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     @IBAction func pressedHeaderButton(_ sender: Any) {
         headerButton.isSelected = !headerButton.isSelected
+        cacheSubjectSelection(selected: headerButton.isSelected)
     }
         //    @IBAction func longPressedHeader(_ sender: Any) {
 //        delegate?.longPressedToDeleteSubject(subjectDocID: subjectDocID)

@@ -44,12 +44,9 @@ class PopupTemplateViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         // Reload parent's tableView if it is a UITableViewController
-        print("AHHHH s\(self.presentingViewController)")
         if let nagivationCont = self.presentingViewController as? UINavigationController {
-            print("AHHHH s\(nagivationCont.topViewController)")
             if let tableVC = nagivationCont.topViewController as? UITableViewController {
                 tableVC.tableView.reloadData()
-                print("RELOADED!")
             }
         }
     }
