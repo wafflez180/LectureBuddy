@@ -13,6 +13,8 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     
+    var subjectName:String!
+    
     // MARK - UITableViewCell
 
     override func awakeFromNib() {
@@ -26,7 +28,12 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     }
     
     // MARK: - SubjectTableViewCell
-
+    
+    func configureCell(subjectName:String){
+        self.subjectName = subjectName
+        headerButton.setTitle(subjectName, for: .normal)
+    }
+    
     func setupCollectionView(){
         let nib = UINib(nibName: "RecordingCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "recordingCell")
@@ -72,5 +79,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     @IBAction func pressedHeaderButton(_ sender: Any) {
         headerButton.isSelected = !headerButton.isSelected
     }
-    
+        //    @IBAction func longPressedHeader(_ sender: Any) {
+//        delegate?.longPressedToDeleteSubject(subjectDocID: subjectDocID)
+//    }
 }

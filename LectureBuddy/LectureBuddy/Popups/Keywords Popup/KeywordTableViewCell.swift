@@ -25,12 +25,12 @@ class KeywordTableViewCell: UITableViewCell {
     func flashPurple(){
         let oldColor = self.innerContentView.backgroundColor
         // Fade to purple
-        UIView.animate(withDuration: 0.2, delay: 0.0, options:[.curveEaseOut, .transitionCrossDissolve], animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.0, options:[.curveEaseOut, .transitionCrossDissolve], animations: {
             self.innerContentView.backgroundColor = self.innerContentView.tintColor
             
         }) { completed in
             // Fade back to background color (gray)
-            UIView.animate(withDuration: 0.2, delay: 0.0, options:[.curveEaseIn, .transitionCrossDissolve], animations: {
+            UIView.animate(withDuration: 0.15, delay: 0.0, options:[.curveEaseIn, .transitionCrossDissolve], animations: {
                 self.innerContentView.backgroundColor = oldColor
             })
         }

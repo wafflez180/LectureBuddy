@@ -220,6 +220,14 @@
 				CA9F13141FB5692100DAE153 /* PopupContentView.swift */,
 				CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */,
 				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
+				CAF2005A1FBA93BF00413BC4 /* Keywords Popup */,
+			);
+			path = Popups;
+			sourceTree = "<group>";
+		};
+		CAF2005A1FBA93BF00413BC4 /* Keywords Popup */ = {
+			isa = PBXGroup;
+			children = (
 				CA76AF2A1FB8C38A006E39AC /* KeywordsPopupView.xib */,
 				CA76AF281FB8C37C006E39AC /* KeywordsPopupView.swift */,
 				CA76AF2D1FB8CBA0006E39AC /* KeywordTableViewCell.xib */,
@@ -227,7 +235,7 @@
 				CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */,
 				CA76AF301FB8E7AD006E39AC /* AddKeywordTableViewCell.swift */,
 			);
-			path = Popups;
+			path = "Keywords Popup";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

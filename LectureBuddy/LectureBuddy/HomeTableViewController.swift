@@ -11,15 +11,14 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
-class HomeTableViewController: UITableViewController {
-    
-    var subjectDocs:[DocumentSnapshot] = DataManager.sharedInstance.subjectDocs
+class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     // MARK: - UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewPullToRefresh()
+        setupLongPressGesture()
         refreshTableView()
     }
     
@@ -29,6 +28,14 @@ class HomeTableViewController: UITableViewController {
     
     // MARK: - HomeTableViewController
     
+    func setupLongPressGesture(){
+        //Long Press
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressedToDeleteSubject))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
     func setupTableViewPullToRefresh(){
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.tintColor = UIColor.white
@@ -36,15 +43,14 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func refreshTableView(){
-        DataManager.sharedInstance.getSubjectDocuments { subjectDocuments in
-            self.subjectDocs = subjectDocuments
+        DataManager.sharedInstance.getSubjectDocuments(completion: {
             UIView.animate(withDuration: 0.2, animations: {
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
             })
-        }
+        })
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,17 +58,49 @@ class HomeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subjectDocs.count
+        return DataManager.sharedInstance.subjectDocs.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let subjectDocs = DataManager.sharedInstance.subjectDocs
+        let subjectName = subjectDocs[indexPath.row].documentID
         let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellIdentifier", for: indexPath) as! SubjectTableViewCell
-        subjectCell.headerButton.setTitle(subjectDocs[indexPath.row].documentID, for: .normal)
-        print("Displaying the \"\(subjectDocs[indexPath.row].documentID)\"  subject tableViewCell")
+        subjectCell.configureCell(subjectName: subjectName)
+        print("Displaying the \"\(subjectName)\"  subject tableViewCell")
         return subjectCell
     }
- 
+    
+    // MARK: - Long Press Gesture Recognizer
+    
+    @objc func longPressedToDeleteSubject(longPressGesture:UILongPressGestureRecognizer){
+        let p = longPressGesture.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: p)
+        if indexPath == nil {
+            print("Long press on table view, not row.")
+        }
+        else if (longPressGesture.state == UIGestureRecognizerState.began) {
+            print("Long press on row, at \(indexPath!.row)")
+            let subjectCell = tableView.cellForRow(at: indexPath!) as! SubjectTableViewCell
+            
+            self.presentDeleteSubjectConfirmationAlert(subjectName: subjectCell.subjectName)
+        }
+    }
+    
+    func presentDeleteSubjectConfirmationAlert(subjectName:String){
+        let alert = UIAlertController(title: "Delete \(subjectName)", message: """
+            Are you sure you want to delete \(subjectName)?
+            You can not undo this action.
+            """, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alertAction in
+            DataManager.sharedInstance.deleteSubect(subjectName: subjectName, completionHandler: {
+                self.tableView.reloadData()
+            })
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     // MARK: - Actions
 
     @IBAction func pressedSignOutButton(_ sender: Any) {

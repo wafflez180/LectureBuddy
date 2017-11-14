@@ -43,19 +43,21 @@ class DataManager: NSObject, FUIAuthDelegate {
                     "dateCreated": NSDate()
                 ]) { error in
                     // To Do: Handle error (User can't add a new subject if the subject's name already exists)
-                    success()
+                    self.getSubjectDocuments(completion: {
+                        success()
+                    })
                 }
             }
         }
     }
     
-    func getSubjectDocuments(completion: @escaping ([DocumentSnapshot]) -> Void) {
+    func getSubjectDocuments(completion: @escaping () -> Void) {
         defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
                 self.subjectDocs = (querySnapshot?.documents)!
-                completion(self.subjectDocs)
+                completion()
             }
         }
     }
@@ -80,6 +82,21 @@ class DataManager: NSObject, FUIAuthDelegate {
         }
     }
     
+    func deleteSubect(subjectName:String, completionHandler: @escaping () -> Void) {
+        // Remove from local array
+        for subjectDoc in self.subjectDocs {
+            if subjectDoc.documentID == subjectName {
+                let index = self.subjectDocs.index(of: subjectDoc)
+                self.subjectDocs.remove(at: index!)
+            }
+        }
+        // Remove from database
+        self.defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").document(subjectName).delete { error in
+            print("\(subjectName) subject has been successfully deleted")
+            completionHandler()
+        }
+    }
+    
     // MARK: - Keywords
     
     func deleteKeyword(index:Int) {
@@ -90,7 +107,7 @@ class DataManager: NSObject, FUIAuthDelegate {
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("'\(removedKeyword)' keyword has been successfully removed")
+                print("'\(removedKeyword)' keyword has been successfully deleted")
             }
         }
     }
