@@ -9,7 +9,8 @@
 import UIKit
 
 class AddKeywordTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet var innerContentView: UIView!
     @IBOutlet var keywordTextField: UITextField!
     
     var delegate:TableViewProtocol?
@@ -22,7 +23,7 @@ class AddKeywordTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -34,10 +35,10 @@ class AddKeywordTableViewCell: UITableViewCell {
             self.keywordTextField.becomeFirstResponder()
         })
     }
-
+        
     // MARK: - Actions
     
     @IBAction func pressedAddButton(_ sender: Any) {
-        delegate?.addKeyword(keyword: keywordTextField.text!)
+        self.delegate?.addKeyword(keyword: self.keywordTextField.text!)
     }
 }

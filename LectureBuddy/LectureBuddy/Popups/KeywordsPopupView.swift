@@ -102,5 +102,9 @@ class KeywordsPopupView: PopupContentView, PopupViewProtocol, TableViewProtocol,
         addingKeyword = false
         DataManager.sharedInstance.addKeyword(keyword: keyword)
         tableView.reloadData()
+        // Flash the cell purple
+        let lastRowIndex = (tableView.numberOfRows(inSection: 0)-1)
+        let newlyAddedRow = tableView.cellForRow(at: IndexPath.init(row: lastRowIndex, section: 0)) as! KeywordTableViewCell
+        newlyAddedRow.flashPurple()
     }
 }

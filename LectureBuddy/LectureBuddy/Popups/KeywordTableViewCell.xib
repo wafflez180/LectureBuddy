@@ -42,6 +42,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.88235294119999996" green="0.86666666670000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mLF-u2-JPP" firstAttribute="top" secondItem="mV0-4a-xQn" secondAttribute="top" id="2QQ-78-fAk"/>
                             <constraint firstItem="CdH-2q-nde" firstAttribute="leading" secondItem="mV0-4a-xQn" secondAttribute="leading" constant="20" id="FCd-8X-kyZ"/>
@@ -71,6 +72,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="innerContentView" destination="mV0-4a-xQn" id="xth-vM-ANd"/>
                 <outlet property="keywordLabel" destination="CdH-2q-nde" id="ZrK-7b-bzQ"/>
             </connections>
             <point key="canvasLocation" x="34" y="62"/>

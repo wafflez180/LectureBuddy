@@ -42,6 +42,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.88235294117647056" green="0.8666666666666667" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6oc-27-Z3S" firstAttribute="centerY" secondItem="EWG-Ge-oeE" secondAttribute="centerY" id="1wl-O0-NLb"/>
                             <constraint firstItem="2n7-bP-8z0" firstAttribute="top" secondItem="EWG-Ge-oeE" secondAttribute="top" id="9y3-PL-6dN"/>
@@ -66,6 +67,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="innerContentView" destination="EWG-Ge-oeE" id="wRE-C1-SLR"/>
                 <outlet property="keywordTextField" destination="6oc-27-Z3S" id="clu-qS-Ydo"/>
             </connections>
         </tableViewCell>
