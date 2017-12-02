@@ -17,10 +17,10 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     var parentTableView:UITableView!
     var subjectName:String!
-    let expandedCollectionViewHeight = 180
+    let expandedCollectionViewHeight:CGFloat = 180
     
     // MARK - UITableViewCell
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -47,14 +47,13 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         collectionView.dataSource = self
         collectionView.layer.masksToBounds = true
         // To Do: - set 6 to the num of recording elems - 1 (219 == the width of a recordingCell)
-        collectionView?.contentOffset = CGPoint.init(x: 6*219, y: (collectionView?.contentOffset.y)!)
+        collectionView?.contentOffset = CGPoint.init(x: 7*219, y: (collectionView?.contentOffset.y)!)
     }
     
     func setSubjectSelectionFromCache(subjectName:String){
         var isSubjectExpandedDict = UserDefaults.standard.value(forKey: "isSubjectSelectedDict") as? [String:Bool]
         if let isSubjectSelected = isSubjectExpandedDict?[subjectName] {
             headerButton.isSelected = isSubjectSelected
-            setCellHeight(subjectSelected: isSubjectSelected)
         }
     }
     
@@ -67,21 +66,8 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
             isSubjectExpandedDict![subjectName] = headerButton.isSelected
             UserDefaults.standard.set(isSubjectExpandedDict!, forKey: "isSubjectSelectedDict")
         }
-        setCellHeight(subjectSelected: headerButton.isSelected)
+        parentTableView.reloadRows(at: [parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.automatic)
         print(isSubjectExpandedDict)
-    }
-    
-    func setCellHeight(subjectSelected:Bool){
-        print("change")
-        parentTableView.beginUpdates()
-        if subjectSelected {
-            collectionViewHeightConstraint.constant = 180
-        } else {
-            collectionViewHeightConstraint.constant = 0
-        }
-        parentTableView.endUpdates()
-        self.updateConstraints()
-        self.layoutIfNeeded()
     }
     
     // MARK: - UICollectionViewDataSource protocol
