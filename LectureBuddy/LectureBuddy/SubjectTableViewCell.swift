@@ -10,10 +10,14 @@ import UIKit
 
 class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet var headerTitle: UILabel!
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     
+    var parentTableView:UITableView!
     var subjectName:String!
+    let expandedCollectionViewHeight = 180
     
     // MARK - UITableViewCell
 
@@ -29,9 +33,10 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     // MARK: - SubjectTableViewCell
     
-    func configureCell(subjectName:String){
+    func configureCell(subjectName:String, parent:UITableView){
         self.subjectName = subjectName
-        headerButton.setTitle(subjectName, for: .normal)
+        headerTitle.text = subjectName
+        parentTableView = parent
         setSubjectSelectionFromCache(subjectName: subjectName)
     }
     
@@ -40,12 +45,16 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         collectionView.register(nib, forCellWithReuseIdentifier: "recordingCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.layer.masksToBounds = true
+        // To Do: - set 6 to the num of recording elems - 1 (219 == the width of a recordingCell)
+        collectionView?.contentOffset = CGPoint.init(x: 6*219, y: (collectionView?.contentOffset.y)!)
     }
     
     func setSubjectSelectionFromCache(subjectName:String){
         var isSubjectExpandedDict = UserDefaults.standard.value(forKey: "isSubjectSelectedDict") as? [String:Bool]
         if let isSubjectSelected = isSubjectExpandedDict?[subjectName] {
             headerButton.isSelected = isSubjectSelected
+            setCellHeight(subjectSelected: isSubjectSelected)
         }
     }
     
@@ -58,14 +67,28 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
             isSubjectExpandedDict![subjectName] = headerButton.isSelected
             UserDefaults.standard.set(isSubjectExpandedDict!, forKey: "isSubjectSelectedDict")
         }
+        setCellHeight(subjectSelected: headerButton.isSelected)
         print(isSubjectExpandedDict)
+    }
+    
+    func setCellHeight(subjectSelected:Bool){
+        print("change")
+        parentTableView.beginUpdates()
+        if subjectSelected {
+            collectionViewHeightConstraint.constant = 180
+        } else {
+            collectionViewHeightConstraint.constant = 0
+        }
+        parentTableView.endUpdates()
+        self.updateConstraints()
+        self.layoutIfNeeded()
     }
     
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 7
     }
     
     // make a cell for each cell index path

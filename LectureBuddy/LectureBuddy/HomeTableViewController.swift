@@ -17,6 +17,7 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "SubjectTableViewCell", bundle: nil), forCellReuseIdentifier: "subjectCellReuseID")
         setupTableViewPullToRefresh()
         setupLongPressGesture()
         refreshTableView()
@@ -61,12 +62,11 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
         return DataManager.sharedInstance.subjectDocs.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let subjectDocs = DataManager.sharedInstance.subjectDocs
         let subjectName = subjectDocs[indexPath.row].documentID
-        let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellIdentifier", for: indexPath) as! SubjectTableViewCell
-        subjectCell.configureCell(subjectName: subjectName)
+        let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellReuseID", for: indexPath) as! SubjectTableViewCell
+        subjectCell.configureCell(subjectName: subjectName, parent: tableView)
         print("Displaying the \"\(subjectName)\"  subject tableViewCell")
         return subjectCell
     }

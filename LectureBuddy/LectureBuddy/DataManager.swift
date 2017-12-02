@@ -31,7 +31,7 @@ class DataManager: NSObject, FUIAuthDelegate {
     // MARK: - DataManager
     
     // MARK: - Subjects
-
+    
     func saveNewSubject(subjectName:String, success: @escaping () -> Void, subjectExistsError: @escaping () -> Void) {
         checkIfSubjectExists(subjectName: subjectName) { subjectExists in
             if subjectExists {
@@ -103,12 +103,12 @@ class DataManager: NSObject, FUIAuthDelegate {
         let removedKeyword = highlightedKeywords.remove(at: index)
         self.defaultStore.collection("Users").document((currentUser?.uid)!).updateData([
             "highlightKeywords": highlightedKeywords,
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("'\(removedKeyword)' keyword has been successfully deleted")
-            }
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("'\(removedKeyword)' keyword has been successfully deleted")
+                }
         }
     }
     
@@ -212,7 +212,9 @@ class DataManager: NSObject, FUIAuthDelegate {
                 print("Error getting documents: \(error)")
                 error()
             } else {
-                self.highlightedKeywords = querySnapshot?.data()["highlightKeywords"] as! [String]
+                if let highlightKwds = querySnapshot?.data()["highlightKeywords"] {
+                    self.highlightedKeywords = highlightKwds as! [String]
+                }
                 print("Keywords: \(self.highlightedKeywords)")
                 success()
             }
