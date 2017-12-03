@@ -18,11 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="479" height="265.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5s-6z-SZv">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5s-6z-SZv">
                         <rect key="frame" x="0.0" y="0.0" width="479" height="75"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9O-rF-BO8">
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9O-rF-BO8">
                                 <rect key="frame" x="0.0" y="0.0" width="479" height="75"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="g90-OF-96o"/>
@@ -30,9 +31,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
                                 <state key="normal" image="arrow-cell-icon">
-                                    <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <state key="selected" image="arrow-cell-selected-icon"/>
+                                <state key="selected" image="arrow-cell-selected-icon">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
@@ -42,6 +45,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="highlightedHeaderButton:" destination="KGk-i7-Jjw" eventType="touchDown" id="SxR-hP-rr7"/>
                                     <action selector="pressedHeaderButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BEd-0b-Xsn"/>
                                 </connections>
                             </button>
@@ -66,9 +70,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TEa-A3-PFN"/>
                     </view>
-                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" indicatorStyle="white" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-ex-lXe">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" indicatorStyle="white" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-ex-lXe">
                         <rect key="frame" x="0.0" y="75" width="479" height="190.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="pev-GR-5Bn"/>
                         </constraints>
@@ -81,6 +85,7 @@
                         <cells/>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="b5s-6z-SZv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0et-j9-V2v"/>
                     <constraint firstAttribute="trailing" secondItem="b5s-6z-SZv" secondAttribute="trailing" id="4U1-B3-sd1"/>
@@ -91,12 +96,14 @@
                     <constraint firstAttribute="trailing" secondItem="9Ac-ex-lXe" secondAttribute="trailing" id="qJO-gR-jOt"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="9Ac-ex-lXe" id="mDr-uo-fcb"/>
                 <outlet property="collectionViewHeightConstraint" destination="pev-GR-5Bn" id="QAX-N4-5Kv"/>
                 <outlet property="headerButton" destination="S9O-rF-BO8" id="1Q5-DC-T1E"/>
                 <outlet property="headerTitle" destination="cV3-9b-e9J" id="14J-R3-7cb"/>
+                <outlet property="headerView" destination="b5s-6z-SZv" id="Yla-te-Onh"/>
             </connections>
             <point key="canvasLocation" x="125.5" y="86"/>
         </tableViewCell>

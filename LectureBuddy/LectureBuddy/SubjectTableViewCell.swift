@@ -10,6 +10,7 @@ import UIKit
 
 class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet var headerView: UIView!
     @IBOutlet var headerTitle: UILabel!
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
@@ -18,6 +19,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var parentTableView:UITableView!
     var subjectName:String!
     let expandedCollectionViewHeight:CGFloat = 180
+    let highlightedColor:UIColor = UIColor.init(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255.0, alpha: 1.0)
     
     // MARK - UITableViewCell
     
@@ -66,10 +68,33 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
             isSubjectExpandedDict![subjectName] = headerButton.isSelected
             UserDefaults.standard.set(isSubjectExpandedDict!, forKey: "isSubjectSelectedDict")
         }
-        parentTableView.reloadRows(at: [parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.automatic)
         print(isSubjectExpandedDict)
     }
     
+    // MARK - Actions
+    
+    @IBAction func highlightedHeaderButton(_ sender: Any) {
+        print("highlighting")
+        // Sets headerButton bg to greyish color
+        headerView.backgroundColor = highlightedColor
+    }
+    
+    @IBAction func pressedHeaderButton(_ sender: Any) {
+        headerButton.isSelected = !headerButton.isSelected
+
+        cacheSubjectSelection(selected: headerButton.isSelected)
+        
+        // Reload cell row and highlight headerView with grey color
+        UIView.animate(withDuration: 0.2, animations: {
+            self.parentTableView.reloadRows(at: [self.parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.automatic)
+            self.headerView.backgroundColor = self.highlightedColor
+        }) { finished in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75, execute: {
+                self.headerView.backgroundColor = UIColor.white
+            })
+        }
+    }
+
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
@@ -102,13 +127,6 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         
         self.segueToSavedRapVC(rapBars: savedRapsArray[indexPath.row], rhymes: [], view: collectionView.cellForItem(at: indexPath)!, savedIndex: indexPath.row)
     }*/
-
-    // MARK - Actions
-    
-    @IBAction func pressedHeaderButton(_ sender: Any) {
-        headerButton.isSelected = !headerButton.isSelected
-        cacheSubjectSelection(selected: headerButton.isSelected)
-    }
         //    @IBAction func longPressedHeader(_ sender: Any) {
 //        delegate?.longPressedToDeleteSubject(subjectDocID: subjectDocID)
 //    }

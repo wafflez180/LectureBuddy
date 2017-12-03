@@ -77,7 +77,7 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         return 75
     }
-    
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let subjectDocs = DataManager.sharedInstance.subjectDocs
         let subjectName = subjectDocs[indexPath.row].documentID

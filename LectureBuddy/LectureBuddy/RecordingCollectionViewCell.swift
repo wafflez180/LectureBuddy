@@ -10,6 +10,8 @@ import UIKit
 
 class RecordingCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet var containerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
