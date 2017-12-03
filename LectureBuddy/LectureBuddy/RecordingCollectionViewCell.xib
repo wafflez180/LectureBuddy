@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="forceLeftToRight" reuseIdentifier="recordingCell" id="gTV-IL-0wX" customClass="RecordingCollectionViewCell" customModule="LectureBuddy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="219" height="152"/>
+            <rect key="frame" x="0.0" y="0.0" width="239" height="152"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="219" height="152"/>
+                <rect key="frame" x="0.0" y="0.0" width="239" height="152"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-gl-4oc">
-                        <rect key="frame" x="20" y="0.0" width="199" height="152"/>
+                        <rect key="frame" x="0.0" y="0.0" width="219" height="152"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Lecture #3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkC-Az-ZDR">
-                                <rect key="frame" x="15" y="10" width="121" height="25"/>
+                                <rect key="frame" x="15" y="10" width="141" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Scs-3w-CAE"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11/8" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCZ-w2-3aa">
-                                <rect key="frame" x="151" y="10" width="33" height="25"/>
+                                <rect key="frame" x="171" y="10" width="33" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="bl7-BD-2fa"/>
                                 </constraints>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with piggy and jorge.." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtB-kV-DzE">
-                                <rect key="frame" x="10" y="40" width="179" height="102"/>
+                                <rect key="frame" x="10" y="40" width="199" height="102"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -81,9 +81,9 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="eUF-gl-4oc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LNF-JL-3BW"/>
-                <constraint firstAttribute="trailing" secondItem="eUF-gl-4oc" secondAttribute="trailing" id="NaQ-w4-iIk"/>
+                <constraint firstAttribute="trailing" secondItem="eUF-gl-4oc" secondAttribute="trailing" constant="20" id="NaQ-w4-iIk"/>
                 <constraint firstAttribute="bottom" secondItem="eUF-gl-4oc" secondAttribute="bottom" id="m5f-2H-kzl"/>
-                <constraint firstItem="eUF-gl-4oc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="tP4-dN-f90"/>
+                <constraint firstItem="eUF-gl-4oc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tP4-dN-f90"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <userDefinedRuntimeAttributes>

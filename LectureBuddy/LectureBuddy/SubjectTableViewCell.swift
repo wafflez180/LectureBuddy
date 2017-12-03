@@ -40,6 +40,8 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         headerTitle.text = subjectName
         parentTableView = parent
         setSubjectSelectionFromCache(subjectName: subjectName)
+        // Start the scroll from right to left
+        collectionView?.contentOffset = CGPoint.init(x: collectionView.contentSize.width-collectionView.frame.size.width, y: (collectionView?.contentOffset.y)!)
     }
     
     func setupCollectionView(){
@@ -48,8 +50,6 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layer.masksToBounds = true
-        // To Do: - set 6 to the num of recording elems - 1 (219 == the width of a recordingCell)
-        collectionView?.contentOffset = CGPoint.init(x: 7*219, y: (collectionView?.contentOffset.y)!)
     }
     
     func setSubjectSelectionFromCache(subjectName:String){
@@ -74,7 +74,6 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     // MARK - Actions
     
     @IBAction func highlightedHeaderButton(_ sender: Any) {
-        print("highlighting")
         // Sets headerButton bg to greyish color
         headerView.backgroundColor = highlightedColor
     }
