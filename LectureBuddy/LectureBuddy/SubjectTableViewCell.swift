@@ -8,8 +8,10 @@
 
 import UIKit
 
-class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+    
+    @IBOutlet var newRecordingView: UIView!
+    @IBOutlet var newRecordingViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet var headerView: UIView!
     @IBOutlet var headerTitle: UILabel!
     @IBOutlet var headerButton: UIButton!
@@ -20,6 +22,8 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var subjectName:String!
     let expandedCollectionViewHeight:CGFloat = 180
     let highlightedColor:UIColor = UIColor.init(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255.0, alpha: 1.0)
+    var scrollPrevOffset:CGPoint = CGPoint.init()
+    var hasSetInitialScrollOffset:Bool = false
     
     // MARK - UITableViewCell
     
@@ -28,7 +32,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         
         setupCollectionView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -39,9 +43,28 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         self.subjectName = subjectName
         headerTitle.text = subjectName
         parentTableView = parent
+        
         setSubjectSelectionFromCache(subjectName: subjectName)
-        // Start the scroll from right to left
-        collectionView?.contentOffset = CGPoint.init(x: collectionView.contentSize.width-collectionView.frame.size.width, y: (collectionView?.contentOffset.y)!)
+        setInitialCollectionScrollOffset()
+        
+        // Hide the new recording cell trigger
+        UIView.performWithoutAnimation {
+            self.newRecordingViewWidthConstraint.constant = 0.0
+            self.updateConstraints()
+            self.layoutIfNeeded()
+        }
+    }
+    
+    // By default the collectionView starts at the leftmost cell, set scroll to the right so user can swipe leftwards (for UI/UX)
+    func setInitialCollectionScrollOffset(){
+        DispatchQueue.main.async {
+            // Scrolls to last item
+            let item = self.collectionView(self.collectionView!, numberOfItemsInSection: 0) - 1
+            let lastItemIndex = IndexPath.init(item: item, section: 0)
+            self.collectionView.scrollToItem(at: lastItemIndex, at: .right, animated: false)
+            
+            self.hasSetInitialScrollOffset = true
+        }
     }
     
     func setupCollectionView(){
@@ -80,7 +103,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     @IBAction func pressedHeaderButton(_ sender: Any) {
         headerButton.isSelected = !headerButton.isSelected
-
+        
         cacheSubjectSelection(selected: headerButton.isSelected)
         
         // Reload cell row and highlight headerView with grey color
@@ -93,7 +116,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
             })
         }
     }
-
+    
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
@@ -109,24 +132,74 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         return cell
     }
     
+    // MARK: - ScrollView Delegate
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("PPOOOOOOPP")
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("HAHH")
+        //isScrollingLeftwards = false
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if hasSetInitialScrollOffset {
+            //print(scrollView.contentOffset.x)
+            //print(scrollPrevOffset.x)
+            // If scrolling (bouncing) past the content in the scrollView
+            let rightTriggerPadding:CGFloat = 10.0
+            let fullScrollWidth:CGFloat = (scrollView.contentSize.width - scrollView.frame.size.width)
+            let isScrollingLeftwards = (scrollPrevOffset.x > scrollView.contentOffset.x)
+            if (scrollView.contentOffset.x >= (fullScrollWidth - rightTriggerPadding) && newRecordingViewWidthConstraint.constant == 0) && isScrollingLeftwards == false {
+                //print("AH")
+                // TO DO: bring the recording trigger cell
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+                    scrollView.setContentOffset(CGPoint(x: fullScrollWidth+50, y: scrollView.contentOffset.y), animated: true)
+                    self.newRecordingViewWidthConstraint.constant = 50
+                    self.updateConstraints()
+                    self.layoutIfNeeded()
+                }, completion: { finished in
+                    scrollView.isScrollEnabled = true
+                })
+            }
+            if isScrollingLeftwards && newRecordingViewWidthConstraint.constant == 50 {
+                // User scrolling leftwards
+                // TO DO: collapse new recording trigger cell
+                //print("Hide")
+                UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
+                    self.newRecordingViewWidthConstraint.constant = 0
+                    self.updateConstraints()
+                    self.layoutIfNeeded()
+                })
+            }
+            // When scrolling is 1 off, update prevOffset
+            if abs(scrollPrevOffset.x - scrollView.contentOffset.x) > 1 {
+                scrollPrevOffset = scrollView.contentOffset
+            }
+        }
+    }
+    
+    // func s
+    
     // MARK: - UICollectionViewDelegate protocol
     /*
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
-        // handle tap events
-        print("You selected cell #\(indexPath.item)!")
-        let defaults = UserDefaults.standard
-        var savedTitlesArray = defaults.stringArray(forKey: "SavedRapTitles") ?? [String]()
-        var savedRapsArray = defaults.stringArray(forKey: "SavedRapBars") ?? [String]()
-        
-        print("Saved Titles Array: "+savedTitlesArray[indexPath.row])
-        print("Saved Raps Array: "+savedRapsArray[indexPath.row])
-        
-        self.segueToSavedRapVC(rapBars: savedRapsArray[indexPath.row], rhymes: [], view: collectionView.cellForItem(at: indexPath)!, savedIndex: indexPath.row)
-    }*/
-        //    @IBAction func longPressedHeader(_ sender: Any) {
-//        delegate?.longPressedToDeleteSubject(subjectDocID: subjectDocID)
-//    }
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     let generator = UIImpactFeedbackGenerator(style: .light)
+     generator.impactOccurred()
+     
+     // handle tap events
+     print("You selected cell #\(indexPath.item)!")
+     let defaults = UserDefaults.standard
+     var savedTitlesArray = defaults.stringArray(forKey: "SavedRapTitles") ?? [String]()
+     var savedRapsArray = defaults.stringArray(forKey: "SavedRapBars") ?? [String]()
+     
+     print("Saved Titles Array: "+savedTitlesArray[indexPath.row])
+     print("Saved Raps Array: "+savedRapsArray[indexPath.row])
+     
+     self.segueToSavedRapVC(rapBars: savedRapsArray[indexPath.row], rhymes: [], view: collectionView.cellForItem(at: indexPath)!, savedIndex: indexPath.row)
+     }*/
+    //    @IBAction func longPressedHeader(_ sender: Any) {
+    //        delegate?.longPressedToDeleteSubject(subjectDocID: subjectDocID)
+    //    }
 }
