@@ -105,15 +105,33 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         headerButton.isSelected = !headerButton.isSelected
         
         cacheSubjectSelection(selected: headerButton.isSelected)
-        
+        self.bringSubview(toFront: headerButton)
+        self.sendSubview(toBack: collectionView)
+        self.sendSubview(toBack: self)
         // Reload cell row and highlight headerView with grey color
-        UIView.animate(withDuration: 0.2, animations: {
-            self.parentTableView.reloadRows(at: [self.parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.automatic)
-            self.headerView.backgroundColor = self.highlightedColor
-        }) { finished in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75, execute: {
-                self.headerView.backgroundColor = UIColor.white
-            })
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.parentTableView.reloadRows(at: [self.parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.fade)
+                self.headerView.backgroundColor = self.highlightedColor
+                
+                var newFrame = self.collectionView.frame
+                if self.headerButton.isSelected == false {
+                    newFrame.origin.y = -135.0
+                }
+                self.collectionView.frame = newFrame
+            }) { finished in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                    self.headerView.backgroundColor = UIColor.white
+                })
+                
+                var newFrame = self.collectionView.frame
+                if self.headerButton.isSelected {
+                    newFrame.origin.y = -135
+                }else{
+                    newFrame.origin.y = 75.0
+                }
+                self.collectionView.frame = newFrame
+            }
         }
     }
     
