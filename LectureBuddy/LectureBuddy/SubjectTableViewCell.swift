@@ -16,7 +16,6 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     @IBOutlet var headerTitle: UILabel!
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     
     var parentTableView:UITableView!
     var subjectName:String!
@@ -24,6 +23,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     let highlightedColor:UIColor = UIColor.init(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255.0, alpha: 1.0)
     var scrollPrevOffset:CGPoint = CGPoint.init()
     var hasSetInitialScrollOffset:Bool = false
+    var didInitialLoad = false
     
     // MARK - UITableViewCell
     
@@ -44,14 +44,18 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         headerTitle.text = subjectName
         parentTableView = parent
         
+        // TO DO: FIX GLITCH WHEN REPETEADLY TAPPING SUBJECT HEADER BUTTONS
+        // Hide the new recording cell trigger
+        self.newRecordingViewWidthConstraint.constant = 0.0
+        self.updateConstraints()
+        self.layoutIfNeeded()
+
         setSubjectSelectionFromCache(subjectName: subjectName)
         setInitialCollectionScrollOffset()
-        
-        // Hide the new recording cell trigger
-        UIView.performWithoutAnimation {
-            self.newRecordingViewWidthConstraint.constant = 0.0
-            self.updateConstraints()
-            self.layoutIfNeeded()
+        if didInitialLoad == true {
+            animateShowCollectionView()
+        } else {
+            didInitialLoad = true
         }
     }
     
@@ -94,7 +98,39 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         print(isSubjectExpandedDict)
     }
     
-    // MARK - Actions
+    // MARK: - Collection View Collapse/Expand UI
+    
+    func animateShowCollectionView(){
+        // Begin higher from the hidden y position
+        var newFrame = self.collectionView.frame
+        newFrame.origin.y = -135.0
+        UIView.performWithoutAnimation {
+            self.collectionView.frame = newFrame
+            self.layoutIfNeeded()
+        }
+        // Descend downards to the resting y position
+        newFrame.origin.y = 75.0
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+            self.collectionView.frame = newFrame
+        })
+    }
+    
+    func animateHideCollectionView(){
+        // Begin from resting y position
+        var newFrame = self.collectionView.frame
+        newFrame.origin.y = 75.0
+        UIView.performWithoutAnimation {
+            self.collectionView.frame = newFrame
+            self.layoutIfNeeded()
+        }
+        // Ascend upwards to the hidden y position
+        newFrame.origin.y = -135.0
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+            self.collectionView.frame = newFrame
+        })
+    }
+    
+    // MARK: - Actions
     
     @IBAction func highlightedHeaderButton(_ sender: Any) {
         // Sets headerButton bg to greyish color
@@ -108,30 +144,18 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         self.bringSubview(toFront: headerButton)
         self.sendSubview(toBack: collectionView)
         self.sendSubview(toBack: self)
+        
+        headerButton.isEnabled = false
         // Reload cell row and highlight headerView with grey color
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.parentTableView.reloadRows(at: [self.parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.fade)
-                self.headerView.backgroundColor = self.highlightedColor
-                
-                var newFrame = self.collectionView.frame
-                if self.headerButton.isSelected == false {
-                    newFrame.origin.y = -135.0
-                }
-                self.collectionView.frame = newFrame
-            }) { finished in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
-                    self.headerView.backgroundColor = UIColor.white
-                })
-                
-                var newFrame = self.collectionView.frame
-                if self.headerButton.isSelected {
-                    newFrame.origin.y = -135
-                }else{
-                    newFrame.origin.y = 75.0
-                }
-                self.collectionView.frame = newFrame
-            }
+        animateHideCollectionView()
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
+            self.parentTableView.reloadRows(at: [self.parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.fade)
+            self.headerView.backgroundColor = self.highlightedColor
+        }) { finished in
+            self.headerButton.isEnabled = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                self.headerView.backgroundColor = UIColor.white
+            })
         }
     }
     

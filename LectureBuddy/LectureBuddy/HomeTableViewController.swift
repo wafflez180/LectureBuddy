@@ -13,6 +13,8 @@ import FBSDKLoginKit
 
 class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
+    var didLeaveViewCont = false
+    
     // MARK: - UITableViewController
     
     override func viewDidLoad() {
@@ -20,11 +22,16 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
         tableView.register(UINib(nibName: "SubjectTableViewCell", bundle: nil), forCellReuseIdentifier: "subjectCellReuseID")
         setupTableViewPullToRefresh()
         setupLongPressGesture()
-        refreshTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        refreshTableView()
+        if didLeaveViewCont {
+            refreshTableView()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        didLeaveViewCont = true
     }
     
     // MARK: - HomeTableViewController
