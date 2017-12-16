@@ -34,6 +34,8 @@
 		CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */; };
 		CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */; };
 		CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F13141FB5692100DAE153 /* PopupContentView.swift */; };
+		CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */; };
+		CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */; };
 		CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */; };
 		D14A01ABA2421D63C173EBD1 /* Pods_LectureBuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04C9663DF04F7EC2A2254E5 /* Pods_LectureBuddyTests.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectPopupView.swift; sourceTree = "<group>"; };
 		CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectPopupView.xib; sourceTree = "<group>"; };
 		CA9F13141FB5692100DAE153 /* PopupContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContentView.swift; sourceTree = "<group>"; };
+		CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectHeaderView.swift; sourceTree = "<group>"; };
+		CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectHeaderView.xib; sourceTree = "<group>"; };
 		CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTemplateViewController.swift; sourceTree = "<group>"; };
 		D04C9663DF04F7EC2A2254E5 /* Pods_LectureBuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LectureBuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67A444FAE6EBE592477E01 /* Pods-LectureBuddyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddyTests/Pods-LectureBuddyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				CA68575E1FD317AC006E03E6 /* SubjectTableViewCell.xib */,
 				CA89B8311FAE86BE001BD9EA /* RecordingCollectionViewCell.swift */,
 				CA89B8321FAE86BE001BD9EA /* RecordingCollectionViewCell.xib */,
+				CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */,
+				CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */,
 				CA5AA4B01FAF8D7900E0A308 /* Popups */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
@@ -374,6 +380,7 @@
 				CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */,
 				CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */,
 				CA89B8341FAE86BE001BD9EA /* RecordingCollectionViewCell.xib in Resources */,
+				CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */,
 				CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,6 +614,7 @@
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
 				CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
+				CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */,
 				CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */,
 				CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */,
 				CA76AF291FB8C37C006E39AC /* KeywordsPopupView.swift in Sources */,

@@ -12,19 +12,15 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     @IBOutlet var newRecordingView: UIView!
     @IBOutlet var newRecordingViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var headerTitle: UILabel!
-    @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     
+    let hiddenYVal:CGFloat = -135.0
     var parentTableView:UITableView!
     var subjectName:String!
-    let expandedCollectionViewHeight:CGFloat = 180
-    let highlightedColor:UIColor = UIColor.init(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255.0, alpha: 1.0)
+    var indexPath:IndexPath!
     var scrollPrevOffset:CGPoint = CGPoint.init()
     var hasSetInitialScrollOffset:Bool = false
-    var didInitialLoad = false
-    
+
     // MARK - UITableViewCell
     
     override func awakeFromNib() {
@@ -39,9 +35,9 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     // MARK: - SubjectTableViewCell
     
-    func configureCell(subjectName:String, parent:UITableView){
+    func configureCell(subjectName:String, indexPath:IndexPath, isExpanded: Bool, parent:UITableView){
         self.subjectName = subjectName
-        headerTitle.text = subjectName
+        self.indexPath = indexPath
         parentTableView = parent
         
         // TO DO: FIX GLITCH WHEN REPETEADLY TAPPING SUBJECT HEADER BUTTONS
@@ -50,12 +46,9 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         self.updateConstraints()
         self.layoutIfNeeded()
 
-        setSubjectSelectionFromCache(subjectName: subjectName)
         setInitialCollectionScrollOffset()
-        if didInitialLoad == true {
-            animateShowCollectionView()
-        } else {
-            didInitialLoad = true
+        if isExpanded {
+            animateShow()
         }
     }
     
@@ -79,84 +72,34 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         collectionView.layer.masksToBounds = true
     }
     
-    func setSubjectSelectionFromCache(subjectName:String){
-        var isSubjectExpandedDict = UserDefaults.standard.value(forKey: "isSubjectSelectedDict") as? [String:Bool]
-        if let isSubjectSelected = isSubjectExpandedDict?[subjectName] {
-            headerButton.isSelected = isSubjectSelected
-        }
-    }
-    
-    func cacheSubjectSelection(selected:Bool){
-        var isSubjectExpandedDict = UserDefaults.standard.value(forKey: "isSubjectSelectedDict") as? [String:Bool]
-        if isSubjectExpandedDict == nil {
-            let dict:[String:Bool] = [subjectName: headerButton.isSelected]
-            UserDefaults.standard.set(dict, forKey: "isSubjectSelectedDict")
-        }else{
-            isSubjectExpandedDict![subjectName] = headerButton.isSelected
-            UserDefaults.standard.set(isSubjectExpandedDict!, forKey: "isSubjectSelectedDict")
-        }
-        print(isSubjectExpandedDict)
-    }
-    
     // MARK: - Collection View Collapse/Expand UI
     
-    func animateShowCollectionView(){
+    func animateShow(){
         // Begin higher from the hidden y position
-        var newFrame = self.collectionView.frame
-        newFrame.origin.y = -135.0
+        var newFrame = self.frame
+        newFrame.origin.y = hiddenYVal
         UIView.performWithoutAnimation {
-            self.collectionView.frame = newFrame
+            self.frame = newFrame
             self.layoutIfNeeded()
         }
         // Descend downards to the resting y position
-        newFrame.origin.y = 75.0
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
-            self.collectionView.frame = newFrame
+        newFrame.origin.y = 0.0
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.parentTableView.reloadRows(at: [self.indexPath], with: .automatic)
+            self.frame = newFrame
         })
     }
     
-    func animateHideCollectionView(){
+    func animateHide(){
         // Begin from resting y position
-        var newFrame = self.collectionView.frame
-        newFrame.origin.y = 75.0
-        UIView.performWithoutAnimation {
-            self.collectionView.frame = newFrame
-            self.layoutIfNeeded()
-        }
+        var newFrame = self.frame
         // Ascend upwards to the hidden y position
-        newFrame.origin.y = -135.0
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
-            self.collectionView.frame = newFrame
+        newFrame.origin.y = hiddenYVal
+        let indexToReload = self.parentTableView.indexPath(for: self)!
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.parentTableView.reloadRows(at: [self.indexPath], with: .automatic)
+            self.frame = newFrame
         })
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func highlightedHeaderButton(_ sender: Any) {
-        // Sets headerButton bg to greyish color
-        headerView.backgroundColor = highlightedColor
-    }
-    
-    @IBAction func pressedHeaderButton(_ sender: Any) {
-        headerButton.isSelected = !headerButton.isSelected
-        
-        cacheSubjectSelection(selected: headerButton.isSelected)
-        self.bringSubview(toFront: headerButton)
-        self.sendSubview(toBack: collectionView)
-        self.sendSubview(toBack: self)
-        
-        headerButton.isEnabled = false
-        // Reload cell row and highlight headerView with grey color
-        animateHideCollectionView()
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
-            self.parentTableView.reloadRows(at: [self.parentTableView.indexPath(for: self)!], with: UITableViewRowAnimation.fade)
-            self.headerView.backgroundColor = self.highlightedColor
-        }) { finished in
-            self.headerButton.isEnabled = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
-                self.headerView.backgroundColor = UIColor.white
-            })
-        }
     }
     
     // MARK: - UICollectionViewDataSource protocol
