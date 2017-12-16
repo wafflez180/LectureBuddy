@@ -35,7 +35,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     // MARK: - SubjectTableViewCell
     
-    func configureCell(subjectName:String, indexPath:IndexPath, isExpanded: Bool, parent:UITableView){
+    func configureCell(subjectName:String, indexPath:IndexPath, isExpanded: Bool, parent:UITableView, isRefreshingTable:Bool){
         self.subjectName = subjectName
         self.indexPath = indexPath
         parentTableView = parent
@@ -47,7 +47,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         self.layoutIfNeeded()
 
         setInitialCollectionScrollOffset()
-        if isExpanded {
+        if isExpanded && isRefreshingTable == false {
             animateShow()
         }
     }

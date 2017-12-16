@@ -14,6 +14,7 @@ import FBSDKLoginKit
 class HomeTableViewController: UITableViewController {
     
     var didLeaveViewCont = false
+    var isRefreshing = false
     
     // MARK: - UITableViewController
     
@@ -37,6 +38,7 @@ class HomeTableViewController: UITableViewController {
     // MARK: - HomeTableViewController
     
     func setupTableViewPullToRefresh(){
+        self.extendedLayoutIncludesOpaqueBars = true
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.tintColor = UIColor.white
         self.tableView.refreshControl?.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
@@ -55,10 +57,15 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func refreshTableView(){
+        isRefreshing = true
         DataManager.sharedInstance.getSubjectDocuments(completion: {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.tableView.refreshControl?.endRefreshing()
+                UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
+                    self.tableView.reloadData()
+                }) { _ in
+                    self.isRefreshing = false
+                }
             })
         })
     }
@@ -103,7 +110,7 @@ class HomeTableViewController: UITableViewController {
         let subjectName = subjectDocs[indexPath.section].documentID
         let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellReuseID", for: indexPath) as! SubjectTableViewCell
         
-        subjectCell.configureCell(subjectName: subjectName, indexPath: indexPath, isExpanded: isSubjectExpanded(subjectName: subjectName), parent: tableView)
+        subjectCell.configureCell(subjectName: subjectName, indexPath: indexPath, isExpanded: isSubjectExpanded(subjectName: subjectName), parent: tableView, isRefreshingTable:isRefreshing)
         print("AH")
         //print("Displaying the \"\(subjectName)\"  subject tableViewCell")
         return subjectCell
