@@ -19,55 +19,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-ex-lXe">
-                        <rect key="frame" x="0.0" y="0.0" width="429" height="179.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="479" height="179.5"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jtz-Ae-fH5">
-                            <size key="itemSize" width="219" height="152"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5w3-50-Ikg">
+                            <size key="itemSize" width="239" height="152"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="75" height="152"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells/>
                     </collectionView>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTS-Ga-d82">
-                        <rect key="frame" x="429" y="0.0" width="50" height="179.5"/>
-                        <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SV4-52-D4h">
-                                <rect key="frame" x="0.0" y="8.5" width="65" height="162.5"/>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.28627450980392155" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="162.5" id="owd-uZ-F0M"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="SV4-52-D4h" secondAttribute="trailing" constant="-15" id="QHf-PJ-iUu"/>
-                            <constraint firstAttribute="width" constant="50" id="Yfd-hi-vmc"/>
-                            <constraint firstItem="SV4-52-D4h" firstAttribute="centerY" secondItem="DTS-Ga-d82" secondAttribute="centerY" id="cx3-zB-kds"/>
-                            <constraint firstItem="SV4-52-D4h" firstAttribute="leading" secondItem="DTS-Ga-d82" secondAttribute="leading" id="fBo-HK-KDH"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9Ac-ex-lXe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5mx-sC-wGV"/>
+                    <constraint firstAttribute="trailing" secondItem="9Ac-ex-lXe" secondAttribute="trailing" id="6F2-Ov-zSl"/>
                     <constraint firstItem="9Ac-ex-lXe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Gdx-xu-noA"/>
-                    <constraint firstAttribute="trailing" secondItem="DTS-Ga-d82" secondAttribute="trailing" id="Ifd-cP-2SM"/>
                     <constraint firstAttribute="bottom" secondItem="9Ac-ex-lXe" secondAttribute="bottom" id="Khw-15-MFC"/>
-                    <constraint firstItem="DTS-Ga-d82" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="b9l-SE-msv"/>
-                    <constraint firstAttribute="bottom" secondItem="DTS-Ga-d82" secondAttribute="bottom" id="uGj-c9-etm"/>
-                    <constraint firstItem="DTS-Ga-d82" firstAttribute="leading" secondItem="9Ac-ex-lXe" secondAttribute="trailing" id="xs8-jB-vVK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="9Ac-ex-lXe" id="mDr-uo-fcb"/>
-                <outlet property="newRecordingView" destination="DTS-Ga-d82" id="dDd-fk-xom"/>
-                <outlet property="newRecordingViewWidthConstraint" destination="Yfd-hi-vmc" id="AIV-dh-m2a"/>
             </connections>
             <point key="canvasLocation" x="125.5" y="87"/>
         </tableViewCell>

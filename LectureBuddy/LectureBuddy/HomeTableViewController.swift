@@ -11,10 +11,13 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, UIViewControllerTransitioningDelegate {
     
     var didLeaveViewCont = false
     var isRefreshing = false
+    static var selectedRecordingCell:NewRecordingCollectionViewCell?
+    var dimissTransitionFrame:CGRect?
+    var swipeInteractionController: SwipeInteractionController?
     
     // MARK: - UITableViewController
     
@@ -22,6 +25,8 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "SubjectTableViewCell", bundle: nil), forCellReuseIdentifier: "subjectCellReuseID")
         tableView.register(UINib(nibName: "SubjectHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "subjectHeaderReuseID")
+        swipeInteractionController = SwipeInteractionController(viewController: self)
+
         setupTableViewPullToRefresh()
     }
     
@@ -33,6 +38,32 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         didLeaveViewCont = true
+    }
+    
+    // MARK: - UIViewControllerTransitioningDelegate
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitionAnimationController(presenting: true, interactionController: swipeInteractionController)
+        
+        transition.originFrame = HomeTableViewController.selectedRecordingCell!.superview!.convert(HomeTableViewController.selectedRecordingCell!.frame, to: nil)
+        
+        // Without changing the width, the frame's width would be
+        // the width of the sliver/partial newRecordingTransitionCell that is shown on screen
+        var newFrameWithCorrectWith = transition.originFrame
+        newFrameWithCorrectWith.size.width = 239.0 // Collection cell's width
+        transition.originFrame = newFrameWithCorrectWith
+        
+        dimissTransitionFrame = transition.originFrame
+        
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitionAnimationController(presenting: false, interactionController: swipeInteractionController)
+
+        transition.originFrame = dimissTransitionFrame!
+
+        return transition
     }
     
     // MARK: - HomeTableViewController
@@ -110,7 +141,7 @@ class HomeTableViewController: UITableViewController {
         let subjectName = subjectDocs[indexPath.section].documentID
         let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellReuseID", for: indexPath) as! SubjectTableViewCell
         
-        subjectCell.configureCell(subjectName: subjectName, indexPath: indexPath, isExpanded: isSubjectExpanded(subjectName: subjectName), parent: tableView, isRefreshingTable:isRefreshing)
+        subjectCell.configureCell(subjectName: subjectName, indexPath: indexPath, isExpanded: isSubjectExpanded(subjectName: subjectName), parentVC: self, isRefreshingTable:isRefreshing)
         print("AH")
         //print("Displaying the \"\(subjectName)\"  subject tableViewCell")
         return subjectCell

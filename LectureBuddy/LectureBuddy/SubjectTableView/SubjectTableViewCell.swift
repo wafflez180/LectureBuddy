@@ -10,12 +10,11 @@ import UIKit
 
 class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
-    @IBOutlet var newRecordingView: UIView!
-    @IBOutlet var newRecordingViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UICollectionView!
     
     let hiddenYVal:CGFloat = -135.0
     var parentTableView:UITableView!
+    var parentVC:HomeTableViewController!
     var subjectName:String!
     var indexPath:IndexPath!
     var scrollPrevOffset:CGPoint = CGPoint.init()
@@ -35,14 +34,14 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     // MARK: - SubjectTableViewCell
     
-    func configureCell(subjectName:String, indexPath:IndexPath, isExpanded: Bool, parent:UITableView, isRefreshingTable:Bool){
+    func configureCell(subjectName:String, indexPath:IndexPath, isExpanded: Bool, parentVC:HomeTableViewController, isRefreshingTable:Bool){
         self.subjectName = subjectName
         self.indexPath = indexPath
-        parentTableView = parent
+        self.parentTableView = parentVC.tableView
+        self.parentVC = parentVC
         
         // TO DO: FIX GLITCH WHEN REPETEADLY TAPPING SUBJECT HEADER BUTTONS
         // Hide the new recording cell trigger
-        self.newRecordingViewWidthConstraint.constant = 0.0
         self.updateConstraints()
         self.layoutIfNeeded()
 
@@ -65,8 +64,8 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     }
     
     func setupCollectionView(){
-        let nib = UINib(nibName: "RecordingCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "recordingCell")
+        collectionView.register(UINib(nibName: "RecordingCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recordingCell")
+        collectionView.register(UINib(nibName: "NewRecordingCollectionViewCell", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "newRecordingCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layer.masksToBounds = true
@@ -106,33 +105,53 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return 7 // For the new recording cell
     }
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recordingCell", for: indexPath) as! RecordingCollectionViewCell
-        
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "recordingCell", for: indexPath) as! RecordingCollectionViewCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        //if (kind == UICollectionElementKindSectionFooter) {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "newRecordingCell", for: indexPath)
     }
     
     // MARK: - ScrollView Delegate
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("PPOOOOOOPP")
+        //print("PPOOOOOOPP")
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("HAHH")
+        //print("HAHH")
         //isScrollingLeftwards = false
     }
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if hasSetInitialScrollOffset {
             //print(scrollView.contentOffset.x)
             //print(scrollPrevOffset.x)
             // If scrolling (bouncing) past the content in the scrollView
+            //print("Content Offset X: \(scrollView.contentOffset.x)")
+            //print("Content Width: \(scrollView.contentSize.width - scrollView.frame.width)")
+            print("\tDifference: \((scrollView.contentSize.width - scrollView.frame.width) - scrollView.contentOffset.x)")
+            
+            let scrollViewOffsetDiff = (scrollView.contentSize.width - scrollView.frame.width) - scrollView.contentOffset.x
+            
+            if scrollViewOffsetDiff < 0 && scrollView.isDragging {
+                // Transition to new
+                HomeTableViewController.selectedRecordingCell = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionFooter)[0] as! NewRecordingCollectionViewCell
+                
+                var newRecordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewRecordingViewCont") as! NewRecordingViewController
+                newRecordingVC.transitioningDelegate = parentVC
+                
+                parentVC.present(newRecordingVC, animated: true, completion: nil)
+            }
+            
+            /*
             let rightTriggerPadding:CGFloat = 10.0
             let fullScrollWidth:CGFloat = (scrollView.contentSize.width - scrollView.frame.size.width)
             let isScrollingLeftwards = (scrollPrevOffset.x > scrollView.contentOffset.x)
@@ -161,7 +180,7 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
             // When scrolling is 1 off, update prevOffset
             if abs(scrollPrevOffset.x - scrollView.contentOffset.x) > 1 {
                 scrollPrevOffset = scrollView.contentOffset
-            }
+            }*/
         }
     }
     

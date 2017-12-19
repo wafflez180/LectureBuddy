@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with piggy and jorge.." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtB-kV-DzE">
-                                <rect key="frame" x="10" y="40" width="199" height="102"/>
+                                <rect key="frame" x="10" y="40" width="199" height="101.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                             <constraint firstItem="WCZ-w2-3aa" firstAttribute="top" secondItem="eUF-gl-4oc" secondAttribute="top" constant="10" id="3Wa-Jq-85B"/>
                             <constraint firstAttribute="trailing" secondItem="MtB-kV-DzE" secondAttribute="trailing" constant="10" id="5cr-Tp-nDb"/>
                             <constraint firstItem="MtB-kV-DzE" firstAttribute="leading" secondItem="eUF-gl-4oc" secondAttribute="leading" constant="10" id="CS6-Lz-dpQ"/>
-                            <constraint firstAttribute="bottom" secondItem="MtB-kV-DzE" secondAttribute="bottom" constant="10" id="KYG-xx-gXq"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MtB-kV-DzE" secondAttribute="bottom" constant="10" id="KYG-xx-gXq"/>
                             <constraint firstItem="LkC-Az-ZDR" firstAttribute="leading" secondItem="eUF-gl-4oc" secondAttribute="leading" constant="15" id="WPK-i7-a67"/>
                             <constraint firstItem="LkC-Az-ZDR" firstAttribute="top" secondItem="eUF-gl-4oc" secondAttribute="top" constant="10" id="Z35-5z-bJO"/>
                             <constraint firstItem="MtB-kV-DzE" firstAttribute="top" secondItem="LkC-Az-ZDR" secondAttribute="bottom" constant="5" id="djN-1h-r23"/>
