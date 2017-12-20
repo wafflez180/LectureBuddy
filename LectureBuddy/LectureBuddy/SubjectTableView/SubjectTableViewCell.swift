@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -17,10 +17,13 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var parentVC:HomeTableViewController!
     var subjectName:String!
     var indexPath:IndexPath!
+    
+    // extension SubjectTableViewCell: UIScrollViewDelegate
     var scrollPrevOffset:CGPoint = CGPoint.init()
     var hasSetInitialScrollOffset:Bool = false
     var beganInteraction = false
     var progress:CGFloat = 0.0
+    let progressNeededToFinishTransition:CGFloat = 0.125 // 12.5% of interaction progress needed to finish the transition, else cancel transition
 
     // MARK - UITableViewCell
     
@@ -122,100 +125,6 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "newRecordingCell", for: indexPath)
     }
     
-    // MARK: - ScrollView Delegate
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        //print("HAHH")
-        //isScrollingLeftwards = false
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("Finished Progress: \(progress)")
-        if progress >= 0.125 {
-            parentVC.interactionController?.finish()
-            print("Finished Interaction")
-            beganInteraction = false
-            parentVC.interactionController = nil
-        }
-    }
-    
-    func cancelInteraction(){
-        self.parentVC.interactionController?.cancel()
-        print("Cancelled Interaction")
-        beganInteraction = false
-        parentVC.interactionController = nil
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if hasSetInitialScrollOffset {
-            //print(scrollView.contentOffset.x)
-            //print(scrollPrevOffset.x)
-            // If scrolling (bouncing) past the content in the scrollView
-            //print("Content Offset X: \(scrollView.contentOffset.x)")
-            //print("Content Width: \(scrollView.contentSize.width - scrollView.frame.width)")
-            //print("\tDifference: \((scrollView.contentSize.width - scrollView.frame.width) - scrollView.contentOffset.x)")
-            
-            let scrollViewOffsetDiff = (scrollView.contentSize.width - scrollView.frame.width) - scrollView.contentOffset.x
-            progress = (scrollViewOffsetDiff / UIScreen.main.bounds.width) * -1
-            print(scrollViewOffsetDiff)
-            
-            if scrollViewOffsetDiff < 0.0 {
-                if beganInteraction == false && scrollView.isDragging { // Begin Interaction
-                    parentVC.interactionController = UIPercentDrivenInteractiveTransition()
-                    
-                    // Transition to new
-                    HomeTableViewController.selectedRecordingCell = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionFooter)[0] as! NewRecordingCollectionViewCell
-                    var newRecordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewRecordingViewCont") as! NewRecordingViewController
-                    newRecordingVC.transitioningDelegate = parentVC
-                    
-                    parentVC.present(newRecordingVC, animated: true, completion: nil)
-                    beganInteraction = true
-                }else{ // Changed
-                    print("Progress: \(progress)")
-                    parentVC.interactionController?.update(progress)
-                }
-            } else if beganInteraction {
-                cancelInteraction()
-            }
-            
-            /*
-            let rightTriggerPadding:CGFloat = 10.0
-            let fullScrollWidth:CGFloat = (scrollView.contentSize.width - scrollView.frame.size.width)
-            let isScrollingLeftwards = (scrollPrevOffset.x > scrollView.contentOffset.x)
-            if (scrollView.contentOffset.x >= (fullScrollWidth - rightTriggerPadding) && newRecordingViewWidthConstraint.constant == 0) && isScrollingLeftwards == false {
-                //print("AH")
-                // TO DO: bring the recording trigger cell
-                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
-                    scrollView.setContentOffset(CGPoint(x: fullScrollWidth+50, y: scrollView.contentOffset.y), animated: true)
-                    self.newRecordingViewWidthConstraint.constant = 50
-                    self.updateConstraints()
-                    self.layoutIfNeeded()
-                }, completion: { finished in
-                    scrollView.isScrollEnabled = true
-                })
-            }
-            if isScrollingLeftwards && newRecordingViewWidthConstraint.constant == 50 {
-                // User scrolling leftwards
-                // TO DO: collapse new recording trigger cell
-                //print("Hide")
-                UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
-                    self.newRecordingViewWidthConstraint.constant = 0
-                    self.updateConstraints()
-                    self.layoutIfNeeded()
-                })
-            }
-            // When scrolling is 1 off, update prevOffset
-            if abs(scrollPrevOffset.x - scrollView.contentOffset.x) > 1 {
-                scrollPrevOffset = scrollView.contentOffset
-            }*/
-        }
-    }
-    
-    // func s
     
     // MARK: - UICollectionViewDelegate protocol
     /*
@@ -238,3 +147,61 @@ class SubjectTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     //        delegate?.longPressedToDeleteSubject(subjectDocID: subjectDocID)
     //    }
 }
+
+// UIScrollViewDelegate mainly being used for the interaction controller
+// which transitions from the HomeTableViewController to a NewRecordingViewController
+extension SubjectTableViewCell: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if progress >= progressNeededToFinishTransition {
+            print("Finished Progress: \(progress)")
+            print("Finished Interaction.")
+            parentVC.interactionController?.finish()
+            beganInteraction = false
+            parentVC.interactionController = nil
+        }
+    }
+    
+    func cancelInteraction(){
+        print("Cancelled Interaction")
+        self.parentVC.interactionController?.cancel()
+        beganInteraction = false
+        parentVC.interactionController = nil
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if hasSetInitialScrollOffset {
+            let scrollViewOffsetDiff = (scrollView.contentSize.width - scrollView.frame.width) - scrollView.contentOffset.x
+            print(scrollViewOffsetDiff)
+            //print("Content Offset X: \(scrollView.contentOffset.x)")
+
+            progress = (scrollViewOffsetDiff / UIScreen.main.bounds.width) * -1
+            
+            // If the user is dragging leftwards, to the point where
+            // if the user lets go, the scrollView will bounce back
+            if scrollViewOffsetDiff < 0.0 {
+                // Begin Interaction
+                if beganInteraction == false && scrollView.isDragging {
+                    parentVC.interactionController = UIPercentDrivenInteractiveTransition()
+                    
+                    // Set the selectedRecordingCell to the collectionView's visible footer
+                    HomeTableViewController.selectedRecordingCell = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionFooter)[0] as! NewRecordingCollectionViewCell
+                    
+                    // Set up the view controller to transition to, start the transition and begin interaction/animation
+                    var newRecordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewRecordingViewCont") as! NewRecordingViewController
+                    newRecordingVC.transitioningDelegate = parentVC
+                    parentVC.present(newRecordingVC, animated: true, completion: nil)
+                    beganInteraction = true
+                }else{
+                    // Update transition when progress/scrollViewOffset changes
+                    print("Progress: \(progress)")
+                    parentVC.interactionController?.update(progress)
+                }
+            // If the user scrolled and started an interaction then scrolled back, cancel the interaction
+            } else if beganInteraction {
+                cancelInteraction()
+            }
+        }
+    }
+}
+

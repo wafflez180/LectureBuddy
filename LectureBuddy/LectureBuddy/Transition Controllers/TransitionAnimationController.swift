@@ -24,24 +24,16 @@ class TransitionAnimationController: NSObject, UIViewControllerAnimatedTransitio
     
     // Check out the link to see how this works : https://www.raywenderlich.com/173576/ios-animation-tutorial-custom-view-controller-presentation-transitions-3
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! HomeTableViewController
-//        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
-//        transitionContext.containerView.addSubview(toViewController.view)
-//        toViewController.view.alpha = 0.0
-//        UIView.animate(withDuration: 0.35, animations: {
-//            toViewController.view.alpha = 1.0
-//        }, completion: { (finished) in
-//            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-//        })
-        
+
+        // 1. Set up transitionViews
+    
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
         let fromView = transitionContext.view(forKey: .from)!
 
         let newRecordingView = presenting ? toView : fromView
 
-//        print(originFrame.origin.x)
-//        print(originFrame.origin.y)
+        // 2. Set up initial frame, final frame, and CGAffineTransform for animation
         
         let initialFrame = presenting ? originFrame : newRecordingView.frame
         let finalFrame =   presenting ? newRecordingView.frame : originFrame
@@ -67,40 +59,36 @@ class TransitionAnimationController: NSObject, UIViewControllerAnimatedTransitio
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: newRecordingView)
         
+        // Set up the final corner radius so when scaling/animating up,
+        // it will have the same corner radius as the device
+        // WHY: Implemented specifically to make iPhone X users have a better more consistent UI/UX
+        
+        var finalCornerRadius:CGFloat = 0.0
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 2436:
+                print("iPhone X")
+                finalCornerRadius = 40.0
+            default:
+                print("Every other iPhone/iPad")
+                finalCornerRadius = 0.0
+            }
+        }
+        
+        // Animate/scale/transition
         
         let springDamping:CGFloat = self.presenting ? 0.75 : 1.00
-        
-        //newRecordingView.layer.speed = 100
-        //containerView.
-        
         UIView.animate(withDuration: self.duration, delay:0.0,
                        usingSpringWithDamping: springDamping,
                        initialSpringVelocity: 0.0,
                        options: .preferredFramesPerSecond60,
                        animations: {
-                        newRecordingView.layer.cornerRadius = 40
+                        
+                        newRecordingView.layer.cornerRadius = finalCornerRadius
                         newRecordingView.transform = self.presenting ? CGAffineTransform.identity : scaleTransform
                         newRecordingView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
         }) { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
-
-        
-//        UIView.animate(withDuration: duration, animations: {
-//            <#code#>
-//        }) { (<#Bool#>) in
-//            <#code#>
-//        }
-//        UIView.animate(withDuration: duration, delay:0.0,
-//                       usingSpringWithDamping: 0.0, initialSpringVelocity: 0.0,
-//                       animations: {
-//                        newRecordingView.transform = self.presenting ?
-//                            CGAffineTransform.identity : scaleTransform
-//                        newRecordingView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
-//        },
-//                       completion: { _ in
-//                        transitionContext.completeTransition(true)
-//        }
-//        )
     }
 }

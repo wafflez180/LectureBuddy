@@ -21,7 +21,6 @@
 		CA46C0191FAE3AE100AF4D4F /* LectureBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0181FAE3AE100AF4D4F /* LectureBuddyTests.swift */; };
 		CA46C0241FAE3AE100AF4D4F /* LectureBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0231FAE3AE100AF4D4F /* LectureBuddyUITests.swift */; };
 		CA4E795A1FAFDEB900EE7532 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4E79591FAFDEB900EE7532 /* PushKit.framework */; };
-		CA55D8C11FE97BB000724F10 /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55D8C01FE97BB000724F10 /* SwipeInteractionController.swift */; };
 		CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */; };
 		CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */; };
 		CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */; };
@@ -86,7 +85,6 @@
 		CA46C0231FAE3AE100AF4D4F /* LectureBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureBuddyUITests.swift; sourceTree = "<group>"; };
 		CA46C0251FAE3AE100AF4D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA4E79591FAFDEB900EE7532 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
-		CA55D8C01FE97BB000724F10 /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
 		CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */,
-				CA55D8C01FE97BB000724F10 /* SwipeInteractionController.swift */,
 			);
 			path = "Transition Controllers";
 			sourceTree = "<group>";
@@ -638,7 +635,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA55D8C11FE97BB000724F10 /* SwipeInteractionController.swift in Sources */,
 				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
 				CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */,

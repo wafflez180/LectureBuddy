@@ -11,10 +11,12 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
-class HomeTableViewController: UITableViewController, UIViewControllerTransitioningDelegate {
+class HomeTableViewController: UITableViewController {
     
     var didLeaveViewCont = false
     var isRefreshing = false
+    
+    // Extension HomeTableViewController: UIViewControllerTransitioningDelegate variables
     static var selectedRecordingCell:NewRecordingCollectionViewCell?
     var dimissTransitionFrame:CGRect?
     var interactionController:UIPercentDrivenInteractiveTransition?
@@ -39,63 +41,6 @@ class HomeTableViewController: UITableViewController, UIViewControllerTransition
         didLeaveViewCont = true
     }
     
-    // MARK: - UIViewControllerTransitioningDelegate
-
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitionAnimationController(presenting: true)
-        
-        transition.originFrame = HomeTableViewController.selectedRecordingCell!.superview!.convert(HomeTableViewController.selectedRecordingCell!.frame, to: nil)
-        
-        let heightToWidthDeviceRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
-        
-        // Without changing the width, the frame's width would be
-        // the width of the sliver/partial newRecordingTransitionCell that is shown on screen
-        var newFrame = transition.originFrame
-        newFrame.size.width = heightToWidthDeviceRatio * newFrame.size.height // Collection cell's width
-        print(newFrame.size.width)
-        // For less jittery UI, start smaller than the newRecordingCell's frame
-        newFrame.size.height -= 10
-        newFrame.origin.y += 5
-        //newFrame.origin.x += 10
-        transition.originFrame = newFrame
-        
-        dimissTransitionFrame = newFrame
-        
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitionAnimationController(presenting: false)
-
-        // For smooth UI, when dismissing only, make the frame smaller than the original frame of the cell
-        var newFrame = dimissTransitionFrame!
-        newFrame.size.width -= 20
-        newFrame.origin.x += 10
-        newFrame.size.height -= 20
-        newFrame.origin.y += 10
-
-        transition.originFrame = newFrame
-
-        return transition
-    }
-    
-    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactionController
-    }
-    
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactionController
-    }
-    
-//    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        guard let animator = animator as? TransitionAnimationController,
-//            let interactionController = animator.interactionController,
-//            interactionController.interactionInProgress
-//            else {
-//                return nil
-//        }
-//        return interactionController
-//    }
     
     // MARK: - HomeTableViewController
     
@@ -242,4 +187,62 @@ class HomeTableViewController: UITableViewController, UIViewControllerTransition
      }
      */
     
+}
+
+extension HomeTableViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitionAnimationController(presenting: true)
+        
+        transition.originFrame = HomeTableViewController.selectedRecordingCell!.superview!.convert(HomeTableViewController.selectedRecordingCell!.frame, to: nil)
+        
+        
+        let heightToWidthDeviceRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+        var newFrame = transition.originFrame
+        // Set the width so the ratio is the same as the finished transition VC ratio
+        newFrame.size.width = heightToWidthDeviceRatio * newFrame.size.height // Collection cell's width
+        print(newFrame.size.width)
+        // For less jittery UI, start smaller than the newRecordingCell's frame
+        newFrame.size.height -= 10
+        newFrame.origin.y += 5
+        transition.originFrame = newFrame
+        
+        dimissTransitionFrame = newFrame
+        
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = TransitionAnimationController(presenting: false)
+        
+        // Make the frame at the end to be smaller than the original frame of the cell,
+        // so when the view disappears it will be unnoticeable
+        var newFrame = dimissTransitionFrame!
+        newFrame.size.width -= 20
+        newFrame.origin.x += 10
+        newFrame.size.height -= 20
+        newFrame.origin.y += 10
+        
+        transition.originFrame = newFrame
+        
+        return transition
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactionController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactionController
+    }
+    
+    //    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    //        guard let animator = animator as? TransitionAnimationController,
+    //            let interactionController = animator.interactionController,
+    //            interactionController.interactionInProgress
+    //            else {
+    //                return nil
+    //        }
+    //        return interactionController
+    //    }
 }
