@@ -10,14 +10,12 @@ import UIKit
 
 class TransitionAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration = 2.5
+    let duration = 0.5
     var presenting = true
     var originFrame = CGRect.zero
-    var interactionController:SwipeInteractionController!
 
-    init(presenting: Bool, interactionController: SwipeInteractionController?) {
+    init(presenting: Bool) {
         self.presenting = presenting
-        self.interactionController = interactionController
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -49,17 +47,14 @@ class TransitionAnimationController: NSObject, UIViewControllerAnimatedTransitio
         let finalFrame =   presenting ? newRecordingView.frame : originFrame
         
         let xScaleFactor = presenting ?
-            
             initialFrame.width / finalFrame.width :
             finalFrame.width / initialFrame.width
         
         let yScaleFactor = presenting ?
-            
             initialFrame.height / finalFrame.height :
             finalFrame.height / initialFrame.height
         
-        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor,
-                                               y: yScaleFactor)
+        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
         
         if presenting {
             newRecordingView.transform = scaleTransform
@@ -72,17 +67,30 @@ class TransitionAnimationController: NSObject, UIViewControllerAnimatedTransitio
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: newRecordingView)
         
+        
         let springDamping:CGFloat = self.presenting ? 0.75 : 1.00
         
-        UIView.animate(withDuration: duration, delay:0.0,
-                       usingSpringWithDamping: springDamping, initialSpringVelocity: 0.0,
-                       animations: {
-            newRecordingView.transform = self.presenting ? CGAffineTransform.identity : scaleTransform
-            newRecordingView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
-        }) { _ in
-            transitionContext.completeTransition(true)
-        }
+        //newRecordingView.layer.speed = 100
+        //containerView.
         
+        UIView.animate(withDuration: self.duration, delay:0.0,
+                       usingSpringWithDamping: springDamping,
+                       initialSpringVelocity: 0.0,
+                       options: .preferredFramesPerSecond60,
+                       animations: {
+                        newRecordingView.layer.cornerRadius = 40
+                        newRecordingView.transform = self.presenting ? CGAffineTransform.identity : scaleTransform
+                        newRecordingView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
+        }) { _ in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }
+
+        
+//        UIView.animate(withDuration: duration, animations: {
+//            <#code#>
+//        }) { (<#Bool#>) in
+//            <#code#>
+//        }
 //        UIView.animate(withDuration: duration, delay:0.0,
 //                       usingSpringWithDamping: 0.0, initialSpringVelocity: 0.0,
 //                       animations: {

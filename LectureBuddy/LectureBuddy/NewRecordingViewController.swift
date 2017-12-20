@@ -9,11 +9,13 @@
 import UIKit
 
 class NewRecordingViewController: UIViewController {
+    
+    var swipeInteractionController: SwipeInteractionController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        swipeInteractionController = SwipeInteractionController(viewController: self)
     }
 
     override func didReceiveMemoryWarning() {

@@ -58,35 +58,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Recording" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ec-bgu">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Recording" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ec-bgu">
                                 <rect key="frame" x="20" y="40" width="143" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dc5-rj-32i">
+                                <rect key="frame" x="20" y="74" width="335" height="613"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.64313725490196072" green="0.66666666666666663" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with glasses who nevertheless possesses a keen intelligence. </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="15" name="SFUIText-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident. Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island. </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.64313725490196072" green="0.66666666666666663" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island whom …">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.29411764705882354" green="0.28627450980392155" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="dc5-rj-32i" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="20" id="1vH-tP-cVF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L4a-ec-bgu" secondAttribute="trailing" constant="20" symbolic="YES" id="BmC-X5-J4j"/>
+                            <constraint firstItem="dc5-rj-32i" firstAttribute="bottom" secondItem="OOG-XD-pGm" secondAttribute="bottom" constant="20" id="DjV-Hj-w2x"/>
                             <constraint firstItem="L4a-ec-bgu" firstAttribute="top" secondItem="OOG-XD-pGm" secondAttribute="top" constant="20" id="NaU-Bq-CiX"/>
                             <constraint firstItem="L4a-ec-bgu" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="20" id="RIS-cT-bNa"/>
+                            <constraint firstItem="dc5-rj-32i" firstAttribute="top" secondItem="L4a-ec-bgu" secondAttribute="bottom" constant="10" id="bFm-rc-9eU"/>
+                            <constraint firstItem="OOG-XD-pGm" firstAttribute="trailing" secondItem="dc5-rj-32i" secondAttribute="trailing" constant="20" id="qPa-FW-5mH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OOG-XD-pGm"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="15"/>
+                                <real key="value" value="75"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="3"/>
+                                <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.5"/>
+                                <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="0.0" height="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="value" width="0.0" height="0.0"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -101,7 +140,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="649" y="173"/>
+            <point key="canvasLocation" x="648.79999999999995" y="172.26386806596702"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="aAT-f3-P3R">

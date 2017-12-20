@@ -17,7 +17,7 @@ class HomeTableViewController: UITableViewController, UIViewControllerTransition
     var isRefreshing = false
     static var selectedRecordingCell:NewRecordingCollectionViewCell?
     var dimissTransitionFrame:CGRect?
-    var swipeInteractionController: SwipeInteractionController?
+    var interactionController:UIPercentDrivenInteractiveTransition?
     
     // MARK: - UITableViewController
     
@@ -25,12 +25,11 @@ class HomeTableViewController: UITableViewController, UIViewControllerTransition
         super.viewDidLoad()
         tableView.register(UINib(nibName: "SubjectTableViewCell", bundle: nil), forCellReuseIdentifier: "subjectCellReuseID")
         tableView.register(UINib(nibName: "SubjectHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "subjectHeaderReuseID")
-        swipeInteractionController = SwipeInteractionController(viewController: self)
 
         setupTableViewPullToRefresh()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if didLeaveViewCont {
             refreshTableView()
         }
@@ -43,28 +42,60 @@ class HomeTableViewController: UITableViewController, UIViewControllerTransition
     // MARK: - UIViewControllerTransitioningDelegate
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitionAnimationController(presenting: true, interactionController: swipeInteractionController)
+        let transition = TransitionAnimationController(presenting: true)
         
         transition.originFrame = HomeTableViewController.selectedRecordingCell!.superview!.convert(HomeTableViewController.selectedRecordingCell!.frame, to: nil)
         
+        let heightToWidthDeviceRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+        
         // Without changing the width, the frame's width would be
         // the width of the sliver/partial newRecordingTransitionCell that is shown on screen
-        var newFrameWithCorrectWith = transition.originFrame
-        newFrameWithCorrectWith.size.width = 239.0 // Collection cell's width
-        transition.originFrame = newFrameWithCorrectWith
+        var newFrame = transition.originFrame
+        newFrame.size.width = heightToWidthDeviceRatio * newFrame.size.height // Collection cell's width
+        print(newFrame.size.width)
+        // For less jittery UI, start smaller than the newRecordingCell's frame
+        newFrame.size.height -= 10
+        newFrame.origin.y += 5
+        //newFrame.origin.x += 10
+        transition.originFrame = newFrame
         
-        dimissTransitionFrame = transition.originFrame
+        dimissTransitionFrame = newFrame
         
         return transition
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = TransitionAnimationController(presenting: false, interactionController: swipeInteractionController)
+        let transition = TransitionAnimationController(presenting: false)
 
-        transition.originFrame = dimissTransitionFrame!
+        // For smooth UI, when dismissing only, make the frame smaller than the original frame of the cell
+        var newFrame = dimissTransitionFrame!
+        newFrame.size.width -= 20
+        newFrame.origin.x += 10
+        newFrame.size.height -= 20
+        newFrame.origin.y += 10
+
+        transition.originFrame = newFrame
 
         return transition
     }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactionController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactionController
+    }
+    
+//    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        guard let animator = animator as? TransitionAnimationController,
+//            let interactionController = animator.interactionController,
+//            interactionController.interactionInProgress
+//            else {
+//                return nil
+//        }
+//        return interactionController
+//    }
     
     // MARK: - HomeTableViewController
     
