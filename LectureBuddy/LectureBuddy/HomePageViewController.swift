@@ -15,7 +15,6 @@ import FBSDKLoginKit
 
 class HomePageViewController: TabmanViewController, PageboyViewControllerDataSource {
     
-    let subjectDocs = DataManager.sharedInstance.subjectDocs
     var viewControllers:[UIViewController] = []
     
     // MARK: - ViewController
@@ -26,15 +25,13 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         self.navigationController?.navigationBar.shouldRemoveShadow(true)
         self.dataSource = self
         
-        setupSubjects()
         configureTabBar()
+        reloadData()
     }
     
     // MARK: - HomePageViewController
     
     func configureTabBar(){
-        addTabBarItems()
-        
         // Appearance property list: https://github.com/uias/Tabman/blob/master/Docs/APPEARANCE.md
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
             appearance.style.background = TabmanBar.BackgroundView.Style.solid(color: ColorManager.purple)
@@ -47,13 +44,18 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
             appearance.state.color = ColorManager.lightPurple
             appearance.state.selectedColor = .white
         })
-
     }
     
-    func addTabBarItems(){
+    func reloadData(){
+        setTabBarItems()
+        setSubjectPages()
+    }
+    
+    func setTabBarItems(){
         var barItems:[Item] = []
         
-        for subjectDoc in subjectDocs {
+        for subjectDoc in DataManager.sharedInstance.subjectDocs {
+            //print(subjectDoc.documentID)
             let subjectName = subjectDoc.documentID
             barItems.append(Item.init(title: subjectName))
         }
@@ -61,14 +63,30 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         self.bar.items = barItems
     }
     
-    func setupSubjects(){
-        var recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecordingsTableVC") as! RecordingsTableViewController
-        viewControllers.append(recordingVC)
-        recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecordingsTableVC") as! RecordingsTableViewController
-        viewControllers.append(recordingVC)
-        recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecordingsTableVC") as! RecordingsTableViewController
-        viewControllers.append(recordingVC)
+    func setSubjectPages(){
+        viewControllers = []
+        
+        for _ in 0..<DataManager.sharedInstance.subjectDocs.count {
+            let recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecordingsTableVC") as! RecordingsTableViewController
+            viewControllers.append(recordingVC)
+        }
+        
         self.reloadPages()
+    }
+    
+    func deleteSubject(){
+        let subjectName = self.bar.items![self.currentIndex!].title!
+        let alert = UIAlertController(title: "Delete \(subjectName)", message: """
+            Are you sure you want to delete \(subjectName)?
+            You can not undo this action.
+            """, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alertAction in
+            DataManager.sharedInstance.deleteSubect(subjectName: subjectName, completionHandler: {
+                self.reloadData()
+            })
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - PageboyViewControllerDataSource
@@ -110,6 +128,25 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
 
     }
     
+    @IBAction func pressedMoreOptionsButton(_ sender: Any) {
+        // create an actionSheet
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // create an action
+        let deleteSubjectAction: UIAlertAction = UIAlertAction(title: "Delete Subject", style: .destructive) { action -> Void in
+            self.deleteSubject()
+            print("Delete Subject Action pressed")
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in }
+        
+        // add actions
+        actionSheetController.addAction(deleteSubjectAction)
+        actionSheetController.addAction(cancelAction)
+        
+        // present an actionSheet...
+        present(actionSheetController, animated: true, completion: nil)
+    }
     
     // MARK: - Navigation
 

@@ -33,10 +33,19 @@
                                                 <segue destination="nEN-wc-lDU" kind="show" id="7OR-ag-a4L"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-mk-WlC">
+                                            <rect key="frame" x="50" y="16.5" width="30" height="22"/>
+                                            <state key="normal" image="more-options-button"/>
+                                            <connections>
+                                                <action selector="pressedMoreOptionsButton:" destination="Z4U-ee-IlL" eventType="touchUpInside" id="TB3-Jf-bxi"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="dvm-oS-Uno" secondAttribute="trailing" constant="50" id="1zC-qf-37O"/>
+                                        <constraint firstItem="fdb-mk-WlC" firstAttribute="leading" secondItem="RxL-9l-PpE" secondAttribute="leading" constant="50" id="DSq-rf-Lwx"/>
                                         <constraint firstItem="dvm-oS-Uno" firstAttribute="centerY" secondItem="RxL-9l-PpE" secondAttribute="centerY" constant="-10" id="aTy-KO-JVl"/>
+                                        <constraint firstItem="fdb-mk-WlC" firstAttribute="centerY" secondItem="RxL-9l-PpE" secondAttribute="centerY" constant="-10" id="zxK-7u-FG4"/>
                                     </constraints>
                                 </view>
                                 <constraints>
@@ -523,6 +532,7 @@
         <image name="close-popup-icon" width="17" height="17"/>
         <image name="highlight-keywords-button" width="50" height="50"/>
         <image name="highlighting-words-navbutton" width="25" height="25"/>
+        <image name="more-options-button" width="30" height="8"/>
         <image name="new-recording-bottombarbutton" width="25" height="30"/>
         <image name="settings-navbutton" width="23" height="23"/>
         <image name="stop-recording-button" width="50" height="50"/>

@@ -52,7 +52,9 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     func getSubjectDocuments(completion: @escaping () -> Void) {
-        defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").getDocuments { (querySnapshot, error) in
+        let subjectsQuery = defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").order(by: "dateCreated")
+
+        subjectsQuery.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
