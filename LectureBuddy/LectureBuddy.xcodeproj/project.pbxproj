@@ -40,6 +40,11 @@
 		CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F13141FB5692100DAE153 /* PopupContentView.swift */; };
 		CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */; };
 		CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */; };
+		CAAFDF4E1FEDC636004EE702 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */; };
+		CAAFDF501FEDC99B004EE702 /* RecordingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */; };
+		CAAFDF521FEDD1FC004EE702 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */; };
+		CAAFDF551FEDD7CC004EE702 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF541FEDD7CC004EE702 /* NavigationBarExtension.swift */; };
+		CAAFDF571FEDDA92004EE702 /* RecordingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */; };
 		CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */; };
 		D14A01ABA2421D63C173EBD1 /* Pods_LectureBuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04C9663DF04F7EC2A2254E5 /* Pods_LectureBuddyTests.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +109,11 @@
 		CA9F13141FB5692100DAE153 /* PopupContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContentView.swift; sourceTree = "<group>"; };
 		CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectHeaderView.swift; sourceTree = "<group>"; };
 		CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectHeaderView.xib; sourceTree = "<group>"; };
+		CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsTableViewController.swift; sourceTree = "<group>"; };
+		CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		CAAFDF541FEDD7CC004EE702 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
+		CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingTableViewCell.swift; sourceTree = "<group>"; };
 		CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTemplateViewController.swift; sourceTree = "<group>"; };
 		D04C9663DF04F7EC2A2254E5 /* Pods_LectureBuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LectureBuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67A444FAE6EBE592477E01 /* Pods-LectureBuddyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddyTests/Pods-LectureBuddyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,16 +203,18 @@
 				CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */,
 				CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */,
 				CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */,
+				CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */,
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
-				CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */,
+				CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */,
+				CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */,
+				CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */,
 				CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */,
-				CA55D8C21FE97BD000724F10 /* Transition Controllers */,
-				CA8256FF1FE5C7EE008EF0B1 /* SubjectTableView */,
+				CAAFDF581FEDDFCF004EE702 /* Old Version Files */,
 				CA5AA4B01FAF8D7900E0A308 /* Popups */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
 				CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */,
-				CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */,
+				CAAFDF531FEDD7AB004EE702 /* Extensions */,
 				CA46C00F1FAE3AE100AF4D4F /* Info.plist */,
 				CA66BAAF1FAE4A9200657368 /* GoogleService-Info.plist */,
 			);
@@ -260,6 +272,25 @@
 				CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */,
 			);
 			path = SubjectTableView;
+			sourceTree = "<group>";
+		};
+		CAAFDF531FEDD7AB004EE702 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CAAFDF541FEDD7CC004EE702 /* NavigationBarExtension.swift */,
+				CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CAAFDF581FEDDFCF004EE702 /* Old Version Files */ = {
+			isa = PBXGroup;
+			children = (
+				CA62484E1FAE6943005F5A16 /* HomeTableViewController.swift */,
+				CA55D8C21FE97BD000724F10 /* Transition Controllers */,
+				CA8256FF1FE5C7EE008EF0B1 /* SubjectTableView */,
+			);
+			path = "Old Version Files";
 			sourceTree = "<group>";
 		};
 		CAF2005A1FBA93BF00413BC4 /* Keywords Popup */ = {
@@ -541,9 +572,12 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
+				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -565,9 +599,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -636,7 +673,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
+				CAAFDF551FEDD7CC004EE702 /* NavigationBarExtension.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
+				CAAFDF4E1FEDC636004EE702 /* HomePageViewController.swift in Sources */,
 				CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */,
 				CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */,
 				CA1A9EC11FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift in Sources */,
@@ -644,10 +683,13 @@
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
 				CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
+				CAAFDF501FEDC99B004EE702 /* RecordingsTableViewController.swift in Sources */,
+				CAAFDF521FEDD1FC004EE702 /* ColorManager.swift in Sources */,
 				CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */,
 				CA1A9EC51FE5CADA009A78CB /* RecordingCollectionViewCell.swift in Sources */,
 				CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */,
 				CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */,
+				CAAFDF571FEDDA92004EE702 /* RecordingTableViewCell.swift in Sources */,
 				CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */,
 				CA76AF291FB8C37C006E39AC /* KeywordsPopupView.swift in Sources */,
 				CA76AF321FB8E7AD006E39AC /* AddKeywordTableViewCell.swift in Sources */,

@@ -165,11 +165,16 @@ PODS:
   - NVActivityIndicatorView (4.0.0):
     - NVActivityIndicatorView/Presenter (= 4.0.0)
   - NVActivityIndicatorView/Presenter (4.0.0)
+  - Pageboy (2.1.0)
   - Protobuf (3.4.0)
+  - PureLayout (3.0.2)
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
   - Spring (1.0.3)
+  - Tabman (1.1.1):
+    - Pageboy (~> 2.0)
+    - PureLayout (~> 3.0)
   - TwitterCore (3.0.2)
   - TwitterKit (3.2.1):
     - TwitterCore (>= 3.0.2)
@@ -184,6 +189,7 @@ DEPENDENCIES:
   - FirebaseUI (~> 4.0)
   - NVActivityIndicatorView
   - Spring (from `https://github.com/MengTo/Spring.git`)
+  - Tabman (~> 1.0)
 
 EXTERNAL SOURCES:
   Spring:
@@ -221,15 +227,18 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: 4f46343e74e74a7ee8373ffeeaf772dfb330cbd7
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
-  leveldb-library: 44ef425bfde64f5b41daef86b38db2d13edbbee1
+  leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
+  Pageboy: f137e98cdb92c1913401d9d3c8888951ff81a630
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  Tabman: 929a09683a5b2f5abb9933abc83e000578356396
   TwitterCore: e0420b01e02e7d20e94690e37f43e75de219ab8d
   TwitterKit: 205ac89824bbfe9e85a16c420d30bb7bcbedac45
 
-PODFILE CHECKSUM: 42018616fcb2ec0001f86fe2252826d13d398c2b
+PODFILE CHECKSUM: a1420d04c29093ef48dcf8560ebdca467ba16e0c
 
 COCOAPODS: 1.3.1

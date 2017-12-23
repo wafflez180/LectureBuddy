@@ -5,50 +5,172 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Lecture Buddy-->
-        <scene sceneID="MZc-g5-c87">
+        <scene sceneID="OCN-02-Vhx">
             <objects>
-                <tableViewController title="Lecture Buddy" id="3vw-T0-Df5" customClass="HomeTableViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="75" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" id="Vns-fD-PZI">
+                <viewController title="Lecture Buddy" id="Z4U-ee-IlL" customClass="HomePageViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P4N-l3-qJ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="3vw-T0-Df5" id="pfj-wa-GaI"/>
-                            <outlet property="delegate" destination="3vw-T0-Df5" id="B5O-pN-gMr"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Lecture Buddy" largeTitleDisplayMode="always" id="QAr-go-kF9">
-                        <barButtonItem key="leftBarButtonItem" image="signout-icon" id="Zei-uP-7ZO">
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAG-fT-KSM" userLabel="Bottom Bar">
+                                <rect key="frame" x="0.0" y="491" width="375" height="60"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RxL-9l-PpE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvm-oS-Uno">
+                                            <rect key="frame" x="300" y="15" width="25" height="30"/>
+                                            <state key="normal" image="new-recording-bottombarbutton"/>
+                                            <connections>
+                                                <action selector="pressedNewRecordingButton:" destination="Z4U-ee-IlL" eventType="touchUpInside" id="jfn-oS-8vs"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dvm-oS-Uno" secondAttribute="trailing" constant="50" id="1zC-qf-37O"/>
+                                        <constraint firstItem="dvm-oS-Uno" firstAttribute="centerY" secondItem="RxL-9l-PpE" secondAttribute="centerY" id="aTy-KO-JVl"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qYx-vf-kN5"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZAG-fT-KSM" firstAttribute="leading" secondItem="CDR-NV-Sqo" secondAttribute="leading" id="JBL-tw-EP0"/>
+                            <constraint firstAttribute="bottom" secondItem="ZAG-fT-KSM" secondAttribute="bottom" id="t7b-yH-EeY"/>
+                            <constraint firstItem="ZAG-fT-KSM" firstAttribute="trailing" secondItem="CDR-NV-Sqo" secondAttribute="trailing" id="yB9-eX-GyT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CDR-NV-Sqo"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Lecture Buddy" id="LMs-Ki-Q4i">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="LWs-F1-8ch"/>
+                        <barButtonItem key="leftBarButtonItem" title="Settings" image="settings-navbutton" id="cd6-ka-4od">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="pressedSignOutButton:" destination="3vw-T0-Df5" id="OC3-jd-xrt"/>
+                                <action selector="pressedSettingsButton:" destination="Z4U-ee-IlL" id="IlT-k7-Sim"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="add-icon" id="6rN-Gr-OaS">
+                            <barButtonItem title="Add New Subject" image="add-subject-navbutton" id="dmd-28-ZRu">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="pressedAddSubject:" destination="3vw-T0-Df5" id="sQG-Br-Fbu"/>
+                                    <action selector="pressedAddSubjectButton:" destination="Z4U-ee-IlL" id="VCU-qM-VME"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="highlight-icon" id="hIt-qi-gJx">
+                            <barButtonItem title="Highlighting Keywords" image="highlighting-words-navbutton" id="kVV-lv-k82">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="pressedKeywordsButton:" destination="3vw-T0-Df5" id="I3s-QS-q7Y"/>
+                                    <action selector="pressedHighlightKeywordsButton:" destination="Z4U-ee-IlL" id="rNO-m8-ETE"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YU0-fJ-Vjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <segue destination="nEN-wc-lDU" kind="show" identifier="newRecording" id="Rct-nl-pN0"/>
+                        <segue destination="nEN-wc-lDU" kind="show" identifier="viewRecording" id="GSP-Q9-u1c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWK-io-UgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-364" y="178.56071964017991"/>
+            <point key="canvasLocation" x="-364" y="179"/>
+        </scene>
+        <!--Recordings Table View Controller-->
+        <scene sceneID="DQO-7L-L01">
+            <objects>
+                <tableViewController storyboardIdentifier="RecordingsTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KWv-Xi-CeI" customClass="RecordingsTableViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="apn-L8-a8v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordingCell" rowHeight="200" id="ROX-Cc-ZMn" customClass="RecordingTableViewCell" customModule="LectureBuddy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ROX-Cc-ZMn" id="x2Q-uc-1wQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture #3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-x5-3xU">
+                                            <rect key="frame" x="15" y="10" width="86.5" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-sk-lUA">
+                                            <rect key="frame" x="15" y="34.5" width="345" height="150"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="ICj-tq-Ybc"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="“…asthmatic boy with glasses who nevertheless possesses a keen intelligence. ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident.</string>
+                                                    <attributes>
+                                                        <color key="NSBackgroundColor" red="0.88235294117647056" green="0.8666666666666667" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" Ralph finds a conch shell, and when he blows it…”">
+                                                    <attributes>
+                                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500w • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ne-Ep-8bH">
+                                            <rect key="frame" x="262" y="10" width="98" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Bmm-sk-lUA" secondAttribute="bottom" constant="15" id="3DJ-qk-vSw"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bmm-sk-lUA" secondAttribute="trailing" constant="15" id="EDb-cj-fT9"/>
+                                        <constraint firstItem="7e0-x5-3xU" firstAttribute="leading" secondItem="x2Q-uc-1wQ" secondAttribute="leading" constant="15" id="MOW-nk-gPB"/>
+                                        <constraint firstAttribute="trailing" secondItem="9ne-Ep-8bH" secondAttribute="trailing" constant="15" id="Nnk-DX-0hJ"/>
+                                        <constraint firstItem="7e0-x5-3xU" firstAttribute="top" secondItem="x2Q-uc-1wQ" secondAttribute="top" constant="10" id="XF8-7t-Lh3"/>
+                                        <constraint firstItem="Bmm-sk-lUA" firstAttribute="leading" secondItem="x2Q-uc-1wQ" secondAttribute="leading" constant="15" id="evi-co-aTy"/>
+                                        <constraint firstItem="Bmm-sk-lUA" firstAttribute="top" secondItem="7e0-x5-3xU" secondAttribute="bottom" constant="10" id="tSS-yi-ayU"/>
+                                        <constraint firstItem="9ne-Ep-8bH" firstAttribute="top" secondItem="x2Q-uc-1wQ" secondAttribute="top" constant="10" id="tuf-W1-B7M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="9ne-Ep-8bH" id="rC7-yU-w1D"/>
+                                    <outlet property="textView" destination="Bmm-sk-lUA" id="XyN-0K-SP8"/>
+                                    <outlet property="titleLabel" destination="7e0-x5-3xU" id="9zA-KF-1ul"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KWv-Xi-CeI" id="Ul3-D9-0rt"/>
+                            <outlet property="delegate" destination="KWv-Xi-CeI" id="khF-TY-7Xe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sf9-bk-IZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-364" y="-549"/>
         </scene>
         <!--New Recording View Controller-->
         <scene sceneID="YTe-FH-4dF">
@@ -58,66 +180,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Recording" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ec-bgu">
-                                <rect key="frame" x="20" y="40" width="143" height="24"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture #3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfh-O0-aNU">
+                                <rect key="frame" x="15" y="45" width="86.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dc5-rj-32i">
-                                <rect key="frame" x="20" y="74" width="335" height="613"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
+                                <rect key="frame" x="15" y="76" width="345" height="441"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. </string>
+                                    <fragment content="“…asthmatic boy with glasses who nevertheless possesses a keen intelligence. ">
                                         <attributes>
-                                            <color key="NSColor" red="0.64313725490196072" green="0.66666666666666663" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with glasses who nevertheless possesses a keen intelligence. </string>
+                                        <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident.</string>
                                         <attributes>
-                                            <color key="NSColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="SFUIText-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                            <color key="NSBackgroundColor" red="0.88235294117647056" green="0.8666666666666667" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment>
-                                        <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident. Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island. </string>
+                                    <fragment content=" Ralph finds a conch shell, and when he blows it…”">
                                         <attributes>
-                                            <color key="NSColor" red="0.64313725490196072" green="0.66666666666666663" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island whom …">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1499999999999999" tighteningFactorForTruncation="0.0"/>
+                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DI-26-xPO">
+                                <rect key="frame" x="75" y="567" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4DI-26-xPO" secondAttribute="height" multiplier="1:1" id="Hr1-t1-cov"/>
+                                </constraints>
+                                <state key="normal" image="highlight-keywords-button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pg-SF-yQ6">
+                                <rect key="frame" x="250" y="567" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1Pg-SF-yQ6" secondAttribute="height" multiplier="1:1" id="P2y-9r-g02"/>
+                                </constraints>
+                                <state key="normal" image="stop-recording-button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500w • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
+                                <rect key="frame" x="262" y="45" width="98" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="dc5-rj-32i" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="20" id="1vH-tP-cVF"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L4a-ec-bgu" secondAttribute="trailing" constant="20" symbolic="YES" id="BmC-X5-J4j"/>
-                            <constraint firstItem="dc5-rj-32i" firstAttribute="bottom" secondItem="OOG-XD-pGm" secondAttribute="bottom" constant="20" id="DjV-Hj-w2x"/>
-                            <constraint firstItem="L4a-ec-bgu" firstAttribute="top" secondItem="OOG-XD-pGm" secondAttribute="top" constant="20" id="NaU-Bq-CiX"/>
-                            <constraint firstItem="L4a-ec-bgu" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="20" id="RIS-cT-bNa"/>
-                            <constraint firstItem="dc5-rj-32i" firstAttribute="top" secondItem="L4a-ec-bgu" secondAttribute="bottom" constant="10" id="bFm-rc-9eU"/>
-                            <constraint firstItem="OOG-XD-pGm" firstAttribute="trailing" secondItem="dc5-rj-32i" secondAttribute="trailing" constant="20" id="qPa-FW-5mH"/>
+                            <constraint firstItem="4DI-26-xPO" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="75" id="4LU-e7-eaj"/>
+                            <constraint firstItem="Bfh-O0-aNU" firstAttribute="top" secondItem="OOG-XD-pGm" secondAttribute="top" constant="25" id="7qk-u5-HGc"/>
+                            <constraint firstItem="OOG-XD-pGm" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
+                            <constraint firstItem="OOG-XD-pGm" firstAttribute="bottom" secondItem="4DI-26-xPO" secondAttribute="bottom" constant="50" id="Fw4-r4-qRf"/>
+                            <constraint firstItem="OOG-XD-pGm" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
+                            <constraint firstItem="OOG-XD-pGm" firstAttribute="bottom" secondItem="1Pg-SF-yQ6" secondAttribute="bottom" constant="50" id="ZvP-1U-A2w"/>
+                            <constraint firstItem="Bfh-O0-aNU" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="15" id="c1E-VA-67U"/>
+                            <constraint firstItem="4DI-26-xPO" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="50" id="dM7-75-98h"/>
+                            <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="Bfh-O0-aNU" secondAttribute="bottom" constant="10" id="hPK-8V-GYc"/>
+                            <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="OOG-XD-pGm" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
+                            <constraint firstItem="OOG-XD-pGm" firstAttribute="trailing" secondItem="1Pg-SF-yQ6" secondAttribute="trailing" constant="75" id="tsK-OT-bdX"/>
+                            <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="OOG-XD-pGm" secondAttribute="leading" constant="15" id="wK5-vD-QZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OOG-XD-pGm"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="75"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                 <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
@@ -132,6 +266,7 @@
                             <outletCollection property="gestureRecognizers" destination="6SH-bN-5Km" appends="YES" id="n1a-nZ-JoQ"/>
                         </connections>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmT-jd-wSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6SH-bN-5Km">
@@ -140,7 +275,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="648.79999999999995" y="172.26386806596702"/>
+            <point key="canvasLocation" x="476" y="178.56071964017991"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="aAT-f3-P3R">
@@ -164,7 +299,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3W7-Dd-tIc" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="174.5" y="321" width="25" height="25"/>
+                                <rect key="frame" x="175" y="321" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="I0M-Yy-J46"/>
@@ -178,7 +313,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.39215686274509803" green="0.32941176470588235" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.39215686274509803" green="0.32941176470588235" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gkt-li-G8n" firstAttribute="top" secondItem="VE6-uy-sXf" secondAttribute="top" constant="150" id="5Xz-IK-ixW"/>
                             <constraint firstItem="gkt-li-G8n" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="Ohd-cx-sEy"/>
@@ -208,7 +343,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="7DU-He-8L5">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.3921568627" green="0.3294117647" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.3921568627" green="0.3294117647" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -217,7 +352,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="3vw-T0-Df5" kind="relationship" relationship="rootViewController" id="aSg-Tu-2pP"/>
+                        <segue destination="Z4U-ee-IlL" kind="relationship" relationship="rootViewController" id="WWq-p9-i1J"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxV-P5-Hxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -233,7 +368,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgq-j8-Pgt" customClass="SpringView" customModule="Spring">
-                                <rect key="frame" x="30" y="223" width="315" height="220"/>
+                                <rect key="frame" x="30" y="223.5" width="315" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popup Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPE-vH-5Zh">
                                         <rect key="frame" x="20" y="15" width="215" height="25"/>
@@ -388,9 +523,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add-icon" width="19" height="18"/>
+        <image name="add-subject-navbutton" width="25" height="25"/>
         <image name="close-popup-icon" width="17" height="17"/>
-        <image name="highlight-icon" width="20" height="20"/>
-        <image name="signout-icon" width="18" height="21"/>
+        <image name="highlight-keywords-button" width="50" height="50"/>
+        <image name="highlighting-words-navbutton" width="25" height="25"/>
+        <image name="new-recording-bottombarbutton" width="25" height="30"/>
+        <image name="settings-navbutton" width="23" height="23"/>
+        <image name="stop-recording-button" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GSP-Q9-u1c"/>
+    </inferredMetricsTieBreakers>
 </document>
