@@ -107,7 +107,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     }
     
     @IBAction func pressedNewRecordingButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "newRecording", sender: self)
+
     }
     
     
