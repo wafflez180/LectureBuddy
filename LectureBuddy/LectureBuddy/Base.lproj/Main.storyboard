@@ -263,13 +263,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture #3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfh-O0-aNU">
-                                <rect key="frame" x="15" y="45" width="86.5" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
                                 <rect key="frame" x="15" y="76" width="345" height="512.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
@@ -316,7 +310,7 @@
                                         </attributes>
                                     </fragment>
                                 </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500w • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
                                 <rect key="frame" x="262" y="45" width="98" height="18"/>
@@ -330,7 +324,7 @@
                                     <constraint firstAttribute="height" constant="55" id="iwI-ar-TMr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Stop Recording">
+                                <state key="normal" title="Stop and Save Recording">
                                     <color key="titleColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -345,19 +339,25 @@
                                     <action selector="didPressStopRecording:" destination="nEN-wc-lDU" eventType="touchUpInside" id="ebF-a7-H9E"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O3N-eb-UZB">
+                                <rect key="frame" x="15" y="45" width="68" height="21"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Bfh-O0-aNU" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="7qk-u5-HGc"/>
+                            <constraint firstItem="O3N-eb-UZB" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="8ap-pB-UKZ"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
+                            <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="O3N-eb-UZB" secondAttribute="bottom" constant="10" id="Vjb-U4-YOh"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
-                            <constraint firstItem="Bfh-O0-aNU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="c1E-VA-67U"/>
-                            <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="Bfh-O0-aNU" secondAttribute="bottom" constant="10" id="hPK-8V-GYc"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
+                            <constraint firstItem="O3N-eb-UZB" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="vgB-ep-ruW"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="wK5-vD-QZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Htz-B2-FrI"/>
@@ -374,6 +374,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="counterAndDateLabel" destination="lC6-Mt-JrD" id="VhZ-db-bkZ"/>
+                        <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>
+                        <outlet property="titleTextField" destination="O3N-eb-UZB" id="o12-VX-x7m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmT-jd-wSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
