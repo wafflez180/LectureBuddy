@@ -27,9 +27,10 @@ class NewRecordingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Actions
     
     @IBAction func didPressStopRecording(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

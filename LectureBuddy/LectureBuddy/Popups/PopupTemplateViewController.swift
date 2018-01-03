@@ -162,12 +162,6 @@ class PopupTemplateViewController: UIViewController {
         let popupViewDistanceFromBottom = self.view.frame.size.height - bottomYValOfPopupView
         let overlapAmount = keyboardSize.height - popupViewDistanceFromBottom
         
-        print("\nOverlap Amount: \(overlapAmount)")
-        print("keyboardSize?.height : \(keyboardSize.height)")
-        print("\npopupViewDistanceFromBottom : \(popupViewDistanceFromBottom)")
-        print("self.view.frame.size.height : \(self.view.frame.size.height)")
-        print("bottomYValOfPopupView : \(bottomYValOfPopupView)")
-
         //Once keyboard is shown and overlap's the popupView, move the popupView up
         if overlapAmount > 0 {
             let padding : CGFloat = 10.0

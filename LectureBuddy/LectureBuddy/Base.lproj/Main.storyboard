@@ -129,6 +129,7 @@
                     <connections>
                         <outlet property="tabBarContainerView" destination="oDU-lf-caI" id="Exe-6S-dXk"/>
                         <segue destination="nEN-wc-lDU" kind="show" identifier="viewRecording" id="GSP-Q9-u1c"/>
+                        <segue destination="nEN-wc-lDU" kind="showDetail" identifier="newRecording" id="hJm-tV-kS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWK-io-UgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,10 +243,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                <rect key="frame" x="15" y="76" width="345" height="146"/>
+                                <rect key="frame" x="15" y="76" width="345" height="512.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="“…asthmatic boy with glasses who nevertheless possesses a keen intelligence. ">
+                                    <fragment content="“">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with glasses who nevertheless possesses a keen intelligence</string>
+                                        <attributes>
+                                            <font key="NSFont" size="15" name="SFUIText-Regular"/>
+                                            <real key="NSKern" value="0.65000000000000002"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
                                         <attributes>
                                             <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
@@ -259,9 +274,17 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" Ralph finds a conch shell, and when he blows it…”">
+                                    <fragment content=" ">
                                         <attributes>
                                             <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to…"</string>
+                                        <attributes>
+                                            <font key="NSFont" size="15" name="SFUIText-Regular"/>
+                                            <real key="NSKern" value="0.65000000000000002"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -274,16 +297,40 @@
                                 <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMP-Oh-zW5">
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="iwI-ar-TMr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Stop Recording">
+                                    <color key="titleColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressStopRecording:" destination="nEN-wc-lDU" eventType="touchUpInside" id="ebF-a7-H9E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Bfh-O0-aNU" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="7qk-u5-HGc"/>
+                            <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
+                            <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="Bfh-O0-aNU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="c1E-VA-67U"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="Bfh-O0-aNU" secondAttribute="bottom" constant="10" id="hPK-8V-GYc"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
+                            <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="wK5-vD-QZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Htz-B2-FrI"/>
@@ -303,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmT-jd-wSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="99"/>
+            <point key="canvasLocation" x="597.60000000000002" y="98.50074962518741"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="aAT-f3-P3R">
@@ -534,4 +581,7 @@
         <image name="new-recording-button" width="60" height="60"/>
         <image name="settings-navbutton" width="23" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hJm-tV-kS5"/>
+    </inferredMetricsTieBreakers>
 </document>
