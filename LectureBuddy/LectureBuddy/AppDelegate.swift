@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         firebaseRegisterRemoteNotifications(application: application)
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
     

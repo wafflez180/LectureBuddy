@@ -15,6 +15,8 @@ import FBSDKLoginKit
 
 class HomePageViewController: TabmanViewController, PageboyViewControllerDataSource {
     
+    @IBOutlet var tabBarContainerView: UIView!
+    
     var viewControllers:[UIViewController] = []
     
     // MARK: - ViewController
@@ -22,6 +24,8 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        hideBottomiPhoneXBar()
+        
         self.navigationController?.navigationBar.shouldRemoveShadow(true)
         self.dataSource = self
         
@@ -29,19 +33,44 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         reloadData()
     }
     
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return true
+    }
+    
     // MARK: - HomePageViewController
     
+    func hideBottomiPhoneXBar(){
+        // This is janky but if you remove this line of code there'll be a bottom bar cutting off the pageContentVC's content
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("iPhone 5 or 5S or 5C")
+            case 1334:
+                print("iPhone 6/6S/7/8")
+            case 2208:
+                print("iPhone 6+/6S+/7+/8+")
+            case 2436:
+                print("iPhone X")
+                self.additionalSafeAreaInsets = .init(top: 0, left: 0, bottom: -35, right: 0)
+            default:
+                print("unknown")
+            }
+        }
+    }
+    
     func configureTabBar(){
+        self.embedBar(in: self.tabBarContainerView)
+        
         // Appearance property list: https://github.com/uias/Tabman/blob/master/Docs/APPEARANCE.md
         self.bar.appearance = TabmanBar.Appearance({ (appearance) in
-            appearance.style.background = TabmanBar.BackgroundView.Style.solid(color: ColorManager.purple)
-
+            appearance.style.background = TabmanBar.BackgroundView.Style.solid(color: .clear)
+            //appearance.layout.itemDistribution = TabmanBar.Appearance.Layout.ItemDistribution.centered
+            
             appearance.text.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
             
-            appearance.indicator.color = .white
-            appearance.indicator.lineWeight = TabmanIndicator.LineWeight.thick
+            appearance.indicator.color = ColorManager.darkSkyBlue
             
-            appearance.state.color = ColorManager.lightPurple
+            appearance.state.color = ColorManager.lightGrey
             appearance.state.selectedColor = .white
         })
     }
@@ -128,6 +157,9 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
 
     }
     
+    
+    // TODO: - Put this functionality in the settings view controller
+    /*
     @IBAction func pressedMoreOptionsButton(_ sender: Any) {
         // create an actionSheet
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -146,7 +178,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         
         // present an actionSheet...
         present(actionSheetController, animated: true, completion: nil)
-    }
+    }*/
     
     // MARK: - Navigation
 

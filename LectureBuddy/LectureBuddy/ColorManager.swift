@@ -9,7 +9,8 @@
 import UIKit
 
 class ColorManager: NSObject {
-    static let lightPurple = UIColor.init(hex: "E1DDFD")
+    static let lightGrey = UIColor.init(hex: "9B9B9B")
     static let purple = UIColor.init(hex: "6454EA")
+    static let darkSkyBlue = UIColor.init(hex: "222D47")
     //static let lightC
 }
