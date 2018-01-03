@@ -31,10 +31,13 @@ class PopupTemplateViewController: UIViewController {
     var popupTitle:String!
     var buttonTitle:String!
     
+    var popupYOriginTranslationAmount : CGFloat = 0.0
+    
     // MARK: - PopupTemplateViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForKeyboardNotifications()
         configureUI()
     }
     
@@ -43,6 +46,7 @@ class PopupTemplateViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        deregisterFromKeyboardNotifications()
         // Reload parent's tableView if it is a UITableViewController
         if let homePageVC = self.presentingViewController as? HomePageViewController {
             homePageVC.reloadData()
@@ -135,6 +139,59 @@ class PopupTemplateViewController: UIViewController {
         }
     }
     
+    // MARK: - Keyboard Actions
+    
+    func registerForKeyboardNotifications(){
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size
+
+        let bottomYValOfPopupView = (self.popupView.frame.origin.y + self.popupView.frame.size.height)
+        let popupViewDistanceFromBottom = self.view.frame.size.height - bottomYValOfPopupView
+        let overlapAmount = keyboardSize.height - popupViewDistanceFromBottom
+        
+        print("\nOverlap Amount: \(overlapAmount)")
+        print("keyboardSize?.height : \(keyboardSize.height)")
+        print("\npopupViewDistanceFromBottom : \(popupViewDistanceFromBottom)")
+        print("self.view.frame.size.height : \(self.view.frame.size.height)")
+        print("bottomYValOfPopupView : \(bottomYValOfPopupView)")
+
+        //Once keyboard is shown and overlap's the popupView, move the popupView up
+        if overlapAmount > 0 {
+            let padding : CGFloat = 10.0
+            popupYOriginTranslationAmount = overlapAmount + padding
+            // Move the popupView up so the keyboard doesn't block part of it
+            var newFrame : CGRect = self.popupView.frame
+            newFrame.origin.y -= popupYOriginTranslationAmount
+            self.popupView.frame = newFrame
+        }
+    }
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
+        
+        if popupYOriginTranslationAmount != 0.0 {
+            // Move the popupView back down after it was moved up when the keyboard was shown
+            var newFrame : CGRect = self.popupView.frame
+            newFrame.origin.y += popupYOriginTranslationAmount
+            self.popupView.frame = newFrame
+            
+            popupYOriginTranslationAmount = 0.0
+        }
+    }
+
     // MARK: - Actions
     
     @IBAction func pressedDismissButton(_ sender: Any) {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,31 +22,39 @@
                         <rect key="frame" x="10" y="0.0" width="300" height="54.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Understand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdH-2q-nde">
-                                <rect key="frame" x="20" y="17" width="160" height="21"/>
+                                <rect key="frame" x="20" y="17" width="210" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.29411764705882354" green="0.28627450980392155" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLF-u2-JPP">
-                                <rect key="frame" x="200" y="0.0" width="100" height="54.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLF-u2-JPP">
+                                <rect key="frame" x="250" y="0.0" width="50" height="54.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="tTV-9e-Fpj"/>
+                                    <constraint firstAttribute="width" constant="50" id="tTV-9e-Fpj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <state key="normal" title="delete">
+                                <state key="normal" image="delete-highlight-keyword-icon">
                                     <color key="titleColor" red="0.39215686274509803" green="0.32941176470588235" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="pressedDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kUY-Lq-3g4"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGj-eN-bTZ" userLabel="Seperator View">
+                                <rect key="frame" x="249" y="0.0" width="1" height="55"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="zy8-B3-W8S"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.88235294119999996" green="0.86666666670000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mLF-u2-JPP" firstAttribute="top" secondItem="mV0-4a-xQn" secondAttribute="top" id="2QQ-78-fAk"/>
+                            <constraint firstItem="mLF-u2-JPP" firstAttribute="leading" secondItem="NGj-eN-bTZ" secondAttribute="trailing" id="BIP-vd-e9V"/>
                             <constraint firstItem="CdH-2q-nde" firstAttribute="leading" secondItem="mV0-4a-xQn" secondAttribute="leading" constant="20" id="FCd-8X-kyZ"/>
                             <constraint firstAttribute="trailing" secondItem="mLF-u2-JPP" secondAttribute="trailing" id="Kma-ve-nNm"/>
+                            <constraint firstAttribute="bottom" secondItem="NGj-eN-bTZ" secondAttribute="bottom" id="Oem-bJ-Wt3"/>
+                            <constraint firstItem="NGj-eN-bTZ" firstAttribute="top" secondItem="mV0-4a-xQn" secondAttribute="top" id="Uvj-b8-Mee"/>
                             <constraint firstItem="mLF-u2-JPP" firstAttribute="leading" secondItem="CdH-2q-nde" secondAttribute="trailing" constant="20" id="V6Y-tJ-lXZ"/>
                             <constraint firstAttribute="bottom" secondItem="mLF-u2-JPP" secondAttribute="bottom" id="XhW-sn-33a"/>
                             <constraint firstItem="CdH-2q-nde" firstAttribute="centerY" secondItem="mV0-4a-xQn" secondAttribute="centerY" id="dHw-fm-5Hn"/>
@@ -54,6 +62,12 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -78,4 +92,7 @@
             <point key="canvasLocation" x="34" y="62"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="delete-highlight-keyword-icon" width="18" height="20"/>
+    </resources>
 </document>

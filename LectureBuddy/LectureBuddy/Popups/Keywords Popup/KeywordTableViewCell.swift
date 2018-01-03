@@ -22,14 +22,13 @@ class KeywordTableViewCell: UITableViewCell {
 
     // MARK: - KeywordTableViewCell
 
-    func flashPurple(){
+    func flashBackgroundColor(){
         let oldColor = self.innerContentView.backgroundColor
-        // Fade to purple
+        // Fade to tintColor (grey)
         UIView.animate(withDuration: 0.15, delay: 0.0, options:[.curveEaseOut, .transitionCrossDissolve], animations: {
             self.innerContentView.backgroundColor = self.innerContentView.tintColor
-            
         }) { completed in
-            // Fade back to background color (gray)
+            // Fade back to original background color (clear)
             UIView.animate(withDuration: 0.15, delay: 0.0, options:[.curveEaseIn, .transitionCrossDissolve], animations: {
                 self.innerContentView.backgroundColor = oldColor
             })
