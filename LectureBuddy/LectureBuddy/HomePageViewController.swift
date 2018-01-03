@@ -135,7 +135,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     
     // TODO: - Add a default page! (design it first)
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
-        return nil
+        return nil // TODO: - Save open the last page they were on (NSUserDefaults) PageboyViewController.Page.at(index: 0)
     }
     
     // MARK: - Actions

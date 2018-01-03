@@ -10,6 +10,8 @@ import UIKit
 
 class RecordingsTableViewController: UITableViewController {
     
+    let recordings:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,12 +37,16 @@ class RecordingsTableViewController: UITableViewController {
         return true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
+    
+    /*override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        /*if self.recordings.count == 0 {
+            return tableView.dequeueReusableHeaderFooterView(withIdentifier: "EmptyStateHeader")
+        } else {
+            return nil
+        }*/
+        return tableView.dequeueReusableCell(withIdentifier: "EmptyStateHeader")
+    }*/
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
