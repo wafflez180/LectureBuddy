@@ -126,11 +126,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     
     func viewController(for pageboyViewController: PageboyViewController,
                         at index: PageboyViewController.PageIndex) -> UIViewController? {
-        let viewControllerPage = viewControllers[index] as! RecordingsTableViewController
-        
-        viewControllerPage.tableView.contentInset = .init(top: 100, left: 0, bottom: 0, right: 0)
-        
-        return viewControllerPage
+        return viewControllers[index]
     }
     
     // TODO: - Add a default page! (design it first)
