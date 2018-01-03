@@ -22,17 +22,7 @@ class RecordingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
-        setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .default
-        setNeedsStatusBarAppearanceUpdate()
-    }
-    
+        
     override func prefersHomeIndicatorAutoHidden() -> Bool {
         return true
     }
