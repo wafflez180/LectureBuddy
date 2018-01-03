@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +13,7 @@
         <!--Home Page View Controller-->
         <scene sceneID="OCN-02-Vhx">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Z4U-ee-IlL" customClass="HomePageViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Z4U-ee-IlL" customClass="HomePageViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P4N-l3-qJ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,15 +138,16 @@
         <!--Recordings Table View Controller-->
         <scene sceneID="DQO-7L-L01">
             <objects>
-                <tableViewController storyboardIdentifier="RecordingsTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KWv-Xi-CeI" customClass="RecordingsTableViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="100" sectionFooterHeight="-1" id="apn-L8-a8v">
+                <tableViewController storyboardIdentifier="RecordingsTableVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KWv-Xi-CeI" customClass="RecordingsTableViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="apn-L8-a8v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="VrE-5s-nMH"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordingCell" rowHeight="200" id="ROX-Cc-ZMn" customClass="RecordingTableViewCell" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="100" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ROX-Cc-ZMn" id="x2Q-uc-1wQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
@@ -242,7 +242,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                <rect key="frame" x="15" y="76" width="345" height="441"/>
+                                <rect key="frame" x="15" y="76" width="345" height="146"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment content="“…asthmatic boy with glasses who nevertheless possesses a keen intelligence. ">
@@ -268,23 +268,6 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DI-26-xPO">
-                                <rect key="frame" x="75" y="567" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4DI-26-xPO" secondAttribute="height" multiplier="1:1" id="Hr1-t1-cov"/>
-                                </constraints>
-                                <state key="normal" image="highlight-keywords-button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pg-SF-yQ6">
-                                <rect key="frame" x="250" y="567" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="1Pg-SF-yQ6" secondAttribute="height" multiplier="1:1" id="P2y-9r-g02"/>
-                                </constraints>
-                                <state key="normal" image="stop-recording-button"/>
-                                <connections>
-                                    <action selector="didPressStopRecording:" destination="nEN-wc-lDU" eventType="touchUpInside" id="n9o-FO-jS8"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500w • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
                                 <rect key="frame" x="262" y="45" width="98" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -295,17 +278,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="4DI-26-xPO" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="75" id="4LU-e7-eaj"/>
                             <constraint firstItem="Bfh-O0-aNU" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="7qk-u5-HGc"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
-                            <constraint firstItem="Htz-B2-FrI" firstAttribute="bottom" secondItem="4DI-26-xPO" secondAttribute="bottom" constant="50" id="Fw4-r4-qRf"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
-                            <constraint firstItem="Htz-B2-FrI" firstAttribute="bottom" secondItem="1Pg-SF-yQ6" secondAttribute="bottom" constant="50" id="ZvP-1U-A2w"/>
                             <constraint firstItem="Bfh-O0-aNU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="c1E-VA-67U"/>
-                            <constraint firstItem="4DI-26-xPO" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="50" id="dM7-75-98h"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="Bfh-O0-aNU" secondAttribute="bottom" constant="10" id="hPK-8V-GYc"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
-                            <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="1Pg-SF-yQ6" secondAttribute="trailing" constant="75" id="tsK-OT-bdX"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="wK5-vD-QZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Htz-B2-FrI"/>
@@ -552,10 +530,8 @@
     <resources>
         <image name="add-subject-navbutton" width="25" height="25"/>
         <image name="close-popup-icon" width="17" height="17"/>
-        <image name="highlight-keywords-button" width="50" height="50"/>
         <image name="highlighting-words-navbutton" width="25" height="25"/>
         <image name="new-recording-button" width="60" height="60"/>
         <image name="settings-navbutton" width="23" height="23"/>
-        <image name="stop-recording-button" width="50" height="50"/>
     </resources>
 </document>
