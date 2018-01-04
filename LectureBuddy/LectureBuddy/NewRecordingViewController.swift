@@ -8,6 +8,7 @@
 
 import UIKit
 import Speech
+import SwiftRichString
 
 class NewRecordingViewController: UIViewController {
     
@@ -63,11 +64,63 @@ class NewRecordingViewController: UIViewController {
     }
     
     func setTextViewText(transcription:String){
-        self.textView.attributedText = "\"...\""
+        var attributedTextViewText:NSMutableAttributedString = .init(string: transcription)
+
+        let defaultStyle = Style.default {
+            $0.lineSpacing = 1.20
+            $0.font = FontAttribute.system(size: textView.font!.pointSize)
+        }
+
+        attributedTextViewText = attributedTextViewText.set(style: defaultStyle)
+        
+        // Get the sentences containing a keyword and highlight them.
+        let highlightStyle = Style.default {
+            $0.backColor = SRColor.init(hex: "F8E71C") // Yellow
+            $0.lineSpacing = 1.20
+            $0.font = FontAttribute.system(size: textView.font!.pointSize)
+        }
+        
+        let keywordSentenceRanges = getKeywordSentenceRanges(transcription: transcription)
+
+        for sentenceRange in keywordSentenceRanges {
+            attributedTextViewText = attributedTextViewText.set(style: highlightStyle, range: sentenceRange)
+        }
+        
+        
+        self.textView.attributedText = ("\"" + attributedTextViewText + "...\"")
+    }
+    
+    func getKeywordSentenceRanges(transcription:String) -> [Range<String.Index>] {
+        let highlightingKeywords: [String] = DataManager.sharedInstance.highlightedKeywords
+        let transcribedSentences = transcription.split(separator: ".")
+        var sentencesWithKeyword:[String] = []
+        
+        // Go through each sentence and see if it contains a highlighting keyword.
+        // If it does, put the sentence in an array.
+        for sentence in transcribedSentences {
+            for keyword:String in highlightingKeywords {
+                if String(sentence).lowercased().contains(keyword.lowercased()) {
+                    sentencesWithKeyword.append(String(sentence))
+                    break
+                }
+            }
+        }
+        
+        var rangesOfKeywordSentences:[Range<String.Index>] = []
+
+        // Get the range of each keyword sentence
+        for sentence in sentencesWithKeyword {
+            rangesOfKeywordSentences.append(transcription.range(of: sentence)!)
+        }
+        
+        print(rangesOfKeywordSentences.count)
+        
+        return rangesOfKeywordSentences
     }
         
     func updateTexts(transcription:String){
         self.textView.text = "\"" + transcription + "...\""
+        setTextViewText(transcription: transcription)
         
         let wordList = transcription.split(separator: " ")
         setDateCounterLabel(numWords: wordList.count)

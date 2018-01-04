@@ -19,6 +19,7 @@ target 'LectureBuddy' do
   pod 'NVActivityIndicatorView'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
   pod 'Tabman', '~> 1.0'
+  pod 'SwiftRichString'
 
   target 'LectureBuddyTests' do
     inherit! :search_paths
