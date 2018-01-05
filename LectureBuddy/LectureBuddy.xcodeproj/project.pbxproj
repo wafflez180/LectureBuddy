@@ -45,6 +45,7 @@
 		CAAFDF521FEDD1FC004EE702 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */; };
 		CAAFDF551FEDD7CC004EE702 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF541FEDD7CC004EE702 /* NavigationBarExtension.swift */; };
 		CAAFDF571FEDDA92004EE702 /* RecordingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */; };
+		CAC3AB1220002B3400C23553 /* SpeechRecogitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */; };
 		CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */; };
 		D14A01ABA2421D63C173EBD1 /* Pods_LectureBuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04C9663DF04F7EC2A2254E5 /* Pods_LectureBuddyTests.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		CAAFDF541FEDD7CC004EE702 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
 		CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingTableViewCell.swift; sourceTree = "<group>"; };
+		CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecogitionManager.swift; sourceTree = "<group>"; };
 		CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTemplateViewController.swift; sourceTree = "<group>"; };
 		D04C9663DF04F7EC2A2254E5 /* Pods_LectureBuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LectureBuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA67A444FAE6EBE592477E01 /* Pods-LectureBuddyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddyTests/Pods-LectureBuddyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */,
 				CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */,
 				CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */,
+				CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */,
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
 				CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */,
 				CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */,
@@ -502,11 +505,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
@@ -683,6 +686,7 @@
 				CA1A9EC11FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift in Sources */,
 				CA76AF2E1FB8CBA0006E39AC /* KeywordTableViewCell.swift in Sources */,
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
+				CAC3AB1220002B3400C23553 /* SpeechRecogitionManager.swift in Sources */,
 				CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
 				CAAFDF501FEDC99B004EE702 /* RecordingsTableViewController.swift in Sources */,

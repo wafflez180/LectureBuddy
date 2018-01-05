@@ -10,36 +10,25 @@ import UIKit
 import Speech
 import SwiftRichString
 
-class NewRecordingViewController: UIViewController {
+class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
     @IBOutlet var counterAndDateLabel: UILabel!
     
-    // SFSpeechRecognizerDelegate
-    let audioEngine = AVAudioEngine()
-    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
-    let request = SFSpeechAudioBufferRecognitionRequest()
-    var recognitionTask: SFSpeechRecognitionTask?
-    
-    let audioDurationLimit = 60.0
-    var isRecordingSpeech = false
-    var resetSpeechRecognitionTimer: Timer = Timer()
-    
-    var repeatRecognitionCounter = 0
-    var repeatedRecognitionCancelledCheckCounter = 1
+    let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        speechRecognitionManager.delegate = self
         setInitialTexts()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.startSpeechRecognitionResetTimer()
-        self.recordAndRecognizeSpeech()
+        speechRecognitionManager.startRecognition()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +62,7 @@ class NewRecordingViewController: UIViewController {
     }
     
     func setTextViewText(transcription:String){
-        var attributedTextViewText:NSMutableAttributedString = .init(string: "\"" + transcription + "...\"")
+        var attributedTextViewText:NSMutableAttributedString = .init(string: transcription)
 
         let defaultStyle = Style.default {
             $0.lineSpacing = 1.20
@@ -95,7 +84,7 @@ class NewRecordingViewController: UIViewController {
             attributedTextViewText = attributedTextViewText.set(style: highlightStyle, range: sentenceRange)
         }
         
-        self.textView.attributedText = attributedTextViewText
+        self.textView.attributedText = "\"".set(style: defaultStyle) + attributedTextViewText + "...\"".set(style: defaultStyle)
     }
     
     func getKeywordSentenceRanges(transcription:String) -> [Range<String.Index>] {
@@ -121,23 +110,32 @@ class NewRecordingViewController: UIViewController {
             rangesOfKeywordSentences.append(transcription.range(of: sentence)!)
         }
         
-        print(rangesOfKeywordSentences.count)
+        //print(rangesOfKeywordSentences.count)
         
         return rangesOfKeywordSentences
     }
+    
+    // MARK: - SpeechRecognitionManagerDelegate
+    
+    func recognizedSpeech(bestTranscription: String) {
+        setTextViewText(transcription: bestTranscription)
         
-    func updateTexts(transcription:String){
-        setTextViewText(transcription: transcription)
-        
-        let wordList = transcription.split(separator: " ")
+        let wordList = bestTranscription.split(separator: " ")
         setDateCounterLabel(numWords: wordList.count)
     }
     
+    func checkedIfRecognitionFinishedCancelling(secondsWaiting: Int) {
+        //print("\(secondsWaiting)s waiting for cancellation to complete.")
+    }
+    
+    func restartedRecognition(){
+        // TODO: Remove the 'Sorry for the inconvience' banner 
+    }
+
     // MARK: - Actions
     
     @IBAction func didPressStopRecording(_ sender: Any) {
-        endRecording()
-        resetSpeechRecognitionTimer.invalidate()
+        speechRecognitionManager.stopRecognition()
         self.dismiss(animated: true, completion: nil)
     }
     /*
@@ -150,101 +148,4 @@ class NewRecordingViewController: UIViewController {
     }
     */
 
-}
-
-// Check out the link to understand this SFSpeechRecognizerDelegate code : https://medium.com/ios-os-x-development/speech-recognition-with-swift-in-ios-10-50d5f4e59c48
-extension NewRecordingViewController : SFSpeechRecognizerDelegate {
-    
-    func startSpeechRecognitionResetTimer() {
-        resetSpeechRecognitionTimer.invalidate()
-        resetSpeechRecognitionTimer = Timer.scheduledTimer(timeInterval: audioDurationLimit, target: self, selector: #selector(resetSpeechRecognitionTask), userInfo: nil, repeats: false)
-    }
-    
-    func recordAndRecognizeSpeech(){
-        let node = audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus: 0)
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
-            self.request.append(buffer)
-        }
-        
-        audioEngine.prepare()
-        do {
-            try audioEngine.start()
-        } catch {
-            print(error)
-        }
-        
-        // TODO: - Handle these errors with a UIAlert view
-        guard let myRecognizer = SFSpeechRecognizer() else {
-            // A recognizer is not supported for the current locale
-            print("A recognizer is not supported for the current locale")
-            return
-        }
-        if !myRecognizer.isAvailable {
-            // A recogniszer is not avaliable right now
-            print("A recogniszer is not avaliable right now")
-            return
-        }
-        
-        isRecordingSpeech = true
-        
-        print("isCancelled: \(String(describing: recognitionTask?.isCancelled))")
-        print("isFinishing: \(String(describing: recognitionTask?.isFinishing))")
-        print("state: \(String(describing: recognitionTask?.state.rawValue))")
-        print("state completed: \(String(describing: SFSpeechRecognitionTaskState.completed.rawValue))")
-        print("state canceling: \(String(describing: SFSpeechRecognitionTaskState.canceling.rawValue))")
-        print("state finishing: \(String(describing: SFSpeechRecognitionTaskState.finishing.rawValue))")
-        print("state running: \(String(describing: SFSpeechRecognitionTaskState.running.rawValue))")
-        print("state starting: \(String(describing: SFSpeechRecognitionTaskState.starting.rawValue))")
-
-        repeatRecognitionCounter+=1
-        self.textView.text = String(describing: repeatRecognitionCounter)
-        
-        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
-            if result != nil {
-                if let result = result {
-                    
-                    let bestString = result.bestTranscription.formattedString
-                    self.updateTexts(transcription: bestString)
-                    
-                } else if let error = error {
-                    print(error)
-                }
-            }
-        })
-    }
-    
-    func endRecording(){
-        request.endAudio()
-        audioEngine.stop()
-
-        let node = audioEngine.inputNode
-        node.removeTap(onBus: 0)
-        
-        recognitionTask?.cancel()
-    }
-    
-    func recordSpeechAfterTaskIsFinishedCompleting(){
-        //print("recordSpeechAfterTaskIsFinishedCompleting")
-        //print("state: \(String(describing: recognitionTask?.state.rawValue))")
-        if recognitionTask?.state == .completed {
-            startSpeechRecognitionResetTimer()
-            recordAndRecognizeSpeech()
-            repeatedRecognitionCancelledCheckCounter = 1
-        } else {
-            print("\(repeatedRecognitionCancelledCheckCounter)s waiting for cancellation to complete.")
-            repeatedRecognitionCancelledCheckCounter+=1
-            // Call this method again till the task has completed
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                self.recordSpeechAfterTaskIsFinishedCompleting()
-            })
-        }
-    }
-    
-    @objc func resetSpeechRecognitionTask() { // resetSpeechRecognitionTaskWithTimer ? Need to change the name of it maybe?
-        if isRecordingSpeech {
-            endRecording()
-            recordSpeechAfterTaskIsFinishedCompleting()
-        }
-    }
 }
