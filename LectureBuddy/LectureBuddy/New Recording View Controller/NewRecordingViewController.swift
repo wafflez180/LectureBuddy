@@ -16,9 +16,10 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var textView: UITextView!
     @IBOutlet var counterAndDateLabel: UILabel!
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
+    @IBOutlet var audioWaveView: AudioWaveView!
     
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
-
+    
     // MARK: - UIViewController
 
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     
     override func viewDidAppear(_ animated: Bool) {
         speechRecognitionManager.startRecognition()
+        audioWaveView.startListening(updateTimeInterval: 0.1, speechRecogManager: speechRecognitionManager)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -140,6 +142,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     
     @IBAction func didPressStopRecording(_ sender: Any) {
         speechRecognitionManager.stopRecognition()
+        audioWaveView.stopListening()
         self.dismiss(animated: true, completion: nil)
     }
     /*

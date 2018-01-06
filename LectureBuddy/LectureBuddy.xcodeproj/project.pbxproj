@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07BC145D186B8CB3D8480D73 /* Pods_LectureBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C2D05E45C5D9C003C9C9C /* Pods_LectureBuddy.framework */; };
 		74FA1658F18922B82703CB0E /* Pods_LectureBuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2B955654D046E2EBAE9F43 /* Pods_LectureBuddyUITests.framework */; };
+		CA000BB02001957300ABF3B6 /* AudioWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA000BAF2001957300ABF3B6 /* AudioWaveView.swift */; };
 		CA1A9EC11FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A9EBF1FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift */; };
 		CA1A9EC21FE5CABF009A78CB /* NewRecordingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1A9EC01FE5CABF009A78CB /* NewRecordingCollectionViewCell.xib */; };
 		CA1A9EC51FE5CADA009A78CB /* RecordingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A9EC31FE5CAD9009A78CB /* RecordingCollectionViewCell.swift */; };
@@ -74,6 +75,7 @@
 		3D821761BCFF6C506422953F /* Pods-LectureBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddy/Pods-LectureBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		6D2B955654D046E2EBAE9F43 /* Pods_LectureBuddyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LectureBuddyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B26A1B8D5644123B1D71854 /* Pods-LectureBuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureBuddyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LectureBuddyUITests/Pods-LectureBuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CA000BAF2001957300ABF3B6 /* AudioWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioWaveView.swift; sourceTree = "<group>"; };
 		CA1A9EBF1FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordingCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA1A9EC01FE5CABF009A78CB /* NewRecordingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewRecordingCollectionViewCell.xib; sourceTree = "<group>"; };
 		CA1A9EC31FE5CAD9009A78CB /* RecordingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -211,7 +213,6 @@
 				CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */,
 				CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */,
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
-				CA7C9E28200173FF003786C9 /* WaveformView */,
 				CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */,
 				CAA58E95200160D000555696 /* New Recording View Controller */,
 				CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */,
@@ -266,12 +267,13 @@
 			path = Popups;
 			sourceTree = "<group>";
 		};
-		CA7C9E28200173FF003786C9 /* WaveformView */ = {
+		CA7C9E28200173FF003786C9 /* Audio Wave Files */ = {
 			isa = PBXGroup;
 			children = (
+				CA000BAF2001957300ABF3B6 /* AudioWaveView.swift */,
 				CA7C9E292001744D003786C9 /* WaveformView.swift */,
 			);
-			path = WaveformView;
+			path = "Audio Wave Files";
 			sourceTree = "<group>";
 		};
 		CA8256FF1FE5C7EE008EF0B1 /* SubjectTableView */ = {
@@ -295,6 +297,7 @@
 				CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */,
 				CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */,
 				CAA58E93200160C800555696 /* RestartingRecognitionView.swift */,
+				CA7C9E28200173FF003786C9 /* Audio Wave Files */,
 			);
 			path = "New Recording View Controller";
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				CA76AF2E1FB8CBA0006E39AC /* KeywordTableViewCell.swift in Sources */,
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
 				CAA58E94200160C800555696 /* RestartingRecognitionView.swift in Sources */,
+				CA000BB02001957300ABF3B6 /* AudioWaveView.swift in Sources */,
 				CAC3AB1220002B3400C23553 /* SpeechRecogitionManager.swift in Sources */,
 				CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,

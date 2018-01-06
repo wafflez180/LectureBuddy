@@ -264,7 +264,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                <rect key="frame" x="15" y="80" width="345" height="412"/>
+                                <rect key="frame" x="15" y="80" width="345" height="382"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment content="“">
@@ -274,16 +274,10 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with glasses who nevertheless possesses a keen intelligence</string>
+                                        <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. </string>
                                         <attributes>
                                             <font key="NSFont" size="15" name="SFUIText-Regular"/>
                                             <real key="NSKern" value="0.65000000000000002"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -302,7 +296,7 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to…"</string>
+                                        <string key="content">Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir.</string>
                                         <attributes>
                                             <font key="NSFont" size="15" name="SFUIText-Regular"/>
                                             <real key="NSKern" value="0.65000000000000002"/>
@@ -390,11 +384,29 @@ recognition due to Apple’s restrictions.</string>
                                     <outlet property="titleLabel" destination="cH0-Be-PjX" id="dZU-ko-YYJ"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
+                                <rect key="frame" x="162.5" y="477" width="50" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mq0-JQ-gMs"/>
+                                    <constraint firstAttribute="width" constant="50" id="ywC-kw-4D0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="primaryWaveLineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondaryWaveLineWidth">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="density">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="30" id="7eY-Cc-6XH"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="8ap-pB-UKZ"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
@@ -404,8 +416,11 @@ recognition due to Apple’s restrictions.</string>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="20" symbolic="YES" id="dmX-ny-6H9"/>
+                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="15" id="erM-3y-xlC"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="d64-aq-ZQU" secondAttribute="trailing" id="gOg-U4-Ebv"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
+                            <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="15" id="sIh-5h-qgo"/>
+                            <constraint firstItem="vVi-O1-neX" firstAttribute="centerX" secondItem="0cA-1O-bIV" secondAttribute="centerX" id="uW0-pm-C1V"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="vgB-ep-ruW"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="wK5-vD-QZ8"/>
@@ -425,6 +440,7 @@ recognition due to Apple’s restrictions.</string>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="audioWaveView" destination="vVi-O1-neX" id="OZa-hd-hm8"/>
                         <outlet property="counterAndDateLabel" destination="lC6-Mt-JrD" id="VhZ-db-bkZ"/>
                         <outlet property="restartingRecognitionView" destination="d64-aq-ZQU" id="50K-FH-ewh"/>
                         <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>

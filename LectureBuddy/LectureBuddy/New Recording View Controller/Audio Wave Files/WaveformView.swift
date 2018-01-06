@@ -11,6 +11,8 @@ import Darwin
 
 let pi = Double.pi
 
+// Github Repo: https://github.com/jyunderwood/WaveformView-iOS
+
 @IBDesignable
 public class WaveformView: UIView {
     fileprivate var _phase: CGFloat = 0.0
@@ -30,7 +32,8 @@ public class WaveformView: UIView {
             return _amplitude
         }
     }
-
+    
+    // Level must be within 0.09 - 0.00
     public func updateWithLevel(_ level: CGFloat) {
         _phase += phaseShift
         _amplitude = fmax(level, idleAmplitude)

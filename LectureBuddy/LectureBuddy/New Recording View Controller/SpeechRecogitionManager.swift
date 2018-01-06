@@ -32,6 +32,7 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
     
     var delegate: SpeechRecognitionManagerDelegate?
     private var isDebugging:Bool = false
+    var volumeFloat:CGFloat = 0.0
     
     init(isDebugging: Bool) {
         self.isDebugging = isDebugging
@@ -56,6 +57,13 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            let dataptrptr = buffer.floatChannelData!           //Get buffer of floats
+            let dataptr = dataptrptr.pointee
+            let datum = dataptr[Int(buffer.frameLength) - 1]    //Get a single float to read
+            
+            //store the float on the variable
+            self.volumeFloat = CGFloat(fabs((datum)))
+
             self.request.append(buffer)
         }
         
@@ -98,6 +106,8 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
                     let bestString = result.bestTranscription.formattedString
                     self.delegate?.recognizedSpeech(bestTranscription: bestString)
                     
+                    print(self.audioEngine)
+                    
                 } else if let error = error {
                     print(error)
                 }
@@ -108,8 +118,6 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
     private func endRecording(){
         request.endAudio()
         audioEngine.stop()
-        
-        //audioEngine.inputNode.
         
         let node = audioEngine.inputNode
         node.removeTap(onBus: 0)
