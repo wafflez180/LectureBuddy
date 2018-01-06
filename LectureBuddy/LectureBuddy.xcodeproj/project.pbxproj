@@ -33,11 +33,13 @@
 		CA76AF2F1FB8CBA0006E39AC /* KeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF2D1FB8CBA0006E39AC /* KeywordTableViewCell.xib */; };
 		CA76AF321FB8E7AD006E39AC /* AddKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76AF301FB8E7AD006E39AC /* AddKeywordTableViewCell.swift */; };
 		CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */; };
+		CA7C9E2A2001744D003786C9 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C9E292001744D003786C9 /* WaveformView.swift */; };
 		CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */; };
 		CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */; };
 		CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */; };
 		CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */; };
 		CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F13141FB5692100DAE153 /* PopupContentView.swift */; };
+		CAA58E94200160C800555696 /* RestartingRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA58E93200160C800555696 /* RestartingRecognitionView.swift */; };
 		CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */; };
 		CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */; };
 		CAAFDF4E1FEDC636004EE702 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */; };
@@ -103,11 +105,13 @@
 		CA76AF2D1FB8CBA0006E39AC /* KeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordTableViewCell.xib; sourceTree = "<group>"; };
 		CA76AF301FB8E7AD006E39AC /* AddKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddKeywordTableViewCell.swift; sourceTree = "<group>"; };
 		CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKeywordTableViewCell.xib; sourceTree = "<group>"; };
+		CA7C9E292001744D003786C9 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
 		CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectPopupView.swift; sourceTree = "<group>"; };
 		CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectPopupView.xib; sourceTree = "<group>"; };
 		CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordingViewController.swift; sourceTree = "<group>"; };
 		CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationController.swift; sourceTree = "<group>"; };
 		CA9F13141FB5692100DAE153 /* PopupContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContentView.swift; sourceTree = "<group>"; };
+		CAA58E93200160C800555696 /* RestartingRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartingRecognitionView.swift; sourceTree = "<group>"; };
 		CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectHeaderView.swift; sourceTree = "<group>"; };
 		CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectHeaderView.xib; sourceTree = "<group>"; };
 		CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -206,12 +210,12 @@
 				CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */,
 				CA5AA4B11FAF9DC300E0A308 /* DataManager.swift */,
 				CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */,
-				CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */,
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
+				CA7C9E28200173FF003786C9 /* WaveformView */,
 				CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */,
+				CAA58E95200160D000555696 /* New Recording View Controller */,
 				CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */,
 				CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */,
-				CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */,
 				CAAFDF581FEDDFCF004EE702 /* Old Version Files */,
 				CA5AA4B01FAF8D7900E0A308 /* Popups */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
@@ -262,6 +266,14 @@
 			path = Popups;
 			sourceTree = "<group>";
 		};
+		CA7C9E28200173FF003786C9 /* WaveformView */ = {
+			isa = PBXGroup;
+			children = (
+				CA7C9E292001744D003786C9 /* WaveformView.swift */,
+			);
+			path = WaveformView;
+			sourceTree = "<group>";
+		};
 		CA8256FF1FE5C7EE008EF0B1 /* SubjectTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +287,16 @@
 				CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */,
 			);
 			path = SubjectTableView;
+			sourceTree = "<group>";
+		};
+		CAA58E95200160D000555696 /* New Recording View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */,
+				CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */,
+				CAA58E93200160C800555696 /* RestartingRecognitionView.swift */,
+			);
+			path = "New Recording View Controller";
 			sourceTree = "<group>";
 		};
 		CAAFDF531FEDD7AB004EE702 /* Extensions */ = {
@@ -686,6 +708,7 @@
 				CA1A9EC11FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift in Sources */,
 				CA76AF2E1FB8CBA0006E39AC /* KeywordTableViewCell.swift in Sources */,
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
+				CAA58E94200160C800555696 /* RestartingRecognitionView.swift in Sources */,
 				CAC3AB1220002B3400C23553 /* SpeechRecogitionManager.swift in Sources */,
 				CA5AA4B21FAF9DC400E0A308 /* DataManager.swift in Sources */,
 				CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */,
@@ -693,6 +716,7 @@
 				CAAFDF521FEDD1FC004EE702 /* ColorManager.swift in Sources */,
 				CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */,
 				CA1A9EC51FE5CADA009A78CB /* RecordingCollectionViewCell.swift in Sources */,
+				CA7C9E2A2001744D003786C9 /* WaveformView.swift in Sources */,
 				CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */,
 				CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */,
 				CAAFDF571FEDDA92004EE702 /* RecordingTableViewCell.swift in Sources */,

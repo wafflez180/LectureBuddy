@@ -109,6 +109,8 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
         request.endAudio()
         audioEngine.stop()
         
+        //audioEngine.inputNode.
+        
         let node = audioEngine.inputNode
         node.removeTap(onBus: 0)
         

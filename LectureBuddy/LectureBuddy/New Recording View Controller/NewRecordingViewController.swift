@@ -15,6 +15,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
     @IBOutlet var counterAndDateLabel: UILabel!
+    @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
 
@@ -24,6 +25,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         super.viewDidLoad()
         
         speechRecognitionManager.delegate = self
+        restartingRecognitionView.setupView()
         setInitialTexts()
     }
     
@@ -125,10 +127,12 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     }
     
     func checkedIfRecognitionFinishedCancelling(secondsWaiting: Int) {
+        restartingRecognitionView.show(withSecondsWaiting: secondsWaiting)
         //print("\(secondsWaiting)s waiting for cancellation to complete.")
     }
     
     func restartedRecognition(){
+        restartingRecognitionView.animateOut()
         // TODO: Remove the 'Sorry for the inconvience' banner 
     }
 
