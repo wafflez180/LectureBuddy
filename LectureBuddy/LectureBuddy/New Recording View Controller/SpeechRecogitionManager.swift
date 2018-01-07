@@ -53,17 +53,24 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
         resetSpeechRecognitionTimer = Timer.scheduledTimer(timeInterval: applesAudioDurationLimit, target: self, selector: #selector(resetSpeechRecognitionTask), userInfo: nil, repeats: false)
     }
     
+    // Check out this link to understand how this works: https://miguelsaldana.me/2017/03/18/how-to-create-a-volume-meter-in-swift-3/
+    func updateVolume(withBuffer:AVAudioPCMBuffer){
+        let buffer = withBuffer
+        
+        let dataptrptr = buffer.floatChannelData!           //Get buffer of floats
+        let dataptr = dataptrptr.pointee
+        let datum = dataptr[Int(buffer.frameLength) - 1]    //Get a single float to read
+        
+        //store the float on the variable
+        self.volumeFloat = CGFloat(fabs((datum)))
+    }
+    
     private func recordAndRecognizeSpeech(){
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
+        
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
-            let dataptrptr = buffer.floatChannelData!           //Get buffer of floats
-            let dataptr = dataptrptr.pointee
-            let datum = dataptr[Int(buffer.frameLength) - 1]    //Get a single float to read
-            
-            //store the float on the variable
-            self.volumeFloat = CGFloat(fabs((datum)))
-
+            self.updateVolume(withBuffer: buffer)
             self.request.append(buffer)
         }
         
@@ -105,8 +112,6 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
                     
                     let bestString = result.bestTranscription.formattedString
                     self.delegate?.recognizedSpeech(bestTranscription: bestString)
-                    
-                    print(self.audioEngine)
                     
                 } else if let error = error {
                     print(error)
