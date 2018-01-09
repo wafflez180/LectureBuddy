@@ -10,7 +10,7 @@ import UIKit
 import Speech
 import SwiftRichString
 
-class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate {
+class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
@@ -18,14 +18,18 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
     
+    var hasEditedTitleField = false
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
     
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addDismissKeyboardTapGesture()
         
+        titleTextField.delegate = self
         speechRecognitionManager.delegate = self
+        
         restartingRecognitionView.setupView()
         setInitialTexts()
     }
@@ -75,7 +79,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
 
         attributedTextViewText = attributedTextViewText.set(style: defaultStyle)
         
-        // Get the sentences containing a keyword and highlight them.
+        // Get the range of each sentence that contains a keyword and highlight them.
         let highlightStyle = Style.default {
             $0.backColor = SRColor.init(hex: "F8E71C") // Yellow
             $0.lineSpacing = 1.20
@@ -118,6 +122,24 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         //print(rangesOfKeywordSentences.count)
         
         return rangesOfKeywordSentences
+    }
+    
+    // MARK: - TextFieldDelegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if hasEditedTitleField == false {
+            
+            self.titleTextField.selectAll(nil)
+            
+            hasEditedTitleField = true
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        self.dismissKeyboard()
+        
+        return false
     }
     
     // MARK: - SpeechRecognitionManagerDelegate
