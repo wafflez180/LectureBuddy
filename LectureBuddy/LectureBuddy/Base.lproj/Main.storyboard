@@ -263,9 +263,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                <rect key="frame" x="15" y="80" width="345" height="318.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
+                                <rect key="frame" x="15" y="80" width="345" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="60d-sJ-E90"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="“">
                                         <attributes>
@@ -385,7 +388,7 @@ recognition due to Apple’s restrictions.</string>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="162.5" y="413.5" width="50" height="30"/>
+                                <rect key="frame" x="162.5" y="125" width="50" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mq0-JQ-gMs"/>
@@ -444,6 +447,7 @@ recognition due to Apple’s restrictions.</string>
                         <outlet property="counterAndDateLabel" destination="lC6-Mt-JrD" id="VhZ-db-bkZ"/>
                         <outlet property="restartingRecognitionView" destination="d64-aq-ZQU" id="50K-FH-ewh"/>
                         <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>
+                        <outlet property="textViewHeightConstraint" destination="60d-sJ-E90" id="NcT-W5-pLd"/>
                         <outlet property="titleTextField" destination="O3N-eb-UZB" id="o12-VX-x7m"/>
                     </connections>
                 </viewController>

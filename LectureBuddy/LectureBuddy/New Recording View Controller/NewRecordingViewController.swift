@@ -18,6 +18,8 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
     
+    @IBOutlet var textViewHeightConstraint: NSLayoutConstraint!
+    
     var hasEditedTitleField = false
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
     
@@ -93,7 +95,13 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         }
         
         self.textView.attributedText = "\"".set(style: defaultStyle) + attributedTextViewText + "...\"".set(style: defaultStyle)
-        self.textView.sizeToFit()
+        
+        textViewHeightConstraint.constant = self.textView.contentSize.height
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+        
+        self.textView.scrollToBotom()
     }
     
     func getKeywordSentenceRanges(transcription:String) -> [Range<String.Index>] {
@@ -158,7 +166,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     
     func restartedRecognition(){
         restartingRecognitionView.animateOut()
-        // TODO: Remove the 'Sorry for the inconvience' banner 
+        // TODO: Remove the 'Sorry for the inconvience' banner
     }
 
     // MARK: - Actions
