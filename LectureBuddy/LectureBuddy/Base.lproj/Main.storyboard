@@ -318,6 +318,26 @@
                                 <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-tj-2SK">
+                                <rect key="frame" x="0.0" y="558" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="irn-4X-HWY"/>
+                                </constraints>
+                                <state key="normal" image="follow-speech-arrow-icon">
+                                    <color key="titleColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressFollowSpeechButton:" destination="nEN-wc-lDU" eventType="touchUpInside" id="mkS-6t-UoK"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMP-Oh-zW5">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <constraints>
@@ -336,7 +356,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didPressStopRecording:" destination="nEN-wc-lDU" eventType="touchUpInside" id="ebF-a7-H9E"/>
+                                    <action selector="didPressStopRecordingButton:" destination="nEN-wc-lDU" eventType="touchUpInside" id="eYk-N7-Oai"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O3N-eb-UZB">
@@ -349,7 +369,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
                             </textField>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d64-aq-ZQU" customClass="RestartingRecognitionView" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="522" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="468" width="375" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="5s Waiting to restart recognition…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH0-Be-PjX">
                                         <rect key="frame" x="15" y="10" width="345" height="18"/>
@@ -410,16 +430,19 @@ recognition due to Apple’s restrictions.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="jgE-tj-2SK" firstAttribute="trailing" secondItem="Htz-B2-FrI" secondAttribute="trailing" id="27f-tn-o4L"/>
+                            <constraint firstItem="jgE-tj-2SK" firstAttribute="top" secondItem="d64-aq-ZQU" secondAttribute="bottom" id="6bj-xb-IUm"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="8ap-pB-UKZ"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
+                            <constraint firstItem="jgE-tj-2SK" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="Fun-NL-3b4"/>
+                            <constraint firstItem="nMP-Oh-zW5" firstAttribute="top" secondItem="jgE-tj-2SK" secondAttribute="bottom" constant="-1" id="GKU-5F-XOm"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
                             <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="O3N-eb-UZB" secondAttribute="bottom" constant="10" id="Vjb-U4-YOh"/>
-                            <constraint firstItem="nMP-Oh-zW5" firstAttribute="top" secondItem="d64-aq-ZQU" secondAttribute="bottom" id="XoX-cc-Uu5"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="20" symbolic="YES" id="dmX-ny-6H9"/>
-                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="15" id="erM-3y-xlC"/>
+                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="10" id="erM-3y-xlC"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="d64-aq-ZQU" secondAttribute="trailing" id="gOg-U4-Ebv"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
                             <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="15" id="sIh-5h-qgo"/>
@@ -445,7 +468,9 @@ recognition due to Apple’s restrictions.</string>
                     <connections>
                         <outlet property="audioWaveView" destination="vVi-O1-neX" id="OZa-hd-hm8"/>
                         <outlet property="counterAndDateLabel" destination="lC6-Mt-JrD" id="VhZ-db-bkZ"/>
+                        <outlet property="followSpeechButtonHeightConstraint" destination="irn-4X-HWY" id="5Us-ty-bak"/>
                         <outlet property="restartingRecognitionView" destination="d64-aq-ZQU" id="50K-FH-ewh"/>
+                        <outlet property="stopAndSaveRecordingHeightConstraint" destination="iwI-ar-TMr" id="C5x-g4-K6c"/>
                         <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>
                         <outlet property="textViewHeightConstraint" destination="60d-sJ-E90" id="NcT-W5-pLd"/>
                         <outlet property="titleTextField" destination="O3N-eb-UZB" id="o12-VX-x7m"/>
@@ -680,6 +705,7 @@ recognition due to Apple’s restrictions.</string>
     <resources>
         <image name="add-subject-navbutton" width="25" height="25"/>
         <image name="close-popup-icon" width="17" height="17"/>
+        <image name="follow-speech-arrow-icon" width="26" height="14"/>
         <image name="highlighting-words-navbutton" width="25" height="25"/>
         <image name="new-recording-button" width="60" height="60"/>
         <image name="settings-navbutton" width="23" height="23"/>

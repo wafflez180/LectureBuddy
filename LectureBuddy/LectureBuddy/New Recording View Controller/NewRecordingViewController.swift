@@ -10,7 +10,7 @@ import UIKit
 import Speech
 import SwiftRichString
 
-class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate {
+class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
@@ -18,8 +18,11 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
     
+    @IBOutlet var stopAndSaveRecordingHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var followSpeechButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet var textViewHeightConstraint: NSLayoutConstraint!
     
+    var isFollowingSpeech = true
     var hasEditedTitleField = false
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
     
@@ -29,9 +32,11 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         super.viewDidLoad()
         self.addDismissKeyboardTapGesture()
         
+        textView.delegate = self
         titleTextField.delegate = self
         speechRecognitionManager.delegate = self
         
+        followSpeechButtonHeightConstraint.constant = 0
         restartingRecognitionView.setupView()
         setInitialTexts()
     }
@@ -101,7 +106,9 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
             self.view.layoutIfNeeded()
         }
         
-        self.textView.scrollToBotom()
+        if isFollowingSpeech {
+            self.textView.scrollToBotom()
+        }
     }
     
     func getKeywordSentenceRanges(transcription:String) -> [Range<String.Index>] {
@@ -130,6 +137,29 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         //print(rangesOfKeywordSentences.count)
         
         return rangesOfKeywordSentences
+    }
+    
+    func showFollowSpeechButton(){
+        followSpeechButtonHeightConstraint.constant = stopAndSaveRecordingHeightConstraint.constant
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func dismissFollowSpeechButton(){
+        followSpeechButtonHeightConstraint.constant = 0
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    // MARK: - TextViewDelegate
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isFollowingSpeech = false
+        showFollowSpeechButton()
     }
     
     // MARK: - TextFieldDelegate
@@ -171,10 +201,16 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
 
     // MARK: - Actions
     
-    @IBAction func didPressStopRecording(_ sender: Any) {
+    @IBAction func didPressStopRecordingButton(_ sender: Any) {
         speechRecognitionManager.stopRecognition()
         audioWaveView.stopListening()
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func didPressFollowSpeechButton(_ sender: Any) {
+        isFollowingSpeech = true
+        dismissFollowSpeechButton()
+        textView.scrollToBotom()
     }
     /*
     // MARK: - Navigation
