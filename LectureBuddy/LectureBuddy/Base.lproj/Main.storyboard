@@ -263,8 +263,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                <rect key="frame" x="15" y="80" width="345" height="382"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
+                                <rect key="frame" x="15" y="80" width="345" height="318.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment content="“">
@@ -385,7 +385,7 @@ recognition due to Apple’s restrictions.</string>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="162.5" y="477" width="50" height="30"/>
+                                <rect key="frame" x="162.5" y="413.5" width="50" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mq0-JQ-gMs"/>
@@ -416,7 +416,7 @@ recognition due to Apple’s restrictions.</string>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="20" symbolic="YES" id="dmX-ny-6H9"/>
-                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="15" id="erM-3y-xlC"/>
+                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="15" id="erM-3y-xlC"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="d64-aq-ZQU" secondAttribute="trailing" id="gOg-U4-Ebv"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
                             <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="15" id="sIh-5h-qgo"/>

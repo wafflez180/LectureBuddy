@@ -89,6 +89,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         }
         
         self.textView.attributedText = "\"".set(style: defaultStyle) + attributedTextViewText + "...\"".set(style: defaultStyle)
+        self.textView.sizeToFit()
     }
     
     func getKeywordSentenceRanges(transcription:String) -> [Range<String.Index>] {
