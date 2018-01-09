@@ -10,16 +10,17 @@ import UIKit
 
 class AudioWaveView: WaveformView {
 
-    var levelList:[CGFloat] = []
-    let levelListLimit = 2
-    let maximumLevel:CGFloat = 1.0
+    var levelList: [CGFloat] = []
+    let levelListLimit: Int = 2
+    let maximumLevel: CGFloat = 1.0
+    let updateInterval: TimeInterval = 0.05
     
     var updateAudioWaveTimer:Timer?
     var speechRecognitionManager:SpeechRecognitionManager?
     
     public func startListening(updateTimeInterval:CGFloat, speechRecogManager: SpeechRecognitionManager){
         self.speechRecognitionManager = speechRecogManager
-        self.updateAudioWaveTimer = Timer.scheduledTimer(timeInterval: 0.1 , target: self, selector: #selector(updateAudioWave), userInfo: nil, repeats: true)
+        self.updateAudioWaveTimer = Timer.scheduledTimer(timeInterval: updateInterval , target: self, selector: #selector(updateAudioWave), userInfo: nil, repeats: true)
     }
     
     public func stopListening(){

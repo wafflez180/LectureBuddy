@@ -263,7 +263,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500 words • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text=" 500 words • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
                                 <rect key="frame" x="227.5" y="45" width="132.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="GL5-MU-LtR"/>
@@ -314,7 +314,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O3N-eb-UZB">
-                                <rect key="frame" x="15" y="45" width="68" height="25"/>
+                                <rect key="frame" x="15" y="45" width="202.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="WOb-eO-y0y"/>
                                 </constraints>
@@ -381,6 +381,9 @@ recognition due to Apple’s restrictions.</string>
                                             <userDefinedRuntimeAttribute type="number" keyPath="density">
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="numberOfWaves">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
@@ -429,7 +432,7 @@ recognition due to Apple’s restrictions.</string>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" id="Et8-oe-UVQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="15" id="QGv-xe-XsX"/>
+                                    <constraint firstAttribute="bottom" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="10" id="QGv-xe-XsX"/>
                                     <constraint firstItem="vVi-O1-neX" firstAttribute="centerX" secondItem="DEP-o0-tFF" secondAttribute="centerX" id="RRo-N2-a0w"/>
                                     <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="10" id="Xj6-eO-FMx"/>
                                     <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="top" constant="15" id="bVO-mZ-E8i"/>
@@ -502,11 +505,11 @@ recognition due to Apple’s restrictions.</string>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="c9J-kX-NxH" secondAttribute="bottom" constant="20" id="ZzX-mq-lS4"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
-                            <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="20" symbolic="YES" id="dmX-ny-6H9"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="DEP-o0-tFF" secondAttribute="trailing" constant="15" id="eEB-Vd-Nnn"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="4VZ-yW-x4s" secondAttribute="trailing" id="fk8-Em-Mtd"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="d64-aq-ZQU" secondAttribute="trailing" id="gOg-U4-Ebv"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
+                            <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" secondItem="O3N-eb-UZB" secondAttribute="trailing" constant="10" id="tuv-jD-Zwk"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="vgB-ep-ruW"/>
                             <constraint firstItem="4VZ-yW-x4s" firstAttribute="top" secondItem="lC6-Mt-JrD" secondAttribute="bottom" constant="10" id="xo9-Pl-HLk"/>

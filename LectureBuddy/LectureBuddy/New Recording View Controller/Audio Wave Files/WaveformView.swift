@@ -19,7 +19,7 @@ public class WaveformView: UIView {
     fileprivate var _amplitude: CGFloat = 0.3
 
     @IBInspectable public var waveColor: UIColor = .black
-    @IBInspectable public var numberOfWaves = 5
+    @IBInspectable public var numberOfWaves: Int = 5
     @IBInspectable public var primaryWaveLineWidth: CGFloat = 3.0
     @IBInspectable public var secondaryWaveLineWidth: CGFloat = 1.0
     @IBInspectable public var idleAmplitude: CGFloat = 0.01
