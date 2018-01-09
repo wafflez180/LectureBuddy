@@ -10,7 +10,7 @@ import Foundation
 import Speech
 
 protocol SpeechRecognitionManagerDelegate {
-    func recognizedSpeech(bestTranscription:String)
+    func recognizedSpeech(fullTranscription:String)
     func checkedIfRecognitionFinishedCancelling(secondsWaiting:Int)
     func restartedRecognition()
 }
@@ -34,6 +34,9 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
     private var isDebugging:Bool = false
     var volumeFloat:CGFloat = 0.0
     
+    var finishedTranscriptions:[String] = []
+    var currentBestTranscription:String = ""
+
     init(isDebugging: Bool) {
         self.isDebugging = isDebugging
     }
@@ -48,6 +51,16 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
         resetSpeechRecognitionTimer.invalidate()
     }
     
+    func getFullTranscription() -> String {
+        var fullTranscription = ""
+        
+        for transcription in finishedTranscriptions {
+            fullTranscription += transcription + ". "
+        }
+        
+        return fullTranscription
+    }
+
     private func startSpeechRecognitionResetTimer() {
         resetSpeechRecognitionTimer.invalidate()
         resetSpeechRecognitionTimer = Timer.scheduledTimer(timeInterval: applesAudioDurationLimit, target: self, selector: #selector(resetSpeechRecognitionTask), userInfo: nil, repeats: false)
@@ -110,8 +123,10 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
             if result != nil {
                 if let result = result {
                     
-                    let bestString = result.bestTranscription.formattedString
-                    self.delegate?.recognizedSpeech(bestTranscription: bestString)
+                    self.currentBestTranscription = result.bestTranscription.formattedString
+                    
+                    let finishedTranscriptionsWithCurrent = self.getFullTranscription() + self.currentBestTranscription
+                    self.delegate?.recognizedSpeech(fullTranscription: finishedTranscriptionsWithCurrent)
                     
                 } else if let error = error {
                     print(error)
@@ -130,13 +145,20 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
         recognitionTask?.cancel()
     }
     
+    func restartRecognition(){
+        finishedTranscriptions.append(currentBestTranscription)
+        
+        startSpeechRecognitionResetTimer()
+        recordAndRecognizeSpeech()
+        repeatedRecognitionCancelledCheckCounter = 1
+        
+        self.delegate?.restartedRecognition()
+    }
+    
     // Calls itself repeatedly until the recognition task is completed and then it begins a new recogition task
     private func recordSpeechAfterTaskIsFinishedCompleting(){
         if recognitionTask?.state == .completed {
-            startSpeechRecognitionResetTimer()
-            recordAndRecognizeSpeech()
-            repeatedRecognitionCancelledCheckCounter = 1
-            self.delegate?.restartedRecognition()
+            restartRecognition()
         } else {
             if isDebugging {
                 print("SpeechRecognitionManager: \(repeatedRecognitionCancelledCheckCounter)s waiting for cancellation to complete.")

@@ -122,10 +122,10 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     
     // MARK: - SpeechRecognitionManagerDelegate
     
-    func recognizedSpeech(bestTranscription: String) {
-        setTextViewText(transcription: bestTranscription)
+    func recognizedSpeech(fullTranscription: String) {
+        setTextViewText(transcription: fullTranscription)
         
-        let wordList = bestTranscription.split(separator: " ")
+        let wordList = fullTranscription.split(separator: " ")
         setDateCounterLabel(numWords: wordList.count)
     }
     
