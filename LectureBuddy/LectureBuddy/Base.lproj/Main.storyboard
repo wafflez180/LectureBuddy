@@ -263,54 +263,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                <rect key="frame" x="15" y="80" width="345" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="60d-sJ-E90"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="“">
-                                        <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. </string>
-                                        <attributes>
-                                            <font key="NSFont" size="15" name="SFUIText-Regular"/>
-                                            <real key="NSKern" value="0.65000000000000002"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident.</string>
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="15" name="SFUIText-Regular"/>
-                                            <real key="NSKern" value="0.65000000000000002"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500w • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
-                                <rect key="frame" x="262" y="45" width="98" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 500 words • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
+                                <rect key="frame" x="227.5" y="45" width="132.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="GL5-MU-LtR"/>
                                 </constraints>
@@ -407,49 +361,104 @@ recognition due to Apple’s restrictions.</string>
                                     <outlet property="titleLabel" destination="cH0-Be-PjX" id="dZU-ko-YYJ"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="162.5" y="125" width="50" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-o0-tFF">
+                                <rect key="frame" x="15" y="80" width="345" height="378"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
+                                        <rect key="frame" x="147.5" y="328.5" width="50" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="mq0-JQ-gMs"/>
+                                            <constraint firstAttribute="width" constant="50" id="ywC-kw-4D0"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="primaryWaveLineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="secondaryWaveLineWidth">
+                                                <real key="value" value="0.20000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="density">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="318.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="“">
+                                                <attributes>
+                                                    <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. </string>
+                                                <attributes>
+                                                    <font key="NSFont" size="15" name="SFUIText-Regular"/>
+                                                    <real key="NSKern" value="0.65000000000000002"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident.</string>
+                                                <attributes>
+                                                    <color key="NSBackgroundColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir.</string>
+                                                <attributes>
+                                                    <font key="NSFont" size="15" name="SFUIText-Regular"/>
+                                                    <real key="NSKern" value="0.65000000000000002"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
+                                    </textView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="mq0-JQ-gMs"/>
-                                    <constraint firstAttribute="width" constant="50" id="ywC-kw-4D0"/>
+                                    <constraint firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" id="Et8-oe-UVQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="10" id="QGv-xe-XsX"/>
+                                    <constraint firstItem="vVi-O1-neX" firstAttribute="centerX" secondItem="DEP-o0-tFF" secondAttribute="centerX" id="RRo-N2-a0w"/>
+                                    <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="10" id="Xj6-eO-FMx"/>
+                                    <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="top" id="bVO-mZ-E8i"/>
+                                    <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="DEP-o0-tFF" secondAttribute="leading" id="h7c-kY-EH2"/>
+                                    <constraint firstItem="b3e-TX-uxv" firstAttribute="width" secondItem="DEP-o0-tFF" secondAttribute="width" id="xCw-Ji-ahh"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="primaryWaveLineWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="secondaryWaveLineWidth">
-                                        <real key="value" value="0.20000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="density">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="trailing" secondItem="Htz-B2-FrI" secondAttribute="trailing" id="27f-tn-o4L"/>
+                            <constraint firstItem="DEP-o0-tFF" firstAttribute="top" secondItem="lC6-Mt-JrD" secondAttribute="bottom" constant="10" id="3vi-Ww-eGn"/>
+                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="bottom" constant="10" id="4Bn-4G-hfE"/>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="top" secondItem="d64-aq-ZQU" secondAttribute="bottom" id="6bj-xb-IUm"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="8ap-pB-UKZ"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
-                            <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="b3e-TX-uxv" secondAttribute="trailing" constant="15" id="FFw-iW-KTl"/>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="Fun-NL-3b4"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="top" secondItem="jgE-tj-2SK" secondAttribute="bottom" constant="-1" id="GKU-5F-XOm"/>
+                            <constraint firstItem="DEP-o0-tFF" firstAttribute="leading" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="15" id="MQn-sq-fGb"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
-                            <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="O3N-eb-UZB" secondAttribute="bottom" constant="10" id="Vjb-U4-YOh"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="20" symbolic="YES" id="dmX-ny-6H9"/>
-                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="10" id="erM-3y-xlC"/>
+                            <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="DEP-o0-tFF" secondAttribute="trailing" constant="15" id="eEB-Vd-Nnn"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="d64-aq-ZQU" secondAttribute="trailing" id="gOg-U4-Ebv"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
-                            <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="15" id="sIh-5h-qgo"/>
-                            <constraint firstItem="vVi-O1-neX" firstAttribute="centerX" secondItem="0cA-1O-bIV" secondAttribute="centerX" id="uW0-pm-C1V"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="vgB-ep-ruW"/>
-                            <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="wK5-vD-QZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Htz-B2-FrI"/>
                         <userDefinedRuntimeAttributes>
@@ -470,9 +479,9 @@ recognition due to Apple’s restrictions.</string>
                         <outlet property="counterAndDateLabel" destination="lC6-Mt-JrD" id="VhZ-db-bkZ"/>
                         <outlet property="followSpeechButtonHeightConstraint" destination="irn-4X-HWY" id="5Us-ty-bak"/>
                         <outlet property="restartingRecognitionView" destination="d64-aq-ZQU" id="50K-FH-ewh"/>
+                        <outlet property="scrollView" destination="DEP-o0-tFF" id="jlp-db-WQy"/>
                         <outlet property="stopAndSaveRecordingHeightConstraint" destination="iwI-ar-TMr" id="C5x-g4-K6c"/>
                         <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>
-                        <outlet property="textViewHeightConstraint" destination="60d-sJ-E90" id="NcT-W5-pLd"/>
                         <outlet property="titleTextField" destination="O3N-eb-UZB" id="o12-VX-x7m"/>
                     </connections>
                 </viewController>

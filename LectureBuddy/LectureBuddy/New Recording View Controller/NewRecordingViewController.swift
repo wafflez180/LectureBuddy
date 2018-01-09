@@ -10,17 +10,17 @@ import UIKit
 import Speech
 import SwiftRichString
 
-class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UIScrollViewDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var counterAndDateLabel: UILabel!
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
     
     @IBOutlet var stopAndSaveRecordingHeightConstraint: NSLayoutConstraint!
     @IBOutlet var followSpeechButtonHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var textViewHeightConstraint: NSLayoutConstraint!
     
     var isFollowingSpeech = true
     var hasEditedTitleField = false
@@ -32,11 +32,13 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         super.viewDidLoad()
         self.addDismissKeyboardTapGesture()
         
-        textView.delegate = self
+        scrollView.delegate = self
         titleTextField.delegate = self
         speechRecognitionManager.delegate = self
         
         followSpeechButtonHeightConstraint.constant = 0
+        self.view.layoutIfNeeded()
+        
         restartingRecognitionView.setupView()
         setInitialTexts()
     }
@@ -73,7 +75,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         dateFormatter.dateFormat = "MMM d"
         let dateText = dateFormatter.string(from: Date())
         
-        self.counterAndDateLabel.text = String(numWords) + "w • " + dateText
+        self.counterAndDateLabel.text = String(numWords) + " words • " + dateText
     }
     
     func setTextViewText(transcription:String){
@@ -101,13 +103,12 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         
         self.textView.attributedText = "\"".set(style: defaultStyle) + attributedTextViewText + "...\"".set(style: defaultStyle)
         
-        textViewHeightConstraint.constant = self.textView.contentSize.height
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
         
         if isFollowingSpeech {
-            self.textView.scrollToBotom()
+            self.scrollView.scrollToBottom(animated: true)
         }
     }
     
@@ -155,10 +156,13 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         }
     }
 
-    // MARK: - TextViewDelegate
+    // MARK: - ScrollViewDelegate
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isFollowingSpeech = false
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         showFollowSpeechButton()
     }
     
@@ -210,7 +214,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBAction func didPressFollowSpeechButton(_ sender: Any) {
         isFollowingSpeech = true
         dismissFollowSpeechButton()
-        textView.scrollToBotom()
+        scrollView.scrollToBottom(animated: true)
     }
     /*
     // MARK: - Navigation

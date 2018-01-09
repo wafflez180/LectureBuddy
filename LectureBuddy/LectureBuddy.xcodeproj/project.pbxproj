@@ -15,7 +15,7 @@
 		CA1A9EC51FE5CADA009A78CB /* RecordingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A9EC31FE5CAD9009A78CB /* RecordingCollectionViewCell.swift */; };
 		CA1A9EC61FE5CADA009A78CB /* RecordingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1A9EC41FE5CAD9009A78CB /* RecordingCollectionViewCell.xib */; };
 		CA265E562005218C00BC5159 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E552005218C00BC5159 /* ViewControllerExtension.swift */; };
-		CA265E5820052F7D00BC5159 /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E5720052F7D00BC5159 /* TextViewExtension.swift */; };
+		CA265E5820052F7D00BC5159 /* ScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */; };
 		CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3150641FAE4EA9009A90EF /* SignupViewController.swift */; };
 		CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */; };
 		CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C0071FAE3AE100AF4D4F /* Main.storyboard */; };
@@ -83,7 +83,7 @@
 		CA1A9EC31FE5CAD9009A78CB /* RecordingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA1A9EC41FE5CAD9009A78CB /* RecordingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordingCollectionViewCell.xib; sourceTree = "<group>"; };
 		CA265E552005218C00BC5159 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
-		CA265E5720052F7D00BC5159 /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
+		CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtension.swift; sourceTree = "<group>"; };
 		CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LectureBuddy.entitlements; sourceTree = "<group>"; };
 		CA3150641FAE4EA9009A90EF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CA46C0001FAE3AE100AF4D4F /* LectureBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LectureBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,7 +312,7 @@
 				CAAFDF541FEDD7CC004EE702 /* NavigationBarExtension.swift */,
 				CA265E552005218C00BC5159 /* ViewControllerExtension.swift */,
 				CA6248501FAE6C2A005F5A16 /* ViewExtension.swift */,
-				CA265E5720052F7D00BC5159 /* TextViewExtension.swift */,
+				CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -711,7 +711,7 @@
 				CA62484F1FAE6943005F5A16 /* HomeTableViewController.swift in Sources */,
 				CAAFDF551FEDD7CC004EE702 /* NavigationBarExtension.swift in Sources */,
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
-				CA265E5820052F7D00BC5159 /* TextViewExtension.swift in Sources */,
+				CA265E5820052F7D00BC5159 /* ScrollViewExtension.swift in Sources */,
 				CAAFDF4E1FEDC636004EE702 /* HomePageViewController.swift in Sources */,
 				CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */,
 				CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */,
