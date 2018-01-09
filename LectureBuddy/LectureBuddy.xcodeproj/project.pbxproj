@@ -16,6 +16,7 @@
 		CA1A9EC61FE5CADA009A78CB /* RecordingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1A9EC41FE5CAD9009A78CB /* RecordingCollectionViewCell.xib */; };
 		CA265E562005218C00BC5159 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E552005218C00BC5159 /* ViewControllerExtension.swift */; };
 		CA265E5820052F7D00BC5159 /* ScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */; };
+		CA265E5A200575CA00BC5159 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E59200575CA00BC5159 /* GradientView.swift */; };
 		CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3150641FAE4EA9009A90EF /* SignupViewController.swift */; };
 		CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */; };
 		CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C0071FAE3AE100AF4D4F /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		CA1A9EC41FE5CAD9009A78CB /* RecordingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordingCollectionViewCell.xib; sourceTree = "<group>"; };
 		CA265E552005218C00BC5159 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtension.swift; sourceTree = "<group>"; };
+		CA265E59200575CA00BC5159 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LectureBuddy.entitlements; sourceTree = "<group>"; };
 		CA3150641FAE4EA9009A90EF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CA46C0001FAE3AE100AF4D4F /* LectureBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LectureBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +303,7 @@
 				CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */,
 				CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */,
 				CAA58E93200160C800555696 /* RestartingRecognitionView.swift */,
+				CA265E59200575CA00BC5159 /* GradientView.swift */,
 				CA7C9E28200173FF003786C9 /* Audio Wave Files */,
 			);
 			path = "New Recording View Controller";
@@ -734,6 +737,7 @@
 				CAAFDF571FEDDA92004EE702 /* RecordingTableViewCell.swift in Sources */,
 				CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */,
 				CA76AF291FB8C37C006E39AC /* KeywordsPopupView.swift in Sources */,
+				CA265E5A200575CA00BC5159 /* GradientView.swift in Sources */,
 				CA76AF321FB8E7AD006E39AC /* AddKeywordTableViewCell.swift in Sources */,
 				CA6857621FD318D1006E03E6 /* SubjectTableViewCell.swift in Sources */,
 			);

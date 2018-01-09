@@ -362,10 +362,10 @@ recognition due to Apple’s restrictions.</string>
                                 </connections>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-o0-tFF">
-                                <rect key="frame" x="15" y="80" width="345" height="378"/>
+                                <rect key="frame" x="15" y="80" width="345" height="363"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
-                                        <rect key="frame" x="147.5" y="328.5" width="50" height="30"/>
+                                        <rect key="frame" x="147.5" y="343.5" width="50" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="mq0-JQ-gMs"/>
@@ -384,7 +384,7 @@ recognition due to Apple’s restrictions.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-TX-uxv">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="318.5"/>
+                                        <rect key="frame" x="0.0" y="15" width="345" height="318.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment content="“">
@@ -432,33 +432,59 @@ recognition due to Apple’s restrictions.</string>
                                     <constraint firstAttribute="bottom" secondItem="vVi-O1-neX" secondAttribute="bottom" constant="10" id="QGv-xe-XsX"/>
                                     <constraint firstItem="vVi-O1-neX" firstAttribute="centerX" secondItem="DEP-o0-tFF" secondAttribute="centerX" id="RRo-N2-a0w"/>
                                     <constraint firstItem="vVi-O1-neX" firstAttribute="top" secondItem="b3e-TX-uxv" secondAttribute="bottom" constant="10" id="Xj6-eO-FMx"/>
-                                    <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="top" id="bVO-mZ-E8i"/>
+                                    <constraint firstItem="b3e-TX-uxv" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="top" constant="15" id="bVO-mZ-E8i"/>
                                     <constraint firstItem="b3e-TX-uxv" firstAttribute="leading" secondItem="DEP-o0-tFF" secondAttribute="leading" id="h7c-kY-EH2"/>
                                     <constraint firstItem="b3e-TX-uxv" firstAttribute="width" secondItem="DEP-o0-tFF" secondAttribute="width" id="xCw-Ji-ahh"/>
                                 </constraints>
                             </scrollView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VZ-yW-x4s" customClass="GradientView" customModule="LectureBuddy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="80" width="375" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KdS-HH-IUM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="diagonalMode" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="trailing" secondItem="Htz-B2-FrI" secondAttribute="trailing" id="27f-tn-o4L"/>
                             <constraint firstItem="DEP-o0-tFF" firstAttribute="top" secondItem="lC6-Mt-JrD" secondAttribute="bottom" constant="10" id="3vi-Ww-eGn"/>
-                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="bottom" constant="10" id="4Bn-4G-hfE"/>
+                            <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="bottom" constant="25" id="4Bn-4G-hfE"/>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="top" secondItem="d64-aq-ZQU" secondAttribute="bottom" id="6bj-xb-IUm"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="8ap-pB-UKZ"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="Fun-NL-3b4"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="top" secondItem="jgE-tj-2SK" secondAttribute="bottom" constant="-1" id="GKU-5F-XOm"/>
+                            <constraint firstItem="4VZ-yW-x4s" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="JMj-qy-irj"/>
                             <constraint firstItem="DEP-o0-tFF" firstAttribute="leading" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="15" id="MQn-sq-fGb"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0cA-1O-bIV" secondAttribute="leading" constant="20" symbolic="YES" id="dmX-ny-6H9"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="DEP-o0-tFF" secondAttribute="trailing" constant="15" id="eEB-Vd-Nnn"/>
+                            <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="4VZ-yW-x4s" secondAttribute="trailing" id="fk8-Em-Mtd"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="d64-aq-ZQU" secondAttribute="trailing" id="gOg-U4-Ebv"/>
                             <constraint firstItem="lC6-Mt-JrD" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="nkG-Oc-pDf"/>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="vgB-ep-ruW"/>
+                            <constraint firstItem="4VZ-yW-x4s" firstAttribute="top" secondItem="lC6-Mt-JrD" secondAttribute="bottom" constant="10" id="xo9-Pl-HLk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Htz-B2-FrI"/>
                         <userDefinedRuntimeAttributes>
@@ -483,6 +509,7 @@ recognition due to Apple’s restrictions.</string>
                         <outlet property="stopAndSaveRecordingHeightConstraint" destination="iwI-ar-TMr" id="C5x-g4-K6c"/>
                         <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>
                         <outlet property="titleTextField" destination="O3N-eb-UZB" id="o12-VX-x7m"/>
+                        <outlet property="topScrollGradientView" destination="4VZ-yW-x4s" id="rjL-A9-K4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmT-jd-wSY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,6 +13,11 @@ class RestartingRecognitionView: UIView {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     
+    let dismissedHeightConstant:CGFloat = 0.0
+    let showingHeightConstant:CGFloat = 90.0
+    
+    let animationDuration:TimeInterval = 0.5
+
     var isShowing: Bool {
         get {
             return self.alpha == 1.0
@@ -20,7 +25,7 @@ class RestartingRecognitionView: UIView {
     }
     
     func setupView(){
-        self.heightConstraint.constant = 45
+        self.heightConstraint.constant = dismissedHeightConstant
         self.alpha = 0.0
         self.layoutIfNeeded()
     }
@@ -33,18 +38,18 @@ class RestartingRecognitionView: UIView {
     }
     
     func animateIn(){
-        self.heightConstraint.constant = 90
+        self.heightConstraint.constant = showingHeightConstant
 
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
             self.alpha = 1.0
             self.superview?.layoutIfNeeded()
         }, completion: nil)
     }
     
     func animateOut(){
-        self.heightConstraint.constant = 45
+        self.heightConstraint.constant = dismissedHeightConstant
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
             self.alpha = 0.0
             self.superview?.layoutIfNeeded()
         }, completion: { _ in

@@ -15,6 +15,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
     @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var topScrollGradientView: UIView!
     @IBOutlet var counterAndDateLabel: UILabel!
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
@@ -36,11 +37,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         titleTextField.delegate = self
         speechRecognitionManager.delegate = self
         
-        followSpeechButtonHeightConstraint.constant = 0
-        self.view.layoutIfNeeded()
-        
-        restartingRecognitionView.setupView()
-        setInitialTexts()
+        setupUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +61,17 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     }
     
     // MARK: - NewRecordingViewController
+    
+    func setupUI(){
+        followSpeechButtonHeightConstraint.constant = 0
+        self.view.layoutIfNeeded()
+        
+        //topScrollGradientView.layer.insertSublayer(ColorManager.getWhiteGradient(reversed: false, view: topScrollGradientView), at: 0)
+        //topScrollGradientView.backgroundColor = .red
+        
+        restartingRecognitionView.setupView()
+        setInitialTexts()
+    }
 
     func setInitialTexts(){
         self.textView.text = "\"...\""
