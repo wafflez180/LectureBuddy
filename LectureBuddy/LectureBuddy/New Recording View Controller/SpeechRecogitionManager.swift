@@ -11,6 +11,7 @@ import Speech
 
 protocol SpeechRecognitionManagerDelegate {
     func recognizedSpeech(fullTranscription:String)
+    func didBeginCheckingForCancellation()
     func checkedIfRecognitionFinishedCancelling(secondsWaiting:Int)
     func restartedRecognition()
 }
@@ -33,6 +34,7 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
     var delegate: SpeechRecognitionManagerDelegate?
     private var isDebugging:Bool = false
     var volumeFloat:CGFloat = 0.0
+    var isCheckingForCancellation = false
     
     var finishedTranscriptions:[String] = []
     var currentBestTranscription:String = ""
@@ -163,6 +165,7 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
     private func recordSpeechAfterTaskIsFinishedCompleting(){
         if recognitionTask?.state == .completed {
             restartRecognition()
+            isCheckingForCancellation = false
         } else {
             if isDebugging {
                 print("SpeechRecognitionManager: \(repeatedRecognitionCancelledCheckCounter)s waiting for cancellation to complete.")
@@ -170,6 +173,12 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
             }
             
             self.delegate?.checkedIfRecognitionFinishedCancelling(secondsWaiting: repeatedRecognitionCancelledCheckCounter)
+            
+            if isCheckingForCancellation == false {
+                self.delegate?.didBeginCheckingForCancellation()
+                isCheckingForCancellation = true
+            }
+
             repeatedRecognitionCancelledCheckCounter+=1
             
             // Call this method again till the task has completed

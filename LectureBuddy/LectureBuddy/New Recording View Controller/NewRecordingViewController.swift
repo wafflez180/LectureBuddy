@@ -15,7 +15,6 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var topScrollGradientView: UIView!
     @IBOutlet var counterAndDateLabel: UILabel!
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
@@ -199,6 +198,12 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         
         let wordList = fullTranscription.split(separator: " ")
         setDateCounterLabel(numWords: wordList.count)
+    }
+    
+    func didBeginCheckingForCancellation() {
+        if isFollowingSpeech {
+            scrollView.scrollToBottom(animated: true)
+        }
     }
     
     func checkedIfRecognitionFinishedCancelling(secondsWaiting: Int) {
