@@ -8,7 +8,7 @@
 import UIKit
 
 class PopupContentView: UIView {
-    
+        
     func present(viewController: UIViewController) {
         // Instantiate popup contentView
         let className = String(describing: type(of: self))

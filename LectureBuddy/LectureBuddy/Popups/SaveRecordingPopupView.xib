@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SaveRecordingPopupView" customModule="LectureBuddy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="61"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EX: ENG101" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0S-sj-Ugd">
+                    <rect key="frame" x="25" y="10" width="298" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="V2S-7g-CYc"/>
+                    </constraints>
+                    <color key="textColor" red="0.29411764705882354" green="0.28627450980392155" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="I0S-sj-Ugd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="SNN-0q-zmb"/>
+                <constraint firstItem="I0S-sj-Ugd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="V86-VS-kit"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I0S-sj-Ugd" secondAttribute="trailing" constant="25" id="Wa9-ej-0JH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="I0S-sj-Ugd" secondAttribute="bottom" constant="10" id="jko-2L-ESR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="recordingTitleTextField" destination="I0S-sj-Ugd" id="hLr-PD-IVa"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="-219"/>
+        </view>
+    </objects>
+</document>

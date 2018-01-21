@@ -60,11 +60,7 @@ class SpeechRecognitionManager : NSObject, SFSpeechRecognizerDelegate {
             fullTranscription += transcription + ". "
         }
         
-        //return fullTranscription
-        
-        return """
-        During an unnamed time of war, a plane carrying a group of British schoolboys is shot down over the Pacific. The pilot of the plane is killed, but many of the boys survive the crash and find themselves deserted on an uninhabited island, where they are alone without adult supervision. It’s important to note that while Piggy, as he is derisively called, is a pudgy asthmatic boy with glasses who nevertheless possesses a keen intelligence. The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident. Ralph finds a conch shell, and when he blows it the other boys gather together. Among these boys is Jack Merridew, an aggressive boy who marches at the head of his choir. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island whom. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island whom. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island whom. Ralph, whom the other boys choose as chief, leads Jack and another boy, Simon, on an expedition to explore the island whom.
-        """
+        return fullTranscription
     }
 
     private func startSpeechRecognitionResetTimer() {

@@ -17,6 +17,9 @@
 		CA265E562005218C00BC5159 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E552005218C00BC5159 /* ViewControllerExtension.swift */; };
 		CA265E5820052F7D00BC5159 /* ScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */; };
 		CA265E5A200575CA00BC5159 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E59200575CA00BC5159 /* GradientView.swift */; };
+		CA265E5D200586A500BC5159 /* SaveRecordingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E5B200586A400BC5159 /* SaveRecordingPopupView.swift */; };
+		CA265E5E200586A500BC5159 /* SaveRecordingPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA265E5C200586A400BC5159 /* SaveRecordingPopupView.xib */; };
+		CA265E60200586B600BC5159 /* AddSubjectPopupView copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA265E5F200586B600BC5159 /* AddSubjectPopupView copy.xib */; };
 		CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3150641FAE4EA9009A90EF /* SignupViewController.swift */; };
 		CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */; };
 		CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C0071FAE3AE100AF4D4F /* Main.storyboard */; };
@@ -39,7 +42,6 @@
 		CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */; };
 		CA7C9E2A2001744D003786C9 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C9E292001744D003786C9 /* WaveformView.swift */; };
 		CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */; };
-		CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */; };
 		CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */; };
 		CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */; };
 		CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F13141FB5692100DAE153 /* PopupContentView.swift */; };
@@ -86,6 +88,9 @@
 		CA265E552005218C00BC5159 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		CA265E5720052F7D00BC5159 /* ScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtension.swift; sourceTree = "<group>"; };
 		CA265E59200575CA00BC5159 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		CA265E5B200586A400BC5159 /* SaveRecordingPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveRecordingPopupView.swift; sourceTree = "<group>"; };
+		CA265E5C200586A400BC5159 /* SaveRecordingPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveRecordingPopupView.xib; sourceTree = "<group>"; };
+		CA265E5F200586B600BC5159 /* AddSubjectPopupView copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AddSubjectPopupView copy.xib"; sourceTree = "<group>"; };
 		CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LectureBuddy.entitlements; sourceTree = "<group>"; };
 		CA3150641FAE4EA9009A90EF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CA46C0001FAE3AE100AF4D4F /* LectureBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LectureBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +120,6 @@
 		CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKeywordTableViewCell.xib; sourceTree = "<group>"; };
 		CA7C9E292001744D003786C9 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
 		CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectPopupView.swift; sourceTree = "<group>"; };
-		CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectPopupView.xib; sourceTree = "<group>"; };
 		CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordingViewController.swift; sourceTree = "<group>"; };
 		CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationController.swift; sourceTree = "<group>"; };
 		CA9F13141FB5692100DAE153 /* PopupContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContentView.swift; sourceTree = "<group>"; };
@@ -266,8 +270,10 @@
 			children = (
 				CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */,
 				CA9F13141FB5692100DAE153 /* PopupContentView.swift */,
-				CA89B83D1FAEB84D001BD9EA /* AddSubjectPopupView.xib */,
+				CA265E5F200586B600BC5159 /* AddSubjectPopupView copy.xib */,
 				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
+				CA265E5C200586A400BC5159 /* SaveRecordingPopupView.xib */,
+				CA265E5B200586A400BC5159 /* SaveRecordingPopupView.swift */,
 				CAF2005A1FBA93BF00413BC4 /* Keywords Popup */,
 			);
 			path = Popups;
@@ -474,9 +480,10 @@
 				CA46C00B1FAE3AE100AF4D4F /* Assets.xcassets in Resources */,
 				CA76AF2B1FB8C38A006E39AC /* KeywordsPopupView.xib in Resources */,
 				CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */,
-				CA89B83E1FAEB84D001BD9EA /* AddSubjectPopupView.xib in Resources */,
+				CA265E5E200586A500BC5159 /* SaveRecordingPopupView.xib in Resources */,
 				CA1A9EC21FE5CABF009A78CB /* NewRecordingCollectionViewCell.xib in Resources */,
 				CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */,
+				CA265E60200586B600BC5159 /* AddSubjectPopupView copy.xib in Resources */,
 				CA1A9EC61FE5CADA009A78CB /* RecordingCollectionViewCell.xib in Resources */,
 				CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */,
 			);
@@ -733,6 +740,7 @@
 				CA7C9E2A2001744D003786C9 /* WaveformView.swift in Sources */,
 				CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */,
 				CA265E562005218C00BC5159 /* ViewControllerExtension.swift in Sources */,
+				CA265E5D200586A500BC5159 /* SaveRecordingPopupView.swift in Sources */,
 				CAE84D7D1FB55AAC002C8F29 /* PopupTemplateViewController.swift in Sources */,
 				CAAFDF571FEDDA92004EE702 /* RecordingTableViewCell.swift in Sources */,
 				CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */,

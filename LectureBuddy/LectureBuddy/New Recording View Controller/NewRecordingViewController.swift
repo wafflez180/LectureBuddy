@@ -114,7 +114,8 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
             self.view.layoutIfNeeded()
         }
         
-        if isFollowingSpeech {
+        let isTextOverflowing: Bool = self.scrollView.bounds.size.height < self.scrollView.contentSize.height
+        if isFollowingSpeech && isTextOverflowing {
             self.scrollView.scrollToBottom(animated: true)
         }
     }
@@ -221,7 +222,11 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBAction func didPressStopRecordingButton(_ sender: Any) {
         speechRecognitionManager.stopRecognition()
         audioWaveView.stopListening()
-        self.dismiss(animated: true, completion: nil)
+        
+        //let saveRecordingPopupView = SaveRecordingPopupView(initialTitle: titleTextField.text!)
+        //saveRecordingPopupView.present(viewController: self)
+        
+        //self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func didPressFollowSpeechButton(_ sender: Any) {
