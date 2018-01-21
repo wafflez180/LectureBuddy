@@ -11,28 +11,30 @@ import UIKit
 import NVActivityIndicatorView
 import Firebase
 
+protocol SaveRecordingPopupProtocol: class {
+    func willDismissPopup()
+}
+
 class SaveRecordingPopupView: PopupContentView, PopupViewProtocol {
     
     @IBOutlet var recordingTitleTextField: UITextField!
     
-    var initialTitle:String
-
-    /*init(initialTitle: String) {
-        self.initialTitle = initialTitle
-        
-        super.init()
-    }
-    */
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    static var initialTitleFieldText: String = ""
+    static var textToSave: String!
     
+    static var delegate: SaveRecordingPopupProtocol?
+
     // MARK: - PopupViewProtocol
     
     func popupDidAppear() {
-        recordingTitleTextField.becomeFirstResponder()
-        
-        recordingTitleTextField.text = initialTitle
+        recordingTitleTextField.text = SaveRecordingPopupView.initialTitleFieldText
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if self.recordingTitleTextField.text == "Untitled" {
+                self.recordingTitleTextField.selectAll(nil)
+            }
+            self.recordingTitleTextField.becomeFirstResponder()
+        }
     }
     
     func getTitle() -> String {
@@ -45,12 +47,13 @@ class SaveRecordingPopupView: PopupContentView, PopupViewProtocol {
             
     func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void, doNothing: @escaping () -> Void) {
         if (recordingTitleTextField.text != ""){
-            success()
             
-            //viewController.dismiss(animated: true, completion: nil)
-//            DataManager.sharedInstance.saveNewSubject(subjectName: recordingTitleTextField.text!, success: {
-//                success()
-//            }
+            let recordingToSave = Recording.init(title: recordingTitleTextField.text!, text: SaveRecordingPopupView.textToSave)
+            
+            DataManager.sharedInstance.saveNewRecording(recording: recordingToSave, success: {
+                SaveRecordingPopupView.delegate?.willDismissPopup()
+                success()
+            })
         }else{
             error(nil)
         }

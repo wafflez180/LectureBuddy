@@ -24,12 +24,25 @@ class DataManager: NSObject, FUIAuthDelegate {
         return Auth.auth().currentUser
     }
     
-    var subjectDocs:[DocumentSnapshot] = []
+    var subjects:[Subject] = []
+    var currentSubject: Subject?
     var highlightedKeywords:[String] = []
     let defaultStore = Firestore.firestore()
     
     // MARK: - DataManager
     
+    // MARK: - Recordings
+
+    func saveNewRecording(recording: Recording, success: @escaping () -> Void) {
+        self.defaultStore.collection("Users").document((Auth.auth().currentUser?.uid)!).collection("subjects").document((currentSubject?.documentID)!).collection("recordings").addDocument(data: [
+            "title" : recording.title,
+            "text" : recording.text,
+            "dateCreated" : Date()
+        ]) { error in
+            success()
+        }
+    }
+
     // MARK: - Subjects
     
     func saveNewSubject(subjectName:String, success: @escaping () -> Void, subjectExistsError: @escaping () -> Void) {
@@ -58,7 +71,12 @@ class DataManager: NSObject, FUIAuthDelegate {
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
-                self.subjectDocs = (querySnapshot?.documents)!
+                self.subjects = []
+                
+                for doc in (querySnapshot?.documents)! {
+                    self.subjects.append(Subject.init(document: doc))
+                }
+                
                 completion()
             }
         }
@@ -86,10 +104,10 @@ class DataManager: NSObject, FUIAuthDelegate {
     
     func deleteSubect(subjectName:String, completionHandler: @escaping () -> Void) {
         // Remove from local array
-        for subjectDoc in self.subjectDocs {
+        for subjectDoc in self.subjects {
             if subjectDoc.documentID == subjectName {
-                let index = self.subjectDocs.index(of: subjectDoc)
-                self.subjectDocs.remove(at: index!)
+                let index = self.subjects.index(of: subjectDoc)
+                self.subjects.remove(at: index!)
             }
         }
         // Remove from database

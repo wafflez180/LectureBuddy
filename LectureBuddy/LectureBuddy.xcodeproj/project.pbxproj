@@ -45,6 +45,8 @@
 		CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */; };
 		CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */; };
 		CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F13141FB5692100DAE153 /* PopupContentView.swift */; };
+		CAA2751A20154E01008469D0 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2751920154E01008469D0 /* Subject.swift */; };
+		CAA2751D201552D4008469D0 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2751C201552D4008469D0 /* Recording.swift */; };
 		CAA58E94200160C800555696 /* RestartingRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA58E93200160C800555696 /* RestartingRecognitionView.swift */; };
 		CAAB11E61FE46EFF00893AF6 /* SubjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */; };
 		CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */; };
@@ -123,6 +125,8 @@
 		CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordingViewController.swift; sourceTree = "<group>"; };
 		CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationController.swift; sourceTree = "<group>"; };
 		CA9F13141FB5692100DAE153 /* PopupContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContentView.swift; sourceTree = "<group>"; };
+		CAA2751920154E01008469D0 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		CAA2751C201552D4008469D0 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		CAA58E93200160C800555696 /* RestartingRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartingRecognitionView.swift; sourceTree = "<group>"; };
 		CAAB11E41FE46EFF00893AF6 /* SubjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectHeaderView.swift; sourceTree = "<group>"; };
 		CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectHeaderView.xib; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				CAAFDF581FEDDFCF004EE702 /* Old Version Files */,
 				CA5AA4B01FAF8D7900E0A308 /* Popups */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
+				CAA2751B20154E29008469D0 /* Models */,
 				CA46C00A1FAE3AE100AF4D4F /* Assets.xcassets */,
 				CA46C00C1FAE3AE100AF4D4F /* LaunchScreen.storyboard */,
 				CAAFDF531FEDD7AB004EE702 /* Extensions */,
@@ -301,6 +306,15 @@
 				CAAB11E51FE46EFF00893AF6 /* SubjectHeaderView.xib */,
 			);
 			path = SubjectTableView;
+			sourceTree = "<group>";
+		};
+		CAA2751B20154E29008469D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAA2751920154E01008469D0 /* Subject.swift */,
+				CAA2751C201552D4008469D0 /* Recording.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CAA58E95200160D000555696 /* New Recording View Controller */ = {
@@ -725,6 +739,7 @@
 				CAAFDF4E1FEDC636004EE702 /* HomePageViewController.swift in Sources */,
 				CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */,
 				CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */,
+				CAA2751D201552D4008469D0 /* Recording.swift in Sources */,
 				CA1A9EC11FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift in Sources */,
 				CA76AF2E1FB8CBA0006E39AC /* KeywordTableViewCell.swift in Sources */,
 				CA6248511FAE6C2A005F5A16 /* ViewExtension.swift in Sources */,
@@ -748,6 +763,7 @@
 				CA265E5A200575CA00BC5159 /* GradientView.swift in Sources */,
 				CA76AF321FB8E7AD006E39AC /* AddKeywordTableViewCell.swift in Sources */,
 				CA6857621FD318D1006E03E6 /* SubjectTableViewCell.swift in Sources */,
+				CAA2751A20154E01008469D0 /* Subject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

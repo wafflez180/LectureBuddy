@@ -196,6 +196,7 @@ class PopupTemplateViewController: UIViewController {
     @IBAction func pressedMainButton(_ sender: Any) {
         mainButton.isSelected = true
         activityIndicator.startAnimating()
+        
         delegate?.pressedMainButton(success: {
             self.dismissPopup()
         }, error: { alert in
@@ -203,6 +204,7 @@ class PopupTemplateViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             self.mainButton.isSelected = false
             self.shakeAnimation()
+            
             if (alert != nil) {
                 self.present(alert!, animated: true)
             }

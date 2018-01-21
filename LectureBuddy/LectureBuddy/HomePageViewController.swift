@@ -83,7 +83,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     func setTabBarItems(){
         var barItems:[Item] = []
         
-        for subjectDoc in DataManager.sharedInstance.subjectDocs {
+        for subjectDoc in DataManager.sharedInstance.subjects {
             //print(subjectDoc.documentID)
             let subjectName = subjectDoc.documentID
             barItems.append(Item.init(title: subjectName))
@@ -95,7 +95,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     func setSubjectPages(){
         viewControllers = []
         
-        for _ in 0..<DataManager.sharedInstance.subjectDocs.count {
+        for _ in 0..<DataManager.sharedInstance.subjects.count {
             let recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecordingsTableVC") as! RecordingsTableViewController
             viewControllers.append(recordingVC)
         }
@@ -126,7 +126,12 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     
     func viewController(for pageboyViewController: PageboyViewController,
                         at index: PageboyViewController.PageIndex) -> UIViewController? {
-        return viewControllers[index]
+        let viewController = viewControllers[index]
+        
+        DataManager.sharedInstance.currentSubject = DataManager.sharedInstance.subjects[index]
+        print(index)
+        
+        return viewController
     }
     
     // TODO: - Add a default page! (design it first)
@@ -187,7 +192,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "newRecording" {
-            let newRecordingViewCont = segue.destination
+            let newRecordingViewCont = segue.destination as! NewRecordingViewController
             // TODO:
         } else if segue.identifier == "viewRecording" {
             let viewRecordingViewCont = segue.destination

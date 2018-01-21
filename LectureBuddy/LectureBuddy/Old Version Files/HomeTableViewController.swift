@@ -80,7 +80,7 @@ class HomeTableViewController: UITableViewController {
     // MARK: - Table View Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return DataManager.sharedInstance.subjectDocs.count
+        return DataManager.sharedInstance.subjects.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,7 +92,7 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let subjectDocs = DataManager.sharedInstance.subjectDocs
+        let subjectDocs = DataManager.sharedInstance.subjects
         let subjectName = subjectDocs[indexPath.section].documentID
         
         if isSubjectExpanded(subjectName: subjectName) {
@@ -104,8 +104,8 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var subjectHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "subjectHeaderReuseID") as! SubjectHeaderView
-        let subjectDocs = DataManager.sharedInstance.subjectDocs
-        let subjectName = subjectDocs[section].documentID
+        let subjects = DataManager.sharedInstance.subjects
+        let subjectName = subjects[section].documentID
         
         subjectHeaderView.configure(subjectName: subjectName, sectionNum: section, parentTableView: tableView, parentVC: self)
         
@@ -113,8 +113,8 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let subjectDocs = DataManager.sharedInstance.subjectDocs
-        let subjectName = subjectDocs[indexPath.section].documentID
+        let subjects = DataManager.sharedInstance.subjects
+        let subjectName = subjects[indexPath.section].documentID
         let subjectCell = tableView.dequeueReusableCell(withIdentifier: "subjectCellReuseID", for: indexPath) as! SubjectTableViewCell
         
         subjectCell.configureCell(subjectName: subjectName, indexPath: indexPath, isExpanded: isSubjectExpanded(subjectName: subjectName), parentVC: self, isRefreshingTable:isRefreshing)

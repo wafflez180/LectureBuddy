@@ -9,8 +9,9 @@
 import UIKit
 import Speech
 import SwiftRichString
+import Firebase
 
-class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UIScrollViewDelegate {
+class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UIScrollViewDelegate, SaveRecordingPopupProtocol {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
@@ -25,6 +26,8 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     var isFollowingSpeech = true
     var hasEditedTitleField = false
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
+    
+    var subject: DocumentSnapshot!
     
     // MARK: - UIViewController
 
@@ -216,6 +219,14 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         restartingRecognitionView.animateOut()
         // TODO: Remove the 'Sorry for the inconvience' banner
     }
+    
+    // MARK: - SaveRecordingPopupProtocol
+    
+    func willDismissPopup() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 
     // MARK: - Actions
     
@@ -223,10 +234,11 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         speechRecognitionManager.stopRecognition()
         audioWaveView.stopListening()
         
-        //let saveRecordingPopupView = SaveRecordingPopupView(initialTitle: titleTextField.text!)
-        //saveRecordingPopupView.present(viewController: self)
-        
-        //self.dismiss(animated: true, completion: nil)
+        let saveRecordingPopupView = SaveRecordingPopupView()
+        SaveRecordingPopupView.initialTitleFieldText = titleTextField.text!
+        SaveRecordingPopupView.textToSave = speechRecognitionManager.getFullTranscription() + speechRecognitionManager.currentBestTranscription
+        SaveRecordingPopupView.delegate = self
+        saveRecordingPopupView.present(viewController: self)
     }
 
     @IBAction func didPressFollowSpeechButton(_ sender: Any) {
