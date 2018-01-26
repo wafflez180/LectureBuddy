@@ -144,8 +144,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="MA5-aR-cQi" id="VOG-GI-Iw8"/>
                         <outlet property="tabBarContainerView" destination="oDU-lf-caI" id="Exe-6S-dXk"/>
-                        <segue destination="nEN-wc-lDU" kind="show" identifier="viewRecording" id="GSP-Q9-u1c"/>
-                        <segue destination="nEN-wc-lDU" kind="showDetail" identifier="newRecording" id="hJm-tV-kS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWK-io-UgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -170,13 +168,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="754" text="Lecture #3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-x5-3xU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="754" text="Lecture #3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-x5-3xU">
                                             <rect key="frame" x="15" y="10" width="86.5" height="24.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-sk-lUA">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-sk-lUA">
                                             <rect key="frame" x="15" y="39.5" width="345" height="150"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -389,12 +387,12 @@
             </objects>
             <point key="canvasLocation" x="-364" y="-661"/>
         </scene>
-        <!--New Recording View Controller-->
+        <!--Recording View Controller-->
         <scene sceneID="YTe-FH-4dF">
             <objects>
-                <viewController storyboardIdentifier="NewRecordingViewCont" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nEN-wc-lDU" customClass="NewRecordingViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recordingViewCont" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nEN-wc-lDU" customClass="RecordingViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="0cA-1O-bIV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text=" 500 words • Nov 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-Mt-JrD">
@@ -407,7 +405,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-tj-2SK">
-                                <rect key="frame" x="0.0" y="691" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="687" width="375" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="irn-4X-HWY"/>
                                 </constraints>
@@ -426,27 +424,6 @@
                                     <action selector="didPressFollowSpeechButton:" destination="nEN-wc-lDU" eventType="touchUpInside" id="mkS-6t-UoK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMP-Oh-zW5">
-                                <rect key="frame" x="0.0" y="745" width="375" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="iwI-ar-TMr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Stop and Save Recording">
-                                    <color key="titleColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="didPressStopRecordingButton:" destination="nEN-wc-lDU" eventType="touchUpInside" id="eYk-N7-Oai"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O3N-eb-UZB">
                                 <rect key="frame" x="15" y="45" width="202.5" height="25"/>
                                 <constraints>
@@ -456,8 +433,8 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
                             </textField>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d64-aq-ZQU" customClass="RestartingRecognitionView" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="601" width="375" height="90"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d64-aq-ZQU" customClass="RestartingRecognitionView" customModule="LectureBuddy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="599" width="375" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="5s Waiting to restart recognition…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH0-Be-PjX">
                                         <rect key="frame" x="15" y="10" width="345" height="18"/>
@@ -495,8 +472,8 @@ recognition due to Apple’s restrictions.</string>
                                     <outlet property="titleLabel" destination="cH0-Be-PjX" id="dZU-ko-YYJ"/>
                                 </connections>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-o0-tFF">
-                                <rect key="frame" x="15" y="80" width="345" height="501"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-o0-tFF">
+                                <rect key="frame" x="15" y="28" width="345" height="551"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-O1-neX" customClass="AudioWaveView" customModule="LectureBuddy" customModuleProvider="target">
                                         <rect key="frame" x="147.5" y="343.5" width="50" height="30"/>
@@ -598,7 +575,7 @@ recognition due to Apple’s restrictions.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9J-kX-NxH" customClass="GradientView" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="556" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="552" width="375" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="tdj-7e-fbZ"/>
                                 </constraints>
@@ -619,14 +596,56 @@ recognition due to Apple’s restrictions.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-cs-dkD">
+                                <rect key="frame" x="0.0" y="795" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="jol-h1-lOJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Close"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressCloseButton:" destination="nEN-wc-lDU" eventType="touchUpInside" id="aAZ-1o-vvP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMP-Oh-zW5">
+                                <rect key="frame" x="0.0" y="741" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="iwI-ar-TMr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Stop and Save Recording">
+                                    <color key="titleColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressStopRecordingButton:" destination="nEN-wc-lDU" eventType="touchUpInside" id="eYk-N7-Oai"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="trailing" secondItem="Htz-B2-FrI" secondAttribute="trailing" id="27f-tn-o4L"/>
+                            <constraint firstItem="tiI-cs-dkD" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="3AP-tK-CCK"/>
                             <constraint firstItem="DEP-o0-tFF" firstAttribute="top" secondItem="lC6-Mt-JrD" secondAttribute="bottom" constant="10" id="3vi-Ww-eGn"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="DEP-o0-tFF" secondAttribute="bottom" constant="20" id="4Bn-4G-hfE"/>
                             <constraint firstItem="jgE-tj-2SK" firstAttribute="top" secondItem="d64-aq-ZQU" secondAttribute="bottom" id="6bj-xb-IUm"/>
+                            <constraint firstItem="tiI-cs-dkD" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="8DP-oM-YbN"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" constant="15" id="8ap-pB-UKZ"/>
                             <constraint firstItem="c9J-kX-NxH" firstAttribute="trailing" secondItem="Htz-B2-FrI" secondAttribute="trailing" id="Cbd-Xf-Bdr"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="nMP-Oh-zW5" secondAttribute="trailing" id="EIh-fD-5zS"/>
@@ -637,7 +656,7 @@ recognition due to Apple’s restrictions.</string>
                             <constraint firstItem="c9J-kX-NxH" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="PLy-EO-Fuy"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="lC6-Mt-JrD" secondAttribute="trailing" constant="15" id="T9Y-Yb-Jm7"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="top" secondItem="c9J-kX-NxH" secondAttribute="bottom" constant="20" id="ZzX-mq-lS4"/>
-                            <constraint firstItem="nMP-Oh-zW5" firstAttribute="bottom" secondItem="Htz-B2-FrI" secondAttribute="bottom" id="bfq-Kv-mzu"/>
+                            <constraint firstItem="tiI-cs-dkD" firstAttribute="top" secondItem="nMP-Oh-zW5" secondAttribute="bottom" constant="-1" id="atK-IM-HFl"/>
                             <constraint firstItem="d64-aq-ZQU" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="bm6-oa-RYZ"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="DEP-o0-tFF" secondAttribute="trailing" constant="15" id="eEB-Vd-Nnn"/>
                             <constraint firstItem="Htz-B2-FrI" firstAttribute="trailing" secondItem="4VZ-yW-x4s" secondAttribute="trailing" id="fk8-Em-Mtd"/>
@@ -647,6 +666,7 @@ recognition due to Apple’s restrictions.</string>
                             <constraint firstItem="nMP-Oh-zW5" firstAttribute="leading" secondItem="Htz-B2-FrI" secondAttribute="leading" id="uiB-i3-BHt"/>
                             <constraint firstItem="O3N-eb-UZB" firstAttribute="top" secondItem="Htz-B2-FrI" secondAttribute="top" constant="25" id="vgB-ep-ruW"/>
                             <constraint firstItem="4VZ-yW-x4s" firstAttribute="top" secondItem="lC6-Mt-JrD" secondAttribute="bottom" constant="10" id="xo9-Pl-HLk"/>
+                            <constraint firstItem="tiI-cs-dkD" firstAttribute="trailing" secondItem="Htz-B2-FrI" secondAttribute="trailing" id="ylv-JD-PsE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Htz-B2-FrI"/>
                         <userDefinedRuntimeAttributes>
@@ -662,13 +682,15 @@ recognition due to Apple’s restrictions.</string>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
-                    <size key="freeformSize" width="375" height="800"/>
+                    <size key="freeformSize" width="375" height="850"/>
                     <connections>
                         <outlet property="audioWaveView" destination="vVi-O1-neX" id="OZa-hd-hm8"/>
+                        <outlet property="closeButton" destination="tiI-cs-dkD" id="uQQ-vg-2qG"/>
                         <outlet property="counterAndDateLabel" destination="lC6-Mt-JrD" id="VhZ-db-bkZ"/>
                         <outlet property="followSpeechButtonHeightConstraint" destination="irn-4X-HWY" id="5Us-ty-bak"/>
                         <outlet property="restartingRecognitionView" destination="d64-aq-ZQU" id="50K-FH-ewh"/>
                         <outlet property="scrollView" destination="DEP-o0-tFF" id="jlp-db-WQy"/>
+                        <outlet property="stopAndSaveButton" destination="nMP-Oh-zW5" id="uDR-te-mXS"/>
                         <outlet property="stopAndSaveRecordingHeightConstraint" destination="iwI-ar-TMr" id="C5x-g4-K6c"/>
                         <outlet property="textView" destination="b3e-TX-uxv" id="WAV-Qn-97U"/>
                         <outlet property="titleTextField" destination="O3N-eb-UZB" id="o12-VX-x7m"/>
@@ -909,7 +931,4 @@ recognition due to Apple’s restrictions.</string>
         <image name="new-recording-button" width="60" height="60"/>
         <image name="settings-navbutton" width="23" height="23"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="hJm-tV-kS5"/>
-    </inferredMetricsTieBreakers>
 </document>

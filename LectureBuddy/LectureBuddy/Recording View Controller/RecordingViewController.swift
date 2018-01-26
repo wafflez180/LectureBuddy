@@ -11,7 +11,7 @@ import Speech
 import SwiftRichString
 import Firebase
 
-class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UIScrollViewDelegate, SaveRecordingPopupProtocol {
+class RecordingViewController: UIViewController, SpeechRecognitionManagerDelegate, UITextFieldDelegate, UIScrollViewDelegate, SaveRecordingPopupProtocol {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
@@ -19,6 +19,8 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     @IBOutlet var counterAndDateLabel: UILabel!
     @IBOutlet var restartingRecognitionView: RestartingRecognitionView!
     @IBOutlet var audioWaveView: AudioWaveView!
+    @IBOutlet var stopAndSaveButton: UIButton!
+    @IBOutlet var closeButton: UIButton!
     
     @IBOutlet var stopAndSaveRecordingHeightConstraint: NSLayoutConstraint!
     @IBOutlet var followSpeechButtonHeightConstraint: NSLayoutConstraint!
@@ -28,6 +30,9 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
     
     var subject:Subject!
+    
+    var isViewingRecording: Bool = false
+    var recordingToView: Recording!
     
     // MARK: - UIViewController
 
@@ -43,13 +48,31 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        speechRecognitionManager.startRecognition()
-        audioWaveView.startListening(updateTimeInterval: 0.1, speechRecogManager: speechRecognitionManager)
+        if !isViewingRecording {
+            speechRecognitionManager.startRecognition()
+            audioWaveView.startListening(updateTimeInterval: 0.1, speechRecogManager: speechRecognitionManager)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .default
         setNeedsStatusBarAppearanceUpdate()
+        
+        if isViewingRecording {
+            self.titleTextField.text = recordingToView.title
+            self.stopAndSaveButton.setTitle("Delete Recording", for: .normal)
+            self.titleTextField.isEnabled = false
+            self.audioWaveView.isHidden = true
+            
+            setTextViewText(transcription: recordingToView.text)
+            
+            let numWords = recordingToView.text.split(separator: " ").count
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d"
+            let dateText = dateFormatter.string(from: recordingToView.dateCreated)
+            
+            self.counterAndDateLabel.text = String(numWords) + " words • " + dateText
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,6 +96,11 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         
         restartingRecognitionView.setupView()
         setInitialTexts()
+    }
+    
+    func setupToView(recording: Recording){
+        self.isViewingRecording = true
+        self.recordingToView = recording
     }
 
     func setInitialTexts(){
@@ -149,6 +177,12 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         //print(rangesOfKeywordSentences.count)
         
         return rangesOfKeywordSentences
+    }
+    
+    func stopRecordingAndDismiss(){
+        speechRecognitionManager.stopRecognition()
+        audioWaveView.stopListening()
+        self.dismiss(animated: true, completion: nil)
     }
     
     func showFollowSpeechButton(){
@@ -231,16 +265,51 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
 
     // MARK: - Actions
     
+    @IBAction func didPressCloseButton(_ sender: Any) {
+        if !isViewingRecording {
+            // create the alert
+            let alert = UIAlertController(title: "Warning!", message: "This recording will not be saved. Are you sure you want to leave?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Leave", style: UIAlertActionStyle.destructive, handler: { alert in
+                self.stopRecordingAndDismiss()
+            }))
+
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func didPressStopRecordingButton(_ sender: Any) {
-        speechRecognitionManager.stopRecognition()
-        audioWaveView.stopListening()
-        
-        let saveRecordingPopupView = SaveRecordingPopupView()
-        SaveRecordingPopupView.initialTitleFieldText = titleTextField.text!
-        SaveRecordingPopupView.textToSave = speechRecognitionManager.getFullTranscription() + speechRecognitionManager.currentBestTranscription
-        SaveRecordingPopupView.subject = self.subject
-        SaveRecordingPopupView.delegate = self
-        saveRecordingPopupView.present(viewController: self)
+        if !isViewingRecording {
+            speechRecognitionManager.stopRecognition()
+            audioWaveView.stopListening()
+            
+            let saveRecordingPopupView = SaveRecordingPopupView()
+            SaveRecordingPopupView.initialTitleFieldText = titleTextField.text!
+            SaveRecordingPopupView.textToSave = speechRecognitionManager.getFullTranscription() + speechRecognitionManager.currentBestTranscription
+            SaveRecordingPopupView.subject = self.subject
+            SaveRecordingPopupView.delegate = self
+            saveRecordingPopupView.present(viewController: self)
+        } else {
+            // create the alert
+            let alert = UIAlertController(title: "Delete \(recordingToView.title)", message: "Are you sure you want to delete this recording?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alert in
+                DataManager.sharedInstance.deleteRecording(recording: self.recordingToView) {
+                    HomePageViewController.shouldReloadOnAppear = true
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     @IBAction func didPressFollowSpeechButton(_ sender: Any) {

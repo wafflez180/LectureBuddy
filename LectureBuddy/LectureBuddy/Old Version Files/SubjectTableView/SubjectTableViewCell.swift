@@ -188,7 +188,7 @@ extension SubjectTableViewCell: UIScrollViewDelegate {
                     HomeTableViewController.selectedRecordingCell = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionFooter)[0] as! NewRecordingCollectionViewCell
                     
                     // Set up the view controller to transition to, start the transition and begin interaction/animation
-                    var newRecordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewRecordingViewCont") as! NewRecordingViewController
+                    var newRecordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewRecordingViewCont") as! RecordingViewController
                     newRecordingVC.transitioningDelegate = parentVC
                     parentVC.present(newRecordingVC, animated: true, completion: nil)
                     beganInteraction = true

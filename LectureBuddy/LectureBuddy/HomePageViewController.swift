@@ -178,7 +178,10 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     }
     
     @IBAction func pressedNewRecordingButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "newRecording", sender: self)
+        var newRecordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "recordingViewCont") as! RecordingViewController
+        newRecordingVC.subject = DataManager.sharedInstance.subjects[self.currentIndex!]
+
+        self.present(newRecordingVC, animated: true, completion: nil)
     }
     
     // TODO: - Put this functionality in the settings view controller
@@ -202,20 +205,4 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         // present an actionSheet...
         present(actionSheetController, animated: true, completion: nil)
     }*/
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "newRecording" {
-            let newRecordingViewCont = segue.destination as! NewRecordingViewController
-            newRecordingViewCont.subject = DataManager.sharedInstance.subjects[self.currentIndex!]
-            // TODO:
-        } else if segue.identifier == "viewRecording" {
-            let viewRecordingViewCont = segue.destination
-            
-        }
-    }
 }

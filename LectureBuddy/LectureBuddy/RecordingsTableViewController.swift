@@ -60,6 +60,16 @@ class RecordingsTableViewController: UITableViewController {
 
         return recordingCell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "recordingViewCont") as! RecordingViewController
+        
+        recordingVC.setupToView(recording: recordings[indexPath.row])
+        
+        self.present(recordingVC, animated: true, completion: {
+            self.tableView.deselectRow(at: indexPath, animated: false)
+        })
+    }
 
     /*
     // Override to support conditional editing of the table view.

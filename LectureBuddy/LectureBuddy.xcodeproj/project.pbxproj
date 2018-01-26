@@ -42,7 +42,7 @@
 		CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */; };
 		CA7C9E2A2001744D003786C9 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C9E292001744D003786C9 /* WaveformView.swift */; };
 		CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */; };
-		CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */; };
+		CA96F0241FE5D97100758716 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0231FE5D97000758716 /* RecordingViewController.swift */; };
 		CA96F0261FE5DA0F00758716 /* TransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */; };
 		CA9F13151FB5692100DAE153 /* PopupContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F13141FB5692100DAE153 /* PopupContentView.swift */; };
 		CAA2751A20154E01008469D0 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2751920154E01008469D0 /* Subject.swift */; };
@@ -122,7 +122,7 @@
 		CA76AF311FB8E7AD006E39AC /* AddKeywordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKeywordTableViewCell.xib; sourceTree = "<group>"; };
 		CA7C9E292001744D003786C9 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
 		CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectPopupView.swift; sourceTree = "<group>"; };
-		CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordingViewController.swift; sourceTree = "<group>"; };
+		CA96F0231FE5D97000758716 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		CA96F0251FE5DA0F00758716 /* TransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationController.swift; sourceTree = "<group>"; };
 		CA9F13141FB5692100DAE153 /* PopupContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContentView.swift; sourceTree = "<group>"; };
 		CAA2751920154E01008469D0 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
@@ -228,9 +228,9 @@
 				CAAFDF511FEDD1FC004EE702 /* ColorManager.swift */,
 				CA3150641FAE4EA9009A90EF /* SignupViewController.swift */,
 				CAAFDF4D1FEDC636004EE702 /* HomePageViewController.swift */,
-				CAA58E95200160D000555696 /* New Recording View Controller */,
 				CAAFDF4F1FEDC99B004EE702 /* RecordingsTableViewController.swift */,
 				CAAFDF561FEDDA92004EE702 /* RecordingTableViewCell.swift */,
+				CAA58E95200160D000555696 /* Recording View Controller */,
 				CAAFDF581FEDDFCF004EE702 /* Old Version Files */,
 				CA5AA4B01FAF8D7900E0A308 /* Popups */,
 				CA46C0071FAE3AE100AF4D4F /* Main.storyboard */,
@@ -317,16 +317,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CAA58E95200160D000555696 /* New Recording View Controller */ = {
+		CAA58E95200160D000555696 /* Recording View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CAC3AB1120002B3400C23553 /* SpeechRecogitionManager.swift */,
-				CA96F0231FE5D97000758716 /* NewRecordingViewController.swift */,
+				CA96F0231FE5D97000758716 /* RecordingViewController.swift */,
 				CAA58E93200160C800555696 /* RestartingRecognitionView.swift */,
 				CA265E59200575CA00BC5159 /* GradientView.swift */,
 				CA7C9E28200173FF003786C9 /* Audio Wave Files */,
 			);
-			path = "New Recording View Controller";
+			path = "Recording View Controller";
 			sourceTree = "<group>";
 		};
 		CAAFDF531FEDD7AB004EE702 /* Extensions */ = {
@@ -737,7 +737,7 @@
 				CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */,
 				CA265E5820052F7D00BC5159 /* ScrollViewExtension.swift in Sources */,
 				CAAFDF4E1FEDC636004EE702 /* HomePageViewController.swift in Sources */,
-				CA96F0241FE5D97100758716 /* NewRecordingViewController.swift in Sources */,
+				CA96F0241FE5D97100758716 /* RecordingViewController.swift in Sources */,
 				CA89B83A1FAEA76D001BD9EA /* AddSubjectPopupView.swift in Sources */,
 				CAA2751D201552D4008469D0 /* Recording.swift in Sources */,
 				CA1A9EC11FE5CABF009A78CB /* NewRecordingCollectionViewCell.swift in Sources */,

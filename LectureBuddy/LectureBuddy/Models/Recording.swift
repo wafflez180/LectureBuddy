@@ -16,10 +16,12 @@ class Recording: NSObject {
     var text: String
     var dateCreated: Date
     var documentID: String?
+    var subjectDocumentId: String?
     
-    init(document: DocumentSnapshot) {
+    init(document: DocumentSnapshot, subjectDocId: String) {
         let docData = document.data()
         
+        self.subjectDocumentId = subjectDocId
         self.documentID = document.documentID
         self.title = docData["title"] as! String
         self.text = docData["text"] as! String
@@ -31,6 +33,7 @@ class Recording: NSObject {
         self.text = text
         self.dateCreated = Date()
         self.documentID = nil
+        self.subjectDocumentId = nil
     }
 }
 

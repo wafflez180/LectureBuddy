@@ -65,6 +65,13 @@ class DataManager: NSObject, FUIAuthDelegate {
         }
     }
     
+    func deleteRecording(recording: Recording, completionHandler: @escaping () -> Void) {
+        self.defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").document(recording.subjectDocumentId!).collection("recordings").document(recording.documentID!).delete { error in
+            print("\(recording.title) recording has been successfully deleted")
+            completionHandler()
+        }
+    }
+    
     func loadRecordings(subjectDocId:String, completion: @escaping ([Recording]) -> Void) {
         let recordingsQuery = defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").document(subjectDocId).collection("recordings").order(by: "dateCreated", descending: true)
         
@@ -75,7 +82,7 @@ class DataManager: NSObject, FUIAuthDelegate {
                 var recordings:[Recording] = []
                 
                 for doc in (querySnapshot?.documents)! {
-                    recordings.append(Recording.init(document: doc))
+                    recordings.append(Recording.init(document: doc, subjectDocId: subjectDocId))
                 }
                 
                 completion(recordings)
