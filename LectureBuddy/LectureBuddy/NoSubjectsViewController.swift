@@ -10,6 +10,8 @@ import UIKit
 
 class NoSubjectsViewController: UIViewController {
 
+    var homePageVC: HomePageViewController!
+    
     // MARK: - UIViewController
 
     override func viewDidLoad() {
@@ -21,7 +23,11 @@ class NoSubjectsViewController: UIViewController {
     
     // MARK: - Actions
 
+    @IBAction func pressedViewHighlightingKeywordsButton(_ sender: Any) {
+        homePageVC.pressedHighlightKeywordsButton(homePageVC)
+    }
+    
     @IBAction func pressedAddSubjectButton(_ sender: Any) {
-        
+        homePageVC.pressedAddSubjectButton(homePageVC)
     }
 }

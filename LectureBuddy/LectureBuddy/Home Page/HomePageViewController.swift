@@ -17,7 +17,9 @@ import NVActivityIndicatorView
 class HomePageViewController: TabmanViewController, PageboyViewControllerDataSource {
     
     @IBOutlet var tabBarContainerView: UIView!
+    @IBOutlet var recordButton: UIButton!
     @IBOutlet var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet var bottomGradientBar: GradientView!
     
     var viewControllers:[UIViewController] = []
     
@@ -125,24 +127,19 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
             viewControllers.append(recordingVC)
         }
         
+        if DataManager.sharedInstance.subjects.count == 0 {
+            let noSubjectsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoSubjectsVC") as! NoSubjectsViewController
+            noSubjectsVC.homePageVC = self
+            viewControllers.append(noSubjectsVC)
+        }
+        
+        tabBarContainerView.isHidden = DataManager.sharedInstance.subjects.count == 0
+        recordButton.isHidden = DataManager.sharedInstance.subjects.count == 0
+        bottomGradientBar.isHidden = DataManager.sharedInstance.subjects.count == 0
+
         self.reloadPages()
     }
-    /*
-    func deleteSubject(){
-        let subjectName = self.bar.items![self.currentIndex!].title!
-        let alert = UIAlertController(title: "Delete \(subjectName)", message: """
-            Are you sure you want to delete \(subjectName)?
-            You can not undo this action.
-            """, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alertAction in
-            DataManager.sharedInstance.deleteSubect(subjectName: subjectName, completionHandler: {
-                self.reloadData()
-            })
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }*/
-    
+
     // MARK: - PageboyViewControllerDataSource
     
     func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
@@ -152,16 +149,17 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     func viewController(for pageboyViewController: PageboyViewController,
                         at index: PageboyViewController.PageIndex) -> UIViewController? {
         
-        let recordingTableViewCont = viewControllers[index] as! RecordingsTableViewController
-        
-        recordingTableViewCont.recordings = DataManager.sharedInstance.subjects[index].recordings
+        if DataManager.sharedInstance.subjects.count > 0 {
+            let recordingTableViewCont = viewControllers[index] as! RecordingsTableViewController
+            
+            recordingTableViewCont.recordings = DataManager.sharedInstance.subjects[index].recordings
+        }
 
         return viewControllers[index]
     }
     
-    // TODO: - Add a default page! (design it first)
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
-        return nil // TODO: - Save open the last page they were on (NSUserDefaults) PageboyViewController.Page.at(index: 0)
+        return nil
     }
     
     // MARK: - Actions
