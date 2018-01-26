@@ -26,6 +26,8 @@ class PopupTemplateViewController: UIViewController {
     @IBOutlet var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var activityIndicator: NVActivityIndicatorView!
     
+    @IBOutlet var yPopupAlignmentConstraint: NSLayoutConstraint!
+    
     weak var delegate: PopupViewProtocol?
     var contentView:UIView!
     var popupTitle:String!
@@ -166,10 +168,10 @@ class PopupTemplateViewController: UIViewController {
         if overlapAmount > 0 {
             let padding : CGFloat = 10.0
             popupYOriginTranslationAmount = overlapAmount + padding
-            // Move the popupView up so the keyboard doesn't block part of it
-            var newFrame : CGRect = self.popupView.frame
-            newFrame.origin.y -= popupYOriginTranslationAmount
-            self.popupView.frame = newFrame
+            
+            self.yPopupAlignmentConstraint.constant = (popupYOriginTranslationAmount * -1.0)
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -177,12 +179,9 @@ class PopupTemplateViewController: UIViewController {
         //Once keyboard disappears, restore original positions
         
         if popupYOriginTranslationAmount != 0.0 {
-            // Move the popupView back down after it was moved up when the keyboard was shown
-            var newFrame : CGRect = self.popupView.frame
-            newFrame.origin.y += popupYOriginTranslationAmount
-            self.popupView.frame = newFrame
-            
-            popupYOriginTranslationAmount = 0.0
+            self.yPopupAlignmentConstraint.constant = 0
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
         }
     }
 

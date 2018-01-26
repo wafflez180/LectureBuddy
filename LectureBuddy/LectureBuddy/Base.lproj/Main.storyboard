@@ -754,6 +754,7 @@ recognition due to Apple’s restrictions.</string>
                         <outlet property="mainButton" destination="G4y-iT-zMb" id="aoP-cA-4Uq"/>
                         <outlet property="popupView" destination="fgq-j8-Pgt" id="p15-42-LlC"/>
                         <outlet property="titleLabel" destination="pPE-vH-5Zh" id="PAq-BA-JOZ"/>
+                        <outlet property="yPopupAlignmentConstraint" destination="zyK-Zz-uXX" id="38S-Ip-xwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvu-xQ-LMR" userLabel="First Responder" sceneMemberID="firstResponder"/>

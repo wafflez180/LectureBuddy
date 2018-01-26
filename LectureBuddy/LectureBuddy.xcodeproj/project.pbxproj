@@ -19,7 +19,7 @@
 		CA265E5A200575CA00BC5159 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E59200575CA00BC5159 /* GradientView.swift */; };
 		CA265E5D200586A500BC5159 /* SaveRecordingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA265E5B200586A400BC5159 /* SaveRecordingPopupView.swift */; };
 		CA265E5E200586A500BC5159 /* SaveRecordingPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA265E5C200586A400BC5159 /* SaveRecordingPopupView.xib */; };
-		CA265E60200586B600BC5159 /* AddSubjectPopupView copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA265E5F200586B600BC5159 /* AddSubjectPopupView copy.xib */; };
+		CA265E60200586B600BC5159 /* AddSubjectPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA265E5F200586B600BC5159 /* AddSubjectPopupView.xib */; };
 		CA3150651FAE4EA9009A90EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3150641FAE4EA9009A90EF /* SignupViewController.swift */; };
 		CA46C0041FAE3AE100AF4D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46C0031FAE3AE100AF4D4F /* AppDelegate.swift */; };
 		CA46C0091FAE3AE100AF4D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46C0071FAE3AE100AF4D4F /* Main.storyboard */; };
@@ -92,7 +92,7 @@
 		CA265E59200575CA00BC5159 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		CA265E5B200586A400BC5159 /* SaveRecordingPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveRecordingPopupView.swift; sourceTree = "<group>"; };
 		CA265E5C200586A400BC5159 /* SaveRecordingPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveRecordingPopupView.xib; sourceTree = "<group>"; };
-		CA265E5F200586B600BC5159 /* AddSubjectPopupView copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AddSubjectPopupView copy.xib"; sourceTree = "<group>"; };
+		CA265E5F200586B600BC5159 /* AddSubjectPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSubjectPopupView.xib; sourceTree = "<group>"; };
 		CA3150631FAE4BCE009A90EF /* LectureBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LectureBuddy.entitlements; sourceTree = "<group>"; };
 		CA3150641FAE4EA9009A90EF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CA46C0001FAE3AE100AF4D4F /* LectureBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LectureBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,7 +275,7 @@
 			children = (
 				CAE84D7B1FB55AAC002C8F29 /* PopupTemplateViewController.swift */,
 				CA9F13141FB5692100DAE153 /* PopupContentView.swift */,
-				CA265E5F200586B600BC5159 /* AddSubjectPopupView copy.xib */,
+				CA265E5F200586B600BC5159 /* AddSubjectPopupView.xib */,
 				CA89B8391FAEA76D001BD9EA /* AddSubjectPopupView.swift */,
 				CA265E5C200586A400BC5159 /* SaveRecordingPopupView.xib */,
 				CA265E5B200586A400BC5159 /* SaveRecordingPopupView.swift */,
@@ -497,7 +497,7 @@
 				CA265E5E200586A500BC5159 /* SaveRecordingPopupView.xib in Resources */,
 				CA1A9EC21FE5CABF009A78CB /* NewRecordingCollectionViewCell.xib in Resources */,
 				CAAB11E71FE46EFF00893AF6 /* SubjectHeaderView.xib in Resources */,
-				CA265E60200586B600BC5159 /* AddSubjectPopupView copy.xib in Resources */,
+				CA265E60200586B600BC5159 /* AddSubjectPopupView.xib in Resources */,
 				CA1A9EC61FE5CADA009A78CB /* RecordingCollectionViewCell.xib in Resources */,
 				CA76AF331FB8E7AD006E39AC /* AddKeywordTableViewCell.xib in Resources */,
 			);

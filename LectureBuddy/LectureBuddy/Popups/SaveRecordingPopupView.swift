@@ -47,6 +47,7 @@ class SaveRecordingPopupView: PopupContentView, PopupViewProtocol {
             
     func pressedMainButton(success: @escaping () -> Void, error: @escaping (_ alert:UIAlertController?) -> Void, doNothing: @escaping () -> Void) {
         if (recordingTitleTextField.text != ""){
+            self.endEditing(true)
             
             let recordingToSave = Recording.init(title: recordingTitleTextField.text!, text: SaveRecordingPopupView.textToSave)
             
