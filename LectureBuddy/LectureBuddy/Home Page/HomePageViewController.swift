@@ -104,14 +104,16 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     }
     
     func setTabBarItems(){
-        var barItems:[Item] = []
-        
-        for subject in DataManager.sharedInstance.subjects {
-            let subjectName = subject.documentID
-            barItems.append(Item.init(title: subjectName))
+        if DataManager.sharedInstance.subjects.count > 0 {
+            var barItems:[Item] = []
+            
+            for subject in DataManager.sharedInstance.subjects {
+                let subjectName = subject.documentID
+                barItems.append(Item.init(title: subjectName))
+            }
+            
+            self.bar.items = barItems
         }
-        
-        self.bar.items = barItems
     }
     
     func setSubjectPages(){

@@ -14,9 +14,9 @@ import NVActivityIndicatorView
 // Github FirebaseAuthUI README:
 // [https://github.com/firebase/FirebaseUI-iOS/blob/master/FirebaseAuthUI/README.md]
 
-class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
+class SignupViewController: UIViewController {
     
-    @IBOutlet var facebookLoginButton: FBSDKLoginButton!
+    @IBOutlet var facebookLoginButton: UIButton!
     @IBOutlet var activityIndicator: NVActivityIndicatorView!
     
     // MARK: - UIViewController
@@ -24,16 +24,21 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
-        facebookLoginButton.delegate = self
         DataManager.sharedInstance.configureFirebaseAuthentication()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        activityIndicator.startAnimating()
         if DataManager.sharedInstance.isUserAuthenticated() {
             DataManager.sharedInstance.loadSubjectsAndRecordings {
                 DataManager.sharedInstance.getUserData(success: {
                     self.segueToHomePage()
-                }, error: {})
+                }, error: {
+                    
+                    print("AHHH ERROR")
+                }
+                
+                )
             }
         }else{
             self.activityIndicator.stopAnimating()
@@ -48,25 +53,29 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.performSegue(withIdentifier: "authenticated", sender: self)
     }
     
-    // MARK: - FBSDKLoginButtonDelegate
+    // MARK: - Actions
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
+    @IBAction func pressedFacebookLogInButton(_ sender: Any) {
+        let loginManager:FBSDKLoginManager = FBSDKLoginManager.init()
+        let permissions = ["public_profile", "email"]
+        
+        activityIndicator.startAnimating()
+        loginManager.logIn(withReadPermissions: permissions, from: self) { result, error in
+            if (error != nil) {
+                print("Process error")
+            } else if (result?.isCancelled)! {
+                print("Cancelled")
+            } else {
+                print("Logged in")
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                DataManager.sharedInstance.signinToFirebase(credential: credential, success: {
+                    DataManager.sharedInstance.loadSubjectsAndRecordings(completion: {
+                        self.segueToHomePage()
+                    })
+                }) {
+                    // Error, TODO: Do Something
+                }
+            }
         }
-        // Sign in to Firebase, load subjects and then segue to homePage
-        let credential:AuthCredential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        DataManager.sharedInstance.signinToFirebase(credential: credential, success: {
-            DataManager.sharedInstance.loadSubjectsAndRecordings(completion: {
-                self.segueToHomePage()
-            })
-        }) {
-            // Error, TODO: Do Something
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        // Do Nothing
     }
 }

@@ -165,6 +165,70 @@
             </objects>
             <point key="canvasLocation" x="-364" y="178.56071964017991"/>
         </scene>
+        <!--No Subjects View Controller-->
+        <scene sceneID="jBK-F7-OVJ">
+            <objects>
+                <viewController id="cv3-hO-GiH" customClass="NoSubjectsViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Cu-NR-Ryb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Lecture Buddy" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GL-ar-yla">
+                                <rect key="frame" x="20" y="120" width="335" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="XQO-Im-yYE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record and study the highlights of your lectures." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3X0-aq-oeq">
+                                <rect key="frame" x="20" y="225" width="335" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kR-ab-Qcc">
+                                <rect key="frame" x="40" y="520" width="295" height="47"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
+                                <state key="normal" title="Add a Subject"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pressedAddSubjectButton:" destination="cv3-hO-GiH" eventType="touchUpInside" id="hKP-OF-GWE"/>
+                                    <action selector="pressedFacebookLogInButton:" destination="FF6-bq-4Jh" eventType="touchUpInside" id="kkz-Pn-Man"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9GL-ar-yla" firstAttribute="top" secondItem="cvD-Ue-ZH0" secondAttribute="top" constant="100" id="15G-vz-45m"/>
+                            <constraint firstItem="cvD-Ue-ZH0" firstAttribute="trailing" secondItem="0kR-ab-Qcc" secondAttribute="trailing" constant="40" id="5Ev-EG-gjK"/>
+                            <constraint firstItem="cvD-Ue-ZH0" firstAttribute="bottom" secondItem="0kR-ab-Qcc" secondAttribute="bottom" constant="100" id="888-4b-W0T"/>
+                            <constraint firstItem="3X0-aq-oeq" firstAttribute="top" secondItem="9GL-ar-yla" secondAttribute="bottom" constant="5" id="8cC-QK-oHG"/>
+                            <constraint firstItem="0kR-ab-Qcc" firstAttribute="leading" secondItem="cvD-Ue-ZH0" secondAttribute="leading" constant="40" id="RXR-9O-0de"/>
+                            <constraint firstItem="3X0-aq-oeq" firstAttribute="leading" secondItem="cvD-Ue-ZH0" secondAttribute="leading" constant="20" id="RfF-QV-PfU"/>
+                            <constraint firstItem="cvD-Ue-ZH0" firstAttribute="trailing" secondItem="9GL-ar-yla" secondAttribute="trailing" constant="20" id="WKW-I3-ifI"/>
+                            <constraint firstItem="9GL-ar-yla" firstAttribute="leading" secondItem="cvD-Ue-ZH0" secondAttribute="leading" constant="20" id="mW9-oq-nSq"/>
+                            <constraint firstItem="cvD-Ue-ZH0" firstAttribute="trailing" secondItem="3X0-aq-oeq" secondAttribute="trailing" constant="20" id="pd4-2p-cUh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cvD-Ue-ZH0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVm-Tb-Kwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2246" y="-323"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="m3i-ag-tHd">
             <objects>
@@ -752,13 +816,6 @@ recognition due to Apple’s restrictions.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzk-BW-lNP" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="40" y="537" width="295" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3W7-Dd-tIc" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="175" y="321" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -773,23 +830,38 @@ recognition due to Apple’s restrictions.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Lb-1M-LyR">
+                                <rect key="frame" x="35" y="520" width="305" height="47"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
+                                <state key="normal" title="Continue with Facebook"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pressedFacebookLogInButton:" destination="FF6-bq-4Jh" eventType="touchUpInside" id="Zxf-U4-Cot"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.1764705882" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="OfF-qd-i0u" firstAttribute="bottom" secondItem="1Lb-1M-LyR" secondAttribute="bottom" constant="100" id="0gB-af-37A"/>
+                            <constraint firstItem="OfF-qd-i0u" firstAttribute="trailing" secondItem="1Lb-1M-LyR" secondAttribute="trailing" constant="35" id="54D-WI-msm"/>
                             <constraint firstItem="gkt-li-G8n" firstAttribute="top" secondItem="OfF-qd-i0u" secondAttribute="top" constant="150" id="5Xz-IK-ixW"/>
                             <constraint firstItem="gkt-li-G8n" firstAttribute="centerX" secondItem="OfF-qd-i0u" secondAttribute="centerX" id="Ohd-cx-sEy"/>
                             <constraint firstItem="3W7-Dd-tIc" firstAttribute="centerY" secondItem="l1L-YA-IlZ" secondAttribute="centerY" id="QGl-1z-bDu"/>
-                            <constraint firstItem="Wzk-BW-lNP" firstAttribute="centerX" secondItem="OfF-qd-i0u" secondAttribute="centerX" id="T1t-In-TuC"/>
+                            <constraint firstItem="1Lb-1M-LyR" firstAttribute="leading" secondItem="OfF-qd-i0u" secondAttribute="leading" constant="35" id="Rb9-oz-cc7"/>
+                            <constraint firstItem="1Lb-1M-LyR" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="e4a-p1-P0D"/>
                             <constraint firstItem="3W7-Dd-tIc" firstAttribute="centerX" secondItem="OfF-qd-i0u" secondAttribute="centerX" id="lRp-Ho-Btl"/>
-                            <constraint firstItem="OfF-qd-i0u" firstAttribute="trailing" secondItem="Wzk-BW-lNP" secondAttribute="trailing" constant="40" id="mTB-wg-RW9"/>
-                            <constraint firstItem="OfF-qd-i0u" firstAttribute="bottom" secondItem="Wzk-BW-lNP" secondAttribute="bottom" constant="100" id="mvT-eT-69e"/>
-                            <constraint firstItem="Wzk-BW-lNP" firstAttribute="leading" secondItem="OfF-qd-i0u" secondAttribute="leading" constant="40" id="rau-sz-Rjh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OfF-qd-i0u"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="3W7-Dd-tIc" id="GmL-mj-85j"/>
-                        <outlet property="facebookLoginButton" destination="Wzk-BW-lNP" id="xtF-uw-fnt"/>
+                        <outlet property="facebookLoginButton" destination="1Lb-1M-LyR" id="jqr-mQ-zls"/>
                         <segue destination="Z4U-ee-IlL" kind="presentation" identifier="authenticated" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="CxQ-Zz-P0L"/>
                     </connections>
                 </viewController>

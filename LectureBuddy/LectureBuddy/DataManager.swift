@@ -49,6 +49,10 @@ class DataManager: NSObject, FUIAuthDelegate {
                     }
                 })
             }
+            
+            if self.subjects.count == 0 {
+                completion()
+            }
         }
     }
     
