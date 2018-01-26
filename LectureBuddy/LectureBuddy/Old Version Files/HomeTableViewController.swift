@@ -65,7 +65,7 @@ class HomeTableViewController: UITableViewController {
     
     @objc func refreshTableView(){
         isRefreshing = true
-        DataManager.sharedInstance.getSubjectDocuments(completion: {
+        DataManager.sharedInstance.loadSubjectsAndRecordings {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.tableView.refreshControl?.endRefreshing()
                 UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
@@ -74,7 +74,7 @@ class HomeTableViewController: UITableViewController {
                     self.isRefreshing = false
                 }
             })
-        })
+        }
     }
     
     // MARK: - Table View Data Source

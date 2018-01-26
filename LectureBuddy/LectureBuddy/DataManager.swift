@@ -25,21 +25,61 @@ class DataManager: NSObject, FUIAuthDelegate {
     }
     
     var subjects:[Subject] = []
-    var currentSubject: Subject?
     var highlightedKeywords:[String] = []
     let defaultStore = Firestore.firestore()
     
     // MARK: - DataManager
     
+    func loadSubjectsAndRecordings(completion: @escaping () -> Void) {
+        self.loadSubjects {
+            print("Loaded \(self.subjects.count) subjects")
+            let numSubjectsToLoad = self.subjects.count
+            var loadedCounter = 0
+            
+            for subject in self.subjects {
+                self.loadRecordings(subjectDocId: subject.documentID, completion: { recordings in
+                    subject.recordings = recordings
+                    
+                    print("\tLoaded \(recordings.count) \(subject.name) recordings")
+                    loadedCounter+=1
+                    
+                    if loadedCounter == numSubjectsToLoad {
+                        print("Completed loading subjects and recordings.")
+                        completion()
+                    }
+                })
+            }
+        }
+    }
+    
     // MARK: - Recordings
 
-    func saveNewRecording(recording: Recording, success: @escaping () -> Void) {
-        self.defaultStore.collection("Users").document((Auth.auth().currentUser?.uid)!).collection("subjects").document((currentSubject?.documentID)!).collection("recordings").addDocument(data: [
+    func saveNewRecording(subject: Subject, recording: Recording, success: @escaping () -> Void) {
+        self.defaultStore.collection("Users").document((Auth.auth().currentUser?.uid)!).collection("subjects").document(subject.documentID).collection("recordings").addDocument(data: [
             "title" : recording.title,
             "text" : recording.text,
             "dateCreated" : Date()
         ]) { error in
+            print("Saved \(recording.title) for \(subject.name)")
             success()
+        }
+    }
+    
+    func loadRecordings(subjectDocId:String, completion: @escaping ([Recording]) -> Void) {
+        let recordingsQuery = defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").document(subjectDocId).collection("recordings").order(by: "dateCreated", descending: true)
+        
+        recordingsQuery.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                var recordings:[Recording] = []
+                
+                for doc in (querySnapshot?.documents)! {
+                    recordings.append(Recording.init(document: doc))
+                }
+                
+                completion(recordings)
+            }
         }
     }
 
@@ -56,7 +96,7 @@ class DataManager: NSObject, FUIAuthDelegate {
                     "dateCreated": NSDate()
                 ]) { error in
                     // To Do: Handle error (User can't add a new subject if the subject's name already exists)
-                    self.getSubjectDocuments(completion: {
+                    self.loadSubjects(completion: {
                         success()
                     })
                 }
@@ -64,7 +104,7 @@ class DataManager: NSObject, FUIAuthDelegate {
         }
     }
     
-    func getSubjectDocuments(completion: @escaping () -> Void) {
+    func loadSubjects(completion: @escaping () -> Void) {
         let subjectsQuery = defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").order(by: "dateCreated")
 
         subjectsQuery.getDocuments { (querySnapshot, error) in

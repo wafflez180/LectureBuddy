@@ -21,7 +21,8 @@ class SaveRecordingPopupView: PopupContentView, PopupViewProtocol {
     
     static var initialTitleFieldText: String = ""
     static var textToSave: String!
-    
+    static var subject: Subject!
+
     static var delegate: SaveRecordingPopupProtocol?
 
     // MARK: - PopupViewProtocol
@@ -51,7 +52,7 @@ class SaveRecordingPopupView: PopupContentView, PopupViewProtocol {
             
             let recordingToSave = Recording.init(title: recordingTitleTextField.text!, text: SaveRecordingPopupView.textToSave)
             
-            DataManager.sharedInstance.saveNewRecording(recording: recordingToSave, success: {
+            DataManager.sharedInstance.saveNewRecording(subject: SaveRecordingPopupView.subject, recording: recordingToSave, success: {
                 SaveRecordingPopupView.delegate?.willDismissPopup()
                 success()
             })

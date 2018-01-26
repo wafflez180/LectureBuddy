@@ -15,7 +15,7 @@ class Subject: NSObject {
     var name: String
     var dateCreated: Date
     var documentID: String
-    //var recordings: [Venue]
+    var recordings: [Recording]
     
     init(document: DocumentSnapshot) {
         let docData = document.data()
@@ -23,6 +23,7 @@ class Subject: NSObject {
         self.documentID = document.documentID
         self.name = docData["name"] as! String
         self.dateCreated = docData["dateCreated"] as! Date
+        self.recordings = []
     }
 }
 

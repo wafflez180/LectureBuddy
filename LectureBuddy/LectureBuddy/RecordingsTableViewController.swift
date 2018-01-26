@@ -10,17 +10,19 @@ import UIKit
 
 class RecordingsTableViewController: UITableViewController {
     
-    let recordings:[String] = []
+    var recordings:[Recording] = []
+    
+    // MARK: - UITableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.contentInset = .init(top: 100, left: 0, bottom: 0, right: 0)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Appearing with \(recordings.count) recordings")
     }
     
     override func prefersHomeIndicatorAutoHidden() -> Bool {
@@ -38,18 +40,23 @@ class RecordingsTableViewController: UITableViewController {
         return tableView.dequeueReusableCell(withIdentifier: "EmptyStateHeader")
     }*/
     
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        return recordings.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let recordingCell = tableView.dequeueReusableCell(withIdentifier: "recordingCell", for: indexPath) as! RecordingTableViewCell
+        
+        recordingCell.setup(recording: recordings[indexPath.row])
 
         return recordingCell
     }

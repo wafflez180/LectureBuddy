@@ -80,6 +80,20 @@
                                     <constraint firstAttribute="height" constant="50" id="fsx-eO-p7e"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MA5-aR-cQi" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="175" y="321" width="25" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="baF-Gz-Sb7"/>
+                                    <constraint firstAttribute="height" constant="25" id="cEO-wb-8aX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="lineSpinFadeLoader"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -88,7 +102,9 @@
                             <constraint firstItem="Gb5-uz-8Mn" firstAttribute="leading" secondItem="ttV-79-YOx" secondAttribute="leading" id="4uD-tE-x4W"/>
                             <constraint firstItem="8Kd-l5-bfX" firstAttribute="top" secondItem="ttV-79-YOx" secondAttribute="top" id="Cky-Od-ePv"/>
                             <constraint firstAttribute="bottom" secondItem="urd-4q-WKS" secondAttribute="bottom" constant="15" id="Iu6-bo-6ui"/>
+                            <constraint firstItem="MA5-aR-cQi" firstAttribute="centerY" secondItem="P4N-l3-qJ1" secondAttribute="centerY" id="KSF-dr-dsx"/>
                             <constraint firstItem="ttV-79-YOx" firstAttribute="trailing" secondItem="oDU-lf-caI" secondAttribute="trailing" id="LQS-e6-9pI"/>
+                            <constraint firstItem="MA5-aR-cQi" firstAttribute="centerX" secondItem="P4N-l3-qJ1" secondAttribute="centerX" id="ZAC-MB-K8P"/>
                             <constraint firstAttribute="bottom" secondItem="Gb5-uz-8Mn" secondAttribute="bottom" id="d5P-YR-A4L"/>
                             <constraint firstItem="urd-4q-WKS" firstAttribute="centerX" secondItem="P4N-l3-qJ1" secondAttribute="centerX" id="drL-3f-V7B"/>
                             <constraint firstItem="qOo-Yw-8bC" firstAttribute="top" secondItem="P4N-l3-qJ1" secondAttribute="top" id="ghI-eX-qcV"/>
@@ -126,6 +142,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="MA5-aR-cQi" id="VOG-GI-Iw8"/>
                         <outlet property="tabBarContainerView" destination="oDU-lf-caI" id="Exe-6S-dXk"/>
                         <segue destination="nEN-wc-lDU" kind="show" identifier="viewRecording" id="GSP-Q9-u1c"/>
                         <segue destination="nEN-wc-lDU" kind="showDetail" identifier="newRecording" id="hJm-tV-kS5"/>
@@ -139,7 +156,7 @@
         <scene sceneID="DQO-7L-L01">
             <objects>
                 <tableViewController storyboardIdentifier="RecordingsTableVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KWv-Xi-CeI" customClass="RecordingsTableViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="250" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="apn-L8-a8v">
+                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="250" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="apn-L8-a8v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -153,37 +170,154 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture #3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-x5-3xU">
-                                            <rect key="frame" x="15" y="10" width="86.5" height="14.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="754" text="Lecture #3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-x5-3xU">
+                                            <rect key="frame" x="15" y="10" width="86.5" height="24.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-sk-lUA">
-                                            <rect key="frame" x="15" y="34.5" width="345" height="150"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-sk-lUA">
+                                            <rect key="frame" x="15" y="39.5" width="345" height="150"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="150" id="ICj-tq-Ybc"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="ICj-tq-Ybc"/>
                                             </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="“…asthmatic boy with glasses who nevertheless possesses a keen intelligence. ">
                                                     <attributes>
-                                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                        <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2083333333333333" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops>
+                                                                <textTab alignment="left" location="28">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="56">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="84">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="112">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="140">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="168">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="196">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="224">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="252">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="280">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="308">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="336">
+                                                                    <options/>
+                                                                </textTab>
+                                                            </tabStops>
+                                                        </paragraphStyle>
                                                     </attributes>
                                                 </fragment>
                                                 <fragment>
                                                     <string key="content">The first two boys introduced are the main protagonists of the story: Ralph is among the oldest of the boys, handsome and confident.</string>
                                                     <attributes>
-                                                        <color key="NSBackgroundColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                        <color key="NSBackgroundColor" red="0.97255000000000003" green="0.90588000000000002" blue="0.10979999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2083333333333333" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops>
+                                                                <textTab alignment="left" location="28">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="56">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="84">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="112">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="140">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="168">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="196">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="224">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="252">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="280">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="308">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="336">
+                                                                    <options/>
+                                                                </textTab>
+                                                            </tabStops>
+                                                        </paragraphStyle>
                                                     </attributes>
                                                 </fragment>
                                                 <fragment content=" Ralph finds a conch shell, and when he blows it…”">
                                                     <attributes>
-                                                        <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.21" tighteningFactorForTruncation="0.0"/>
+                                                        <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2083333333333333" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops>
+                                                                <textTab alignment="left" location="28">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="56">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="84">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="112">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="140">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="168">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="196">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="224">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="252">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="280">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="308">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="336">
+                                                                    <options/>
+                                                                </textTab>
+                                                            </tabStops>
+                                                        </paragraphStyle>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -198,14 +332,14 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="9ne-Ep-8bH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x2Q-uc-1wQ" secondAttribute="leading" constant="20" symbolic="YES" id="0wp-MN-WXa"/>
-                                        <constraint firstAttribute="bottom" secondItem="Bmm-sk-lUA" secondAttribute="bottom" constant="15" id="3DJ-qk-vSw"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bmm-sk-lUA" secondAttribute="bottom" constant="10" id="3DJ-qk-vSw"/>
                                         <constraint firstAttribute="trailing" secondItem="Bmm-sk-lUA" secondAttribute="trailing" constant="15" id="EDb-cj-fT9"/>
                                         <constraint firstItem="7e0-x5-3xU" firstAttribute="leading" secondItem="x2Q-uc-1wQ" secondAttribute="leading" constant="15" id="MOW-nk-gPB"/>
                                         <constraint firstAttribute="trailing" secondItem="9ne-Ep-8bH" secondAttribute="trailing" constant="15" id="Nnk-DX-0hJ"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7e0-x5-3xU" secondAttribute="trailing" constant="20" symbolic="YES" id="Nq8-aU-xYc"/>
                                         <constraint firstItem="7e0-x5-3xU" firstAttribute="top" secondItem="x2Q-uc-1wQ" secondAttribute="top" constant="10" id="XF8-7t-Lh3"/>
                                         <constraint firstItem="Bmm-sk-lUA" firstAttribute="leading" secondItem="x2Q-uc-1wQ" secondAttribute="leading" constant="15" id="evi-co-aTy"/>
-                                        <constraint firstItem="Bmm-sk-lUA" firstAttribute="top" secondItem="7e0-x5-3xU" secondAttribute="bottom" constant="10" id="tSS-yi-ayU"/>
+                                        <constraint firstItem="Bmm-sk-lUA" firstAttribute="top" secondItem="7e0-x5-3xU" secondAttribute="bottom" constant="5" id="tSS-yi-ayU"/>
                                         <constraint firstItem="9ne-Ep-8bH" firstAttribute="top" secondItem="x2Q-uc-1wQ" secondAttribute="top" constant="10" id="tuf-W1-B7M"/>
                                     </constraints>
                                 </tableViewCellContentView>

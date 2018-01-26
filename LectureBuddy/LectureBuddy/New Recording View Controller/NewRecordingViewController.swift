@@ -27,7 +27,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     var hasEditedTitleField = false
     let speechRecognitionManager: SpeechRecognitionManager = .init(isDebugging: true)
     
-    var subject: DocumentSnapshot!
+    var subject:Subject!
     
     // MARK: - UIViewController
 
@@ -223,7 +223,8 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
     // MARK: - SaveRecordingPopupProtocol
     
     func willDismissPopup() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        HomePageViewController.shouldReloadOnAppear = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -237,6 +238,7 @@ class NewRecordingViewController: UIViewController, SpeechRecognitionManagerDele
         let saveRecordingPopupView = SaveRecordingPopupView()
         SaveRecordingPopupView.initialTitleFieldText = titleTextField.text!
         SaveRecordingPopupView.textToSave = speechRecognitionManager.getFullTranscription() + speechRecognitionManager.currentBestTranscription
+        SaveRecordingPopupView.subject = self.subject
         SaveRecordingPopupView.delegate = self
         saveRecordingPopupView.present(viewController: self)
     }

@@ -12,12 +12,16 @@ import Tabman
 import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
+import NVActivityIndicatorView
 
 class HomePageViewController: TabmanViewController, PageboyViewControllerDataSource {
     
     @IBOutlet var tabBarContainerView: UIView!
+    @IBOutlet var activityIndicator: NVActivityIndicatorView!
     
     var viewControllers:[UIViewController] = []
+    
+    static var shouldReloadOnAppear = false
     
     // MARK: - ViewController
 
@@ -30,7 +34,15 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         self.dataSource = self
         
         configureTabBar()
-        reloadData()
+        setTabBarItems()
+        setSubjectPages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if HomePageViewController.shouldReloadOnAppear {
+            reloadData()
+            HomePageViewController.shouldReloadOnAppear = false
+        }
     }
     
     override func prefersHomeIndicatorAutoHidden() -> Bool {
@@ -76,16 +88,21 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     }
     
     func reloadData(){
-        setTabBarItems()
-        setSubjectPages()
+        let indexBeforeReload = self.currentIndex ?? 0
+        activityIndicator.startAnimating()
+        DataManager.sharedInstance.loadSubjectsAndRecordings {
+            self.activityIndicator.stopAnimating()
+            self.setTabBarItems()
+            self.setSubjectPages()
+            self.scrollToPage(PageboyViewController.Page.at(index: indexBeforeReload), animated: false)
+        }
     }
     
     func setTabBarItems(){
         var barItems:[Item] = []
         
-        for subjectDoc in DataManager.sharedInstance.subjects {
-            //print(subjectDoc.documentID)
-            let subjectName = subjectDoc.documentID
+        for subject in DataManager.sharedInstance.subjects {
+            let subjectName = subject.documentID
             barItems.append(Item.init(title: subjectName))
         }
         
@@ -95,8 +112,9 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     func setSubjectPages(){
         viewControllers = []
         
-        for _ in 0..<DataManager.sharedInstance.subjects.count {
+        for index in 0..<DataManager.sharedInstance.subjects.count {
             let recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecordingsTableVC") as! RecordingsTableViewController
+            recordingVC.recordings = DataManager.sharedInstance.subjects[index].recordings
             viewControllers.append(recordingVC)
         }
         
@@ -126,12 +144,12 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     
     func viewController(for pageboyViewController: PageboyViewController,
                         at index: PageboyViewController.PageIndex) -> UIViewController? {
-        let viewController = viewControllers[index]
         
-        DataManager.sharedInstance.currentSubject = DataManager.sharedInstance.subjects[index]
-        print(index)
+        let recordingTableViewCont = viewControllers[index] as! RecordingsTableViewController
         
-        return viewController
+        recordingTableViewCont.recordings = DataManager.sharedInstance.subjects[index].recordings
+
+        return viewControllers[index]
     }
     
     // TODO: - Add a default page! (design it first)
@@ -193,6 +211,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         // Pass the selected object to the new view controller.
         if segue.identifier == "newRecording" {
             let newRecordingViewCont = segue.destination as! NewRecordingViewController
+            newRecordingViewCont.subject = DataManager.sharedInstance.subjects[self.currentIndex!]
             // TODO:
         } else if segue.identifier == "viewRecording" {
             let viewRecordingViewCont = segue.destination
