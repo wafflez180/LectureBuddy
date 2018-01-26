@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class RecordingsTableViewController: UITableViewController {
     
     var recordings:[Recording] = []
+    
+    static var hasPlayedShowAnimation = false
     
     // MARK: - UITableViewController
     
@@ -25,6 +28,24 @@ class RecordingsTableViewController: UITableViewController {
         print("Appearing with \(recordings.count) recordings")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if RecordingsTableViewController.hasPlayedShowAnimation == false {
+            
+            let translationAnimation = AnimationType.from(direction: .bottom, offset: 30.0)
+
+            tableView.animateViews(animations: [translationAnimation],
+                                   reversed: false,
+                                   initialAlpha: 0.5,
+                                   finalAlpha: 1.0,
+                                   delay: 0.0,
+                                   duration: 0.5,
+                                   animationInterval: 0.1,
+                                   completion: nil)
+            
+            RecordingsTableViewController.hasPlayedShowAnimation = true
+        }
+    }
+    
     override func prefersHomeIndicatorAutoHidden() -> Bool {
         return true
     }
@@ -35,12 +56,12 @@ class RecordingsTableViewController: UITableViewController {
         if self.recordings.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "EmptyStateHeader")
         } else {
-            return nil
+            return UIView()
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.recordings.count == 0 ? 250 : 0
+        return self.recordings.count == 0 ? 250 : 20
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,12 +86,15 @@ class RecordingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recordingCell = tableView.cellForRow(at: indexPath) as! RecordingTableViewCell
+        recordingCell.containerView.backgroundColor = UIColor.init(hex: "E8E8E8")
+        
         var recordingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "recordingViewCont") as! RecordingViewController
         
         recordingVC.setupToView(recording: recordings[indexPath.row])
         
         self.present(recordingVC, animated: true, completion: {
-            self.tableView.deselectRow(at: indexPath, animated: false)
+            recordingCell.containerView.backgroundColor = .white
         })
     }
 

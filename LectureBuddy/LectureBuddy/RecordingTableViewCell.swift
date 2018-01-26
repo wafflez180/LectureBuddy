@@ -14,7 +14,8 @@ class RecordingTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var textView: UITextView!
-
+    @IBOutlet var containerView: UIView!
+    
     // MARK: - UITableViewCell
 
     override func awakeFromNib() {
