@@ -23,18 +23,18 @@ class SubjectHeaderView: UITableViewHeaderFooterView, UIGestureRecognizerDelegat
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupLongPressGesture()
+        //setupLongPressGesture()
     }
     
     // MARK: - SubjectHeaderView
-    
+    /*
     func setupLongPressGesture(){
         //Long Press
         let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(presentDeleteSubjectConfirmationAlert))
         longPressGesture.minimumPressDuration = 0.5
         longPressGesture.delegate = self
         self.addGestureRecognizer(longPressGesture)
-    }
+    }*/
 
     func configure(subjectName: String, sectionNum:Int, parentTableView: UITableView, parentVC: UIViewController){
         self.subjectName = subjectName
@@ -66,7 +66,7 @@ class SubjectHeaderView: UITableViewHeaderFooterView, UIGestureRecognizerDelegat
     }
     
     // MARK: - Long Press Gesture Recognizer
-    
+    /*
     @objc func presentDeleteSubjectConfirmationAlert(){
         let alert = UIAlertController(title: "Delete \(subjectName!)", message: """
             Are you sure you want to delete \(subjectName!)?
@@ -74,12 +74,12 @@ class SubjectHeaderView: UITableViewHeaderFooterView, UIGestureRecognizerDelegat
             """, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alertAction in
-            DataManager.sharedInstance.deleteSubect(subjectName: self.subjectName, completionHandler: {
+            DataManager.sharedInstance.deleteSubject(subjectName: self.subjectName, completionHandler: {
                 self.parentTableView.reloadData()
             })
         }))
         self.parentViewCont.present(alert, animated: true, completion: nil)
-    }
+    }*/
     
     // MARK: - Actions
     

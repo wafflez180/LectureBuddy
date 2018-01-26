@@ -149,17 +149,14 @@ class DataManager: NSObject, FUIAuthDelegate {
         }
     }
     
-    func deleteSubect(subjectName:String, completionHandler: @escaping () -> Void) {
-        // Remove from local array
-        for subjectDoc in self.subjects {
-            if subjectDoc.documentID == subjectName {
-                let index = self.subjects.index(of: subjectDoc)
-                self.subjects.remove(at: index!)
-            }
+    func deleteSubject(subject: Subject, completionHandler: @escaping () -> Void) {
+        
+        for recording in subject.recordings {
+            self.deleteRecording(recording: recording, completionHandler: {})
         }
-        // Remove from database
-        self.defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").document(subjectName).delete { error in
-            print("\(subjectName) subject has been successfully deleted")
+        
+        self.defaultStore.collection("Users").document((currentUser?.uid)!).collection("subjects").document(subject.documentID).delete { error in
+            print("\(subject.name) subject has been successfully deleted")
             completionHandler()
         }
     }

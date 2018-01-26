@@ -43,6 +43,11 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
             reloadData()
             HomePageViewController.shouldReloadOnAppear = false
         }
+        
+        if SettingsViewController.isSigningOut {
+            self.dismiss(animated: false, completion: nil)
+            SettingsViewController.isSigningOut = false
+        }
     }
     
     override func prefersHomeIndicatorAutoHidden() -> Bool {
@@ -120,7 +125,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
         
         self.reloadPages()
     }
-    
+    /*
     func deleteSubject(){
         let subjectName = self.bar.items![self.currentIndex!].title!
         let alert = UIAlertController(title: "Delete \(subjectName)", message: """
@@ -134,7 +139,7 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
             })
         }))
         self.present(alert, animated: true, completion: nil)
-    }
+    }*/
     
     // MARK: - PageboyViewControllerDataSource
     
@@ -158,14 +163,6 @@ class HomePageViewController: TabmanViewController, PageboyViewControllerDataSou
     }
     
     // MARK: - Actions
-
-    @IBAction func pressedSettingsButton(_ sender: Any) {
-        // TODO: Go to a settings page
-        // Currenty: signs user out
-        try? Auth.auth().signOut()
-        FBSDKAccessToken.setCurrent(nil)
-        self.dismiss(animated: true)
-    }
     
     @IBAction func pressedHighlightKeywordsButton(_ sender: Any) {
         let popup = KeywordsPopupView()
