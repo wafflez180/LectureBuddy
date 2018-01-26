@@ -297,7 +297,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CSE241" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5g-ve-3MH">
-                                                    <rect key="frame" x="20" y="19.5" width="61" height="20.5"/>
+                                                    <rect key="frame" x="20" y="21" width="61" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -308,8 +308,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="A5g-ve-3MH" firstAttribute="leading" secondItem="yqp-w6-kpU" secondAttribute="leadingMargin" constant="5" id="8iA-Uf-rvF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="A5g-ve-3MH" secondAttribute="bottom" constant="10" id="UV1-Sr-rzM"/>
                                                 <constraint firstItem="iGi-RM-qwM" firstAttribute="centerY" secondItem="yqp-w6-kpU" secondAttribute="centerY" id="gex-HB-PVY"/>
                                                 <constraint firstItem="A5g-ve-3MH" firstAttribute="centerY" secondItem="yqp-w6-kpU" secondAttribute="centerY" id="hON-lC-zHZ"/>
+                                                <constraint firstItem="A5g-ve-3MH" firstAttribute="top" secondItem="yqp-w6-kpU" secondAttribute="topMargin" constant="10" id="w5D-Os-6vH"/>
                                                 <constraint firstAttribute="trailing" secondItem="iGi-RM-qwM" secondAttribute="trailing" constant="25" id="zks-Ld-nM0"/>
                                             </constraints>
                                         </tableViewCellContentView>
