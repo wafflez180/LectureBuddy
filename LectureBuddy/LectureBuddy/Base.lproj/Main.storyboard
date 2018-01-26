@@ -31,7 +31,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urd-4q-WKS" userLabel="Record Button">
-                                <rect key="frame" x="157.5" y="592" width="60" height="60"/>
+                                <rect key="frame" x="157.5" y="582" width="60" height="60"/>
                                 <state key="normal" image="new-recording-button"/>
                                 <connections>
                                     <action selector="pressedNewRecordingButton:" destination="Z4U-ee-IlL" eventType="touchUpInside" id="PWA-xc-O9p"/>
@@ -101,7 +101,7 @@
                             <constraint firstItem="8Kd-l5-bfX" firstAttribute="leading" secondItem="ttV-79-YOx" secondAttribute="leading" id="0an-iu-97g"/>
                             <constraint firstItem="Gb5-uz-8Mn" firstAttribute="leading" secondItem="ttV-79-YOx" secondAttribute="leading" id="4uD-tE-x4W"/>
                             <constraint firstItem="8Kd-l5-bfX" firstAttribute="top" secondItem="ttV-79-YOx" secondAttribute="top" id="Cky-Od-ePv"/>
-                            <constraint firstAttribute="bottom" secondItem="urd-4q-WKS" secondAttribute="bottom" constant="15" id="Iu6-bo-6ui"/>
+                            <constraint firstAttribute="bottom" secondItem="urd-4q-WKS" secondAttribute="bottom" constant="25" id="Iu6-bo-6ui"/>
                             <constraint firstItem="MA5-aR-cQi" firstAttribute="centerY" secondItem="P4N-l3-qJ1" secondAttribute="centerY" id="KSF-dr-dsx"/>
                             <constraint firstItem="ttV-79-YOx" firstAttribute="trailing" secondItem="oDU-lf-caI" secondAttribute="trailing" id="LQS-e6-9pI"/>
                             <constraint firstItem="MA5-aR-cQi" firstAttribute="centerX" secondItem="P4N-l3-qJ1" secondAttribute="centerX" id="ZAC-MB-K8P"/>
@@ -154,7 +154,7 @@
         <scene sceneID="DQO-7L-L01">
             <objects>
                 <tableViewController storyboardIdentifier="RecordingsTableVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KWv-Xi-CeI" customClass="RecordingsTableViewController" customModule="LectureBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="250" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="apn-L8-a8v">
+                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="apn-L8-a8v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -162,7 +162,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordingCell" rowHeight="200" id="ROX-Cc-ZMn" customClass="RecordingTableViewCell" customModule="LectureBuddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="250" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="1" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ROX-Cc-ZMn" id="x2Q-uc-1wQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
@@ -348,7 +348,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyStateHeader" rowHeight="100" id="aLn-HC-rOt">
-                                <rect key="frame" x="0.0" y="450" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="201" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aLn-HC-rOt" id="snN-PZ-Osr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>

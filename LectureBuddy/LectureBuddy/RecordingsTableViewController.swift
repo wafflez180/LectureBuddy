@@ -31,14 +31,17 @@ class RecordingsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    /*override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        /*if self.recordings.count == 0 {
-            return tableView.dequeueReusableHeaderFooterView(withIdentifier: "EmptyStateHeader")
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if self.recordings.count == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: "EmptyStateHeader")
         } else {
             return nil
-        }*/
-        return tableView.dequeueReusableCell(withIdentifier: "EmptyStateHeader")
-    }*/
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.recordings.count == 0 ? 250 : 0
+    }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
