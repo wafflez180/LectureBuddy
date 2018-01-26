@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture Buddy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vau-W8-8pt">
-                                <rect key="frame" x="81.5" y="170" width="212" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lecture-buddy-l-icon" translatesAutoresizingMaskIntoConstraints="NO" id="4Rd-Ku-NMI">
+                                <rect key="frame" x="137.5" y="145" width="100" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Rd-Ku-NMI" secondAttribute="height" multiplier="185:172" id="I8K-Kp-dqS"/>
+                                    <constraint firstAttribute="width" constant="100" id="aVJ-6J-2Be"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.1764705882" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vau-W8-8pt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="C3U-W0-Oas"/>
-                            <constraint firstItem="vau-W8-8pt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="nkL-eK-Nvb"/>
+                            <constraint firstItem="4Rd-Ku-NMI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RAA-GL-Rcp"/>
+                            <constraint firstItem="4Rd-Ku-NMI" firstAttribute="width" secondItem="4Rd-Ku-NMI" secondAttribute="height" multiplier="185:172" id="q1g-XL-SCf"/>
+                            <constraint firstItem="4Rd-Ku-NMI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="z3a-aO-a5X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,4 +40,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lecture-buddy-l-icon" width="370" height="344"/>
+    </resources>
 </document>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Transcribe speech to highlight the important parts</string>
+	<string>We&apos;re using it to transcribe speech so we can help you with note-taking</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Transcribe speech to highlight the important parts</string>
+	<string>We&apos;re using it to transcribe speech so we can help you with note-taking</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CFBundleName</key>

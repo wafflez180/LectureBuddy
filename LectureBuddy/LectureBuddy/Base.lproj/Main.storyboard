@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -859,12 +860,6 @@ recognition due to Apple’s restrictions.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lecture Buddy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkt-li-G8n">
-                                <rect key="frame" x="81.5" y="170" width="212" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3W7-Dd-tIc" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="175" y="321" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -894,12 +889,19 @@ recognition due to Apple’s restrictions.</string>
                                     <action selector="pressedFacebookLogInButton:" destination="FF6-bq-4Jh" eventType="touchUpInside" id="Zxf-U4-Cot"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lecture-buddy-l-icon" translatesAutoresizingMaskIntoConstraints="NO" id="QwA-Gh-YF9">
+                                <rect key="frame" x="137.5" y="145" width="100" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="7tt-pR-2zl"/>
+                                    <constraint firstAttribute="width" secondItem="QwA-Gh-YF9" secondAttribute="height" multiplier="185:172" id="oyU-W0-GgT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.1764705882" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OfF-qd-i0u" firstAttribute="bottom" secondItem="1Lb-1M-LyR" secondAttribute="bottom" constant="125" id="0gB-af-37A"/>
-                            <constraint firstItem="gkt-li-G8n" firstAttribute="top" secondItem="OfF-qd-i0u" secondAttribute="top" constant="150" id="5Xz-IK-ixW"/>
-                            <constraint firstItem="gkt-li-G8n" firstAttribute="centerX" secondItem="OfF-qd-i0u" secondAttribute="centerX" id="Ohd-cx-sEy"/>
+                            <constraint firstItem="QwA-Gh-YF9" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="7XV-xP-QEc"/>
+                            <constraint firstItem="QwA-Gh-YF9" firstAttribute="top" secondItem="OfF-qd-i0u" secondAttribute="top" constant="125" id="Cnh-8Z-2xh"/>
                             <constraint firstItem="3W7-Dd-tIc" firstAttribute="centerY" secondItem="l1L-YA-IlZ" secondAttribute="centerY" id="QGl-1z-bDu"/>
                             <constraint firstItem="1Lb-1M-LyR" firstAttribute="centerX" secondItem="l1L-YA-IlZ" secondAttribute="centerX" id="e4a-p1-P0D"/>
                             <constraint firstItem="3W7-Dd-tIc" firstAttribute="centerX" secondItem="OfF-qd-i0u" secondAttribute="centerX" id="lRp-Ho-Btl"/>
@@ -1086,6 +1088,7 @@ recognition due to Apple’s restrictions.</string>
         <image name="delete-subject-icon" width="28" height="28"/>
         <image name="follow-speech-arrow-icon" width="26" height="14"/>
         <image name="highlighting-words-navbutton" width="25" height="25"/>
+        <image name="lecture-buddy-l-icon" width="370" height="344"/>
         <image name="new-recording-button" width="60" height="60"/>
         <image name="settings-navbutton" width="23" height="23"/>
     </resources>
