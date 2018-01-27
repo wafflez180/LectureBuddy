@@ -18,7 +18,7 @@ class Subject: NSObject {
     var recordings: [Recording]
     
     init(document: DocumentSnapshot) {
-        let docData = document.data()
+        let docData = document.data()!
         
         self.documentID = document.documentID
         self.name = docData["name"] as! String

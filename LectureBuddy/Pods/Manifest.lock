@@ -1,16 +1,19 @@
 PODS:
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
-  - BoringSSL (9.1):
-    - BoringSSL/Implementation (= 9.1)
-    - BoringSSL/Interface (= 9.1)
-  - BoringSSL/Implementation (9.1):
-    - BoringSSL/Interface (= 9.1)
-  - BoringSSL/Interface (9.1)
+  - Bolts/Tasks (1.9.0)
+  - BoringSSL (9.2):
+    - BoringSSL/Implementation (= 9.2)
+    - BoringSSL/Interface (= 9.2)
+  - BoringSSL/Implementation (9.2):
+    - BoringSSL/Interface (= 9.2)
+  - BoringSSL/Interface (9.2)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.27)
@@ -24,67 +27,66 @@ PODS:
     - FacebookCore (~> 0.3)
     - FBSDKCoreKit (~> 4.27)
     - FBSDKShareKit (~> 4.27)
-  - FBSDKCoreKit (4.28.0):
+  - FBSDKCoreKit (4.30.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.28.0):
+  - FBSDKLoginKit (4.30.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.28.0):
-    - FBSDKCoreKit
-  - Firebase/Auth (4.5.0):
+  - FBSDKShareKit (4.30.0):
+    - FBSDKCoreKit (~> 4.30.0)
+  - Firebase/Auth (4.8.1):
     - Firebase/Core
-    - FirebaseAuth (= 4.3.1)
-  - Firebase/Core (4.5.0):
-    - FirebaseAnalytics (= 4.0.4)
-    - FirebaseCore (= 4.0.10)
-  - Firebase/Database (4.5.0):
+    - FirebaseAuth (= 4.4.2)
+  - Firebase/Core (4.8.1):
+    - FirebaseAnalytics (= 4.0.7)
+    - FirebaseCore (= 4.0.14)
+  - Firebase/Database (4.8.1):
     - Firebase/Core
-    - FirebaseDatabase (= 4.1.0)
-  - Firebase/Firestore (4.5.0):
+    - FirebaseDatabase (= 4.1.4)
+  - Firebase/Firestore (4.8.1):
     - Firebase/Core
-    - FirebaseFirestore (= 0.9.1)
-  - Firebase/Messaging (4.5.0):
+    - FirebaseFirestore (= 0.10.0)
+  - Firebase/Messaging (4.8.1):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.6)
-  - Firebase/Storage (4.5.0):
+    - FirebaseMessaging (= 2.0.8)
+  - Firebase/Storage (4.8.1):
     - Firebase/Core
-    - FirebaseStorage (= 2.0.2)
-  - FirebaseAnalytics (4.0.4):
+    - FirebaseStorage (= 2.1.2)
+  - FirebaseAnalytics (4.0.7):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseAuth (4.3.1):
+  - FirebaseAuth (4.4.2):
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.10):
+  - FirebaseCore (4.0.14):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - nanopb (~> 0.3)
-  - FirebaseDatabase (4.1.0):
+  - FirebaseDatabase (4.1.4):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
-  - FirebaseFirestore (0.9.1):
+  - FirebaseFirestore (0.10.0):
     - FirebaseAnalytics (~> 4.0)
-    - FirebaseAuth (~> 4.3)
     - FirebaseCore (~> 4.0)
     - gRPC-ProtoRPC (~> 1.0)
     - leveldb-library (~> 1.18)
     - Protobuf (~> 3.1)
-  - FirebaseInstanceID (2.0.5)
-  - FirebaseMessaging (2.0.6):
+  - FirebaseInstanceID (2.0.8):
+    - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.8):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
-  - FirebaseStorage (2.0.2):
+  - FirebaseStorage (2.1.2):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI (4.5.0):
-    - FirebaseUI/All (= 4.5.0)
-  - FirebaseUI/All (4.5.0):
+  - FirebaseUI (4.5.1):
+    - FirebaseUI/All (= 4.5.1)
+  - FirebaseUI/All (4.5.1):
     - FirebaseUI/Auth
     - FirebaseUI/Database
     - FirebaseUI/Facebook
@@ -93,24 +95,24 @@ PODS:
     - FirebaseUI/Phone
     - FirebaseUI/Storage
     - FirebaseUI/Twitter
-  - FirebaseUI/Auth (4.5.0):
+  - FirebaseUI/Auth (4.5.1):
     - Firebase/Auth (~> 4.2)
-  - FirebaseUI/Database (4.5.0):
+  - FirebaseUI/Database (4.5.1):
     - Firebase/Database (~> 4.0)
-  - FirebaseUI/Facebook (4.5.0):
+  - FirebaseUI/Facebook (4.5.1):
     - FBSDKLoginKit (~> 4.0)
     - FirebaseUI/Auth
-  - FirebaseUI/Firestore (4.5.0):
+  - FirebaseUI/Firestore (4.5.1):
     - Firebase/Firestore
-  - FirebaseUI/Google (4.5.0):
+  - FirebaseUI/Google (4.5.1):
     - FirebaseUI/Auth
     - GoogleSignIn (~> 4.0)
-  - FirebaseUI/Phone (4.5.0):
+  - FirebaseUI/Phone (4.5.1):
     - FirebaseUI/Auth
-  - FirebaseUI/Storage (4.5.0):
+  - FirebaseUI/Storage (4.5.1):
     - Firebase/Storage (~> 4.0)
     - SDWebImage (~> 4.0)
-  - FirebaseUI/Twitter (4.5.0):
+  - FirebaseUI/Twitter (4.5.1):
     - FirebaseUI/Auth
     - TwitterKit (~> 3.0)
   - GoogleSignIn (4.1.1):
@@ -130,26 +132,26 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
-  - gRPC (1.7.1):
-    - gRPC-RxLibrary (= 1.7.1)
-    - gRPC/Main (= 1.7.1)
-  - gRPC-Core (1.7.1):
-    - gRPC-Core/Implementation (= 1.7.1)
-    - gRPC-Core/Interface (= 1.7.1)
-  - gRPC-Core/Implementation (1.7.1):
+  - gRPC (1.8.4):
+    - gRPC-RxLibrary (= 1.8.4)
+    - gRPC/Main (= 1.8.4)
+  - gRPC-Core (1.8.4):
+    - gRPC-Core/Implementation (= 1.8.4)
+    - gRPC-Core/Interface (= 1.8.4)
+  - gRPC-Core/Implementation (1.8.4):
     - BoringSSL (~> 9.0)
-    - gRPC-Core/Interface (= 1.7.1)
+    - gRPC-Core/Interface (= 1.8.4)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.7.1)
-  - gRPC-ProtoRPC (1.7.1):
-    - gRPC (= 1.7.1)
-    - gRPC-RxLibrary (= 1.7.1)
+  - gRPC-Core/Interface (1.8.4)
+  - gRPC-ProtoRPC (1.8.4):
+    - gRPC (= 1.8.4)
+    - gRPC-RxLibrary (= 1.8.4)
     - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.7.1)
-  - gRPC/Main (1.7.1):
-    - gRPC-Core (= 1.7.1)
-    - gRPC-RxLibrary (= 1.7.1)
-  - GTMOAuth2 (1.1.5):
+  - gRPC-RxLibrary (1.8.4)
+  - gRPC/Main (1.8.4):
+    - gRPC-Core (= 1.8.4)
+    - gRPC-RxLibrary (= 1.8.4)
+  - GTMOAuth2 (1.1.6):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.12):
     - GTMSessionFetcher/Full (= 1.1.12)
@@ -162,26 +164,26 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - NVActivityIndicatorView (4.0.0):
-    - NVActivityIndicatorView/Presenter (= 4.0.0)
-  - NVActivityIndicatorView/Presenter (4.0.0)
-  - Pageboy (2.1.0)
-  - Protobuf (3.4.0)
-  - PureLayout (3.0.2)
-  - SDWebImage (4.2.2):
-    - SDWebImage/Core (= 4.2.2)
-  - SDWebImage/Core (4.2.2)
-  - Spring (1.0.3)
-  - SwiftRichString (1.0.1)
-  - Tabman (1.1.1):
-    - Pageboy (~> 2.0)
-    - PureLayout (~> 3.0)
-  - TwitterCore (3.0.2)
-  - TwitterKit (3.2.1):
-    - TwitterCore (>= 3.0.2)
+  - NVActivityIndicatorView (4.1.1):
+    - NVActivityIndicatorView/Presenter (= 4.1.1)
+  - NVActivityIndicatorView/Presenter (4.1.1)
+  - Pageboy (2.3.2)
+  - Protobuf (3.5.0)
+  - SDWebImage (4.2.3):
+    - SDWebImage/Core (= 4.2.3)
+  - SDWebImage/Core (4.2.3)
+  - Spring (1.0.5)
+  - SwiftRichString (1.1.0)
+  - Tabman (1.4.0):
+    - Pageboy (~> 2.3.0)
+  - TwitterCore (3.1.0)
+  - TwitterKit (3.3.0):
+    - TwitterCore (>= 3.1.0)
   - ViewAnimator (1.0.4)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3.9)
+  - Fabric (~> 1.7.0)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -201,50 +203,51 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Spring:
-    :commit: 01cb67ad4bf6db933965d827ebff08898bb5ec27
+    :commit: 19b04d730d3edabbb02a39e58121d1d3220690ee
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BoringSSL: 84318770d120503ab1a6aaf1df777c5ca053697e
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  BoringSSL: f3d6b8ce199b9c450a8cfc14895d07a2627fc232
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
   FacebookShare: 0469964297ebd75f052be2c5083389a4208e82b7
-  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
-  FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
-  FBSDKShareKit: 4f525556e0df4cf0f574cb3f01c675434f29d477
-  Firebase: d83d287bdb6b1c78320561482706d1fcfc8ddfc1
-  FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
-  FirebaseAuth: e7c2b1359c2df4af23a568100a8eace0b8c507e4
-  FirebaseCore: da5e8e372cb6046212739a4d81e42d32c22907cc
-  FirebaseDatabase: 607284a103e961d7f5863ee603cab5e85f443bd6
-  FirebaseFirestore: 2112e800ec742daa37b3500b227aaa13e7ca236c
-  FirebaseInstanceID: f2b688c66b972f30d7fa9f5f9f91455454a03b47
-  FirebaseMessaging: 75d83375b0f7a9911568d7bdd1a1a8261cbcbdef
-  FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
-  FirebaseUI: 883482fea73b73bbb488c55176f4c6ad128957eb
+  FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
+  FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
+  FBSDKShareKit: a9427574b51bde4f437262c3f118c4ccfddeef6c
+  Firebase: 2721056b8885eef90233b03f37be64358d35d262
+  FirebaseAnalytics: 617afa8c26b57a0c3f11361b248bc9e17bfd8dfd
+  FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
+  FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
+  FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
+  FirebaseFirestore: 713f0c555e7af5ac03d0fec0e2477c48857f4977
+  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
+  FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
+  FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
+  FirebaseUI: 1dc9c8a87a776b488a28a28541f029e60c824cfd
   GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  gRPC: b56decfd0094854d2ccfe80c8fb767237dace3be
-  gRPC-Core: 95c4968ae43d29219226f22b656d9f625904281e
-  gRPC-ProtoRPC: b7259f51cbc19b77c7a38d96f52a00c3a4ea1637
-  gRPC-RxLibrary: 4f46343e74e74a7ee8373ffeeaf772dfb330cbd7
-  GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
+  gRPC: 572520c17b794362388d5c95396329592a3c199b
+  gRPC-Core: af0d4f0a53735e335fccc815c50c0a03da695287
+  gRPC-ProtoRPC: 6596fde8d27e0718d7de1de1dc99a951d832a809
+  gRPC-RxLibrary: f6b1432a667c3354c7b345affed9886c0d4ff549
+  GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
-  Pageboy: f137e98cdb92c1913401d9d3c8888951ff81a630
-  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
-  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
-  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
-  SwiftRichString: 2111627a29af277094a9e5d4d1bf6bfe0b8212ac
-  Tabman: 929a09683a5b2f5abb9933abc83e000578356396
-  TwitterCore: e0420b01e02e7d20e94690e37f43e75de219ab8d
-  TwitterKit: 205ac89824bbfe9e85a16c420d30bb7bcbedac45
+  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
+  Pageboy: 3301d5775ddd881b25072e87771a52fe3e167929
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
+  Spring: 48aad470f3ead043b2da98b64e0bf0630b7ebc42
+  SwiftRichString: 49c75726140c7f780fad1d067f804491d51188fa
+  Tabman: 348ff2d3fc88587ef60bae5bce6698a8e1984cc2
+  TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
+  TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   ViewAnimator: 1f3fa25f3c9010ab0dda06cf9e3e49a4b55834ff
 
-PODFILE CHECKSUM: 8577560cd69aec7989baaf6d1bf64bb39959468e
+PODFILE CHECKSUM: 7d3864eb5fef7616f5fb010b09fa4954de06ed0f
 
 COCOAPODS: 1.4.0

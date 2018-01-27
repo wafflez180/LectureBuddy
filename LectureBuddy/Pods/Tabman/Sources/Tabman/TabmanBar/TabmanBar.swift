@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PureLayout
 import Pageboy
 
 public protocol TabmanBarDelegate: class {
@@ -91,9 +90,9 @@ open class TabmanBar: UIView, TabmanBarLifecycle {
     }
     
     /// Background view of the bar.
-    public private(set) var backgroundView: BackgroundView = BackgroundView(forAutoLayout: ())
+    public private(set) var backgroundView: BackgroundView = BackgroundView()
     /// The content view for the bar.
-    public private(set) var contentView = UIView(forAutoLayout: ())
+    public private(set) var contentView = UIView()
     /// The bottom separator view for the bar.
     internal private(set) var bottomSeparator = SeparatorView()
     
@@ -151,13 +150,18 @@ open class TabmanBar: UIView, TabmanBarLifecycle {
     }
     
     private func initTabBar(coder aDecoder: NSCoder?) {
+        
         self.addSubview(backgroundView)
-        backgroundView.autoPinEdgesToSuperviewEdges()
+        backgroundView.pinToSuperviewEdges()
         
         bottomSeparator.addAsSubview(to: self)
         
         self.addSubview(contentView)
-        contentView.autoPinEdgesToSuperviewEdges()
+        if #available(iOS 11, *) {
+            contentView.pinToSafeArea(layoutGuide: safeAreaLayoutGuide)
+        } else {
+            contentView.pinToSuperviewEdges()
+        }
         
         self.indicator = self.create(indicatorForStyle: self.defaultIndicatorStyle())
     }
@@ -227,6 +231,7 @@ open class TabmanBar: UIView, TabmanBarLifecycle {
                     direction: direction,
                     indexRange: 0 ..< items.count - 1,
                     bounds: bounds)
+        behaviorEngine.update(activation: .onPositionChange)
     }
     
     internal func updateForCurrentPosition(bounds: CGRect? = nil) {

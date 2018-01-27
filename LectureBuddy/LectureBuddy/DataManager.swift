@@ -280,7 +280,7 @@ class DataManager: NSObject, FUIAuthDelegate {
                 print("Error getting documents: \(error)")
                 error()
             } else {
-                if let highlightKwds = querySnapshot?.data()["highlightKeywords"] {
+                if let highlightKwds = querySnapshot?.data()!["highlightKeywords"] {
                     self.highlightedKeywords = highlightKwds as! [String]
                 }
                 print("Keywords: \(self.highlightedKeywords)")

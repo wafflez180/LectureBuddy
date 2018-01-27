@@ -22,6 +22,9 @@ target 'LectureBuddy' do
   pod 'SwiftRichString'
   pod 'ViewAnimator'
 
+  pod 'Fabric', '~> 1.7.0'
+  pod 'Crashlytics', '~>  3.9'
+
   target 'LectureBuddyTests' do
     inherit! :search_paths
     # Pods for testing

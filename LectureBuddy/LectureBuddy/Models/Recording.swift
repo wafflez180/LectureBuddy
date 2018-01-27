@@ -19,7 +19,7 @@ class Recording: NSObject {
     var subjectDocumentId: String?
     
     init(document: DocumentSnapshot, subjectDocId: String) {
-        let docData = document.data()
+        let docData = document.data()!
         
         self.subjectDocumentId = subjectDocId
         self.documentID = document.documentID
